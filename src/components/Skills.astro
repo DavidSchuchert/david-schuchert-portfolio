@@ -1,0 +1,67 @@
+---
+const skills = [
+  { name: 'TypeScript', icon: 'typescript', color: 'bg-blue-500' },
+  { name: 'JavaScript', icon: 'javascript', color: 'bg-yellow-500' },
+  { name: 'React', icon: 'react', color: 'bg-cyan-500' },
+  { name: 'Angular', icon: 'angular', color: 'bg-red-600' },
+  { name: 'PHP', icon: 'php', color: 'bg-indigo-600' },
+  { name: 'Laravel', icon: 'laravel', color: 'bg-red-500' },
+  { name: 'MySQL', icon: 'mysql', color: 'bg-orange-500' },
+  { name: 'Tailwind CSS', icon: 'tailwindcss', color: 'bg-cyan-400' },
+  { name: 'Docker', icon: 'docker', color: 'bg-blue-500' },
+  { name: 'Git', icon: 'git', color: 'bg-orange-600' },
+  { name: 'Firebase', icon: 'firebase', color: 'bg-yellow-500' },
+  { name: 'Node.js', icon: 'nodejs', color: 'bg-green-600' },
+];
+
+const getIconSvg = (icon: string) => {
+  const icons: Record<string, string> = {
+    typescript: `<path fill-rule="evenodd" d="M1 5.5h8v13H1zm16.5 0h3v13h-3zM6.5 9h3v9h-3zm5 0h3v9h-3zm5 0h3v9h-3z" fill="currentColor"/>`,
+    javascript: `<path fill="#f7df1e" d="M0 0h12v12H0z"/><path d="M9.5 15.15s.72 1.03.72 1.72c0 .93-1.05 1.08-1.92 1.08a4.5 4.5 0 0 1-1.44-.25v-2.12a2.5 2.5 0 0 0 1.13.24c.6 0 1.04-.22 1.04-.88 0-.57-.34-.87-.9-1.15l-.8-.37c-.86-.4-1.44-1.08-1.44-2.02 0-1.06.9-1.95 2.5-1.95 1.23 0 2.18.45 2.88 1.33l-1.28.93a2.2 2.2 0 0 0-1.64-.72c-.74 0-1.24.4-1.24.94 0 .53.36.76.87 1.01l.85.4c1.08.5 1.68 1.06 1.68 1.98 0 1.16-.93 2.12-2.57 2.12-1.68 0-2.83-.86-2.83-2.04 0-.93.5-1.77 1.45-2.33-.36-.17-.69-.47-.69-.96 0-.47.35-.83.9-.83.4 0 .7.22 1.2.56l1.34-.88z"/>`,
+    react: `<path d="M12 13.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/>`,
+    php: `<text x="4" y="14" font-size="10" font-weight="bold" fill="currentColor">php</text>`,
+    nodejs: `<path d="M12 2C9.5 2 9.2 3.2 9 4.5l-1 3.5-2.5 1 1.3 2.3c.4.2.5.4.6.8l.3.4c.4.2.5.4.6.8l.4 1c.2.4.4.6.7.8l1 .5c.2 0 .4.2.4.4v1c0 .2-.2.4-.4.5l-1.5.5c-.2 0-.4.2-.4.4v.5c0 .4.2.6.7.6h3c.5 0 .7-.2.7-.6v-.5c0-.2-.2-.4-.4-.4l-1.5-.5c-.2-.1-.4-.3-.4-.5v-1c0-.2.2-.4.4-.4l1-.5c.3-.2.5-.4.7-.8l.4-1c.1-.4.2-.6.6-.8l.3-.4c.1-.4.2-.6.6-.8L11 8l-1-3.5c-.2-1.3-.5-2.5-3-2.5zM9 10c-.5 0-.7.2-.7.7v2.6c0 .5.2.7.7.7h2c.5 0 .7-.2.7-.7V10.7c0-.5-.2-.7-.7-.7H9z"/>`,
+    default: `<rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><text x="12" y="14" font-size="8" text-anchor="middle" fill="currentColor">?</text>`
+  };
+  return icons[icon] || icons.default;
+};
+---
+
+<section id="skills" class="py-20 px-4 bg-gray-100 dark:bg-gray-900/50">
+  <div class="max-w-5xl mx-auto">
+    <!-- Section header -->
+    <div class="mb-12 text-center">
+      <div class="ascii-box inline-block mb-4">
+        <span class="text-amber-500">$</span> npm list --skills
+      </div>
+      <h2 class="section-title">Skills</h2>
+      <p class="text-gray-500 dark:text-gray-400 mt-2">Mein Tech-Stack, mein Arsenal</p>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      {skills.map((skill, i) => (
+        <div
+          class="group p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 hover:border-amber-500 cursor-default"
+          style={`animation-delay: ${i * 50}ms`}
+        >
+          <div class="flex flex-col items-center gap-3">
+            <div class={`w-12 h-12 rounded-lg ${skill.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+              <span class="w-8 h-8 text-white" set:html={`<svg viewBox="0 0 24 24" class="w-6 h-6">${getIconSvg(skill.icon)}</svg>`} />
+            </div>
+            <span class="font-semibold text-sm text-gray-700 dark:text-gray-300 group-hover:text-amber-500 transition-colors">
+              {skill.name}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Additional info -->
+    <div class="mt-12 text-center">
+      <p class="text-gray-500 dark:text-gray-400 font-mono text-sm">
+        <span class="text-amber-500">//</span> Und noch viel mehr — never stop learning 🚀
+      </p>
+    </div>
+  </div>
+</section>
