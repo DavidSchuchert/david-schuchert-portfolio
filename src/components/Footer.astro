@@ -2,10 +2,10 @@
 const currentYear = new Date().getFullYear();
 
 const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/davidschuchert', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/david-schuchert-0ab892283/', icon: 'linkedin' },
-  { name: 'Xing', url: 'https://www.xing.com/profile/David_Schuchert', icon: 'xing' },
-  { name: 'YouTube', url: 'https://www.youtube.com/@davidschuchert', icon: 'youtube' },
+  { name: 'GitHub', url: 'https://github.com/davidschuchert', icon: 'github', ariaLabel: 'GitHub Profil von David Schuchert (öffnet in neuem Tab)' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/david-schuchert-0ab892283/', icon: 'linkedin', ariaLabel: 'LinkedIn Profil von David Schuchert (öffnet in neuem Tab)' },
+  { name: 'Xing', url: 'https://www.xing.com/profile/David_Schuchert', icon: 'xing', ariaLabel: 'Xing Profil von David Schuchert (öffnet in neuem Tab)' },
+  { name: 'YouTube', url: 'https://www.youtube.com/@davidschuchert', icon: 'youtube', ariaLabel: 'YouTube Kanal von David Schuchert (öffnet in neuem Tab)' },
 ];
 
 const navLinks = [
@@ -27,12 +27,12 @@ const navLinks = [
           <span class="font-bold text-xl gradient-text font-mono">&lt;DS&gt;</span>
         </a>
         <p class="text-gray-500 dark:text-gray-400 mt-2 text-sm">
-          Built with ❤️ and too much Coffee ☕
+          Built with <span aria-hidden="true">❤️</span> and too much Coffee <span aria-hidden="true">☕</span>
         </p>
       </div>
 
       <!-- Nav links -->
-      <nav class="flex flex-wrap justify-center gap-6">
+      <nav class="flex flex-wrap justify-center gap-6" aria-label="Footer Navigation">
         {navLinks.map((link) => (
           <a href={link.href} class="text-gray-600 dark:text-gray-400 hover:text-amber-500 transition-colors text-sm font-medium">
             {link.label}
@@ -48,7 +48,7 @@ const navLinks = [
             target="_blank"
             rel="noopener noreferrer"
             class="p-2 rounded-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg hover:-translate-y-1 transition-all text-gray-600 dark:text-gray-400 hover:text-amber-500"
-            aria-label={social.name}
+            aria-label={social.ariaLabel}
           >
             {social.icon === 'github' && (
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -81,7 +81,7 @@ const navLinks = [
         <span class="font-mono text-amber-500">©</span> {currentYear} David Schuchert. Alle Rechte vorbehalten.
       </p>
       <p class="font-mono">
-        Made with <span class="text-red-500">❤</span> in Bad Hersfeld 🍻
+        Made with <span class="text-red-500" aria-hidden="true">❤</span> in Bad Hersfeld <span aria-hidden="true">🍻</span>
       </p>
     </div>
   </div>

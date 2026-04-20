@@ -5,7 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* account for fixed header */
+    scroll-padding-top: 80px;
   }
 
   body {
@@ -51,7 +51,6 @@
     @apply absolute inset-0 rounded-xl p-px bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 -z-10;
   }
 
-  /* Button ripple effect */
   .btn-ripple {
     position: relative;
     overflow: hidden;
