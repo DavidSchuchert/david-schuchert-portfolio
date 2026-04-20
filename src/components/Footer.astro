@@ -32,7 +32,7 @@ const navLinks = [
       </div>
 
       <!-- Nav links -->
-      <nav class="flex flex-wrap justify-center gap-6">
+      <nav class="flex flex-wrap justify-center gap-6" aria-label="Footer Navigation">
         {navLinks.map((link) => (
           <a href={link.href} class="text-gray-600 dark:text-gray-400 hover:text-amber-500 transition-colors text-sm font-medium">
             {link.label}
@@ -47,8 +47,8 @@ const navLinks = [
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="p-2 rounded-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg hover:-translate-y-1 transition-all text-gray-600 dark:text-gray-400 hover:text-amber-500"
-            aria-label={social.name}
+            class="p-2 rounded-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg hover:-translate-y-1 transition-all text-gray-600 dark:text-gray-400 hover:text-amber-500 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label={`${social.name} Profil (öffnet in neuem Tab)`}
           >
             {social.icon === 'github' && (
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
