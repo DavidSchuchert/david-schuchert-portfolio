@@ -2,39 +2,45 @@
 const projects = [
   {
     title: 'DBE-Academy Platform',
-    description: 'Lernplattform für die DBE-Academy — interaktive Kurse, Code-Challenges und Live-Tracking für angehende Web-Entwickler.',
-    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    oneLiner: 'Lernplattform für angehende Web-Entwickler.',
+    whyMatters: 'Weil geile Slides nichts bringen — hier wird gecodet, deployed und gelernt, wie es wirklich läuft.',
+    tags: ['React 18', 'TypeScript 5', 'Node.js', 'PostgreSQL'],
     link: 'https://dbe.academy',
     github: '#',
     featured: true,
+    emoji: '🎓',
   },
   {
-    title: 'VereinsManagementTool-Laravel',
-    description: 'Umfassendes Vereinsverwaltungssystem mit Laravel — Mitglieder-, Beitritts- und Veranstaltungsmanagement.',
-    tags: ['Laravel', 'Blade', 'PHP', 'MySQL'],
+    title: 'VereinsManagementTool',
+    oneLiner: 'Vereinsverwaltung mit Laravel — Mitglieder, Beiträge, Veranstaltungen.',
+    whyMatters: 'Vereine brauchen keine 08/15-Software. Dieses Tool passt sich an, statt umgekehrt.',
+    tags: ['Laravel 10', 'Blade', 'PHP 8.2', 'MySQL 8'],
     link: '#',
     github: 'https://github.com/DavidSchuchert/VereinsManagementTool-Laravel',
     featured: true,
+    emoji: '🤝',
   },
   {
     title: 'hermes-webui',
-    description: 'WebUI for Hermes AI — ein benutzerfreundliches Web-Interface für KI-Workflows und Agent-Steuerung.',
-    tags: ['TypeScript', 'React', 'AI'],
+    oneLiner: 'Web-Interface für KI-Workflows und Agent-Steuerung.',
+    whyMatters: 'KI ist nur so gut wie ihre Bedienbarkeit. Hermes macht Agentic AI zugänglich — ohne CLI-Fetisch.',
+    tags: ['TypeScript', 'React', 'AI / LLMs'],
     link: '#',
     github: 'https://github.com/DavidSchuchert/hermes-webui',
     featured: false,
+    emoji: '🤖',
   },
 ];
 ---
 
-<section id="projects" class="py-20 px-4">
+<section id="projects" class="py-20 px-4" aria-labelledby="projects-heading">
   <div class="max-w-5xl mx-auto">
     <!-- Section header -->
     <div class="mb-12 text-center">
-      <div class="ascii-box inline-block mb-4">
+      <div class="ascii-box inline-block mb-4" aria-hidden="true">
         <span class="text-amber-500">$</span> ls -la ./projects
       </div>
-      <h2 class="section-title">Projekte</h2>
+      <h2 id="projects-heading" class="section-title">Projekte</h2>
       <p class="text-gray-500 dark:text-gray-400 mt-2">Was ich so gebaut habe</p>
     </div>
 
@@ -42,34 +48,39 @@ const projects = [
     <div class="grid md:grid-cols-2 gap-8">
       {projects.map((project, i) => (
         <article
-          class={`group relative bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${project.featured ? 'md:col-span-2' : ''}`}
+          class={`group relative bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-amber-500 ${project.featured ? 'md:col-span-2' : ''}`}
           style={`animation-delay: ${i * 100}ms`}
         >
           <!-- Featured badge -->
           {project.featured && (
-            <div class="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full z-10">
+            <div class="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full z-10" aria-label="Featured Projekt">
               ⭐ Featured
             </div>
           )}
 
           <div class="p-8">
             <!-- Project header -->
-            <div class="flex items-start justify-between mb-4">
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-amber-500 transition-colors">
-                {project.title}
-              </h3>
-              <span class="text-2xl">🎮</span>
+            <div class="flex items-start gap-4 mb-4">
+              <span class="text-3xl" aria-hidden="true">{project.emoji}</span>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-amber-500 transition-colors">
+                  {project.title}
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mt-0.5">{project.oneLiner}</p>
+              </div>
             </div>
 
-            <!-- Description -->
-            <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              {project.description}
-            </p>
+            <!-- Why it matters -->
+            <div class="mb-6 p-4 bg-amber-50 dark:bg-amber-900/10 border-l-4 border-amber-500 rounded-r-lg" role="note" aria-label="Projektbeschreibung">
+              <p class="text-sm text-amber-800 dark:text-amber-300 font-medium">
+                <span class="font-mono text-amber-500" aria-hidden="true">// </span>{project.whyMatters}
+              </p>
+            </div>
 
             <!-- Tags -->
-            <div class="flex flex-wrap gap-2 mb-6">
+            <div class="flex flex-wrap gap-2 mb-6" role="list" aria-label="Technologien">
               {project.tags.map((tag) => (
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full font-mono">
+                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs rounded-full font-mono" role="listitem">
                   {tag}
                 </span>
               ))}
@@ -78,26 +89,36 @@ const projects = [
             <!-- Links -->
             <div class="flex gap-4">
               {project.link !== '#' && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer"
-                   class="btn-primary text-sm py-2">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-primary text-sm py-2"
+                  aria-label={`${project.title}: Live Demo ansehen (öffnet in neuem Tab)`}
+                >
                   <span class="flex items-center gap-2">
-                    <span>🔗</span> Live Demo
+                    <span aria-hidden="true">🔗</span> Live ansehen
                   </span>
                 </a>
               )}
               {project.github !== '#' && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer"
-                   class="btn-secondary text-sm py-2">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-secondary text-sm py-2"
+                  aria-label={`${project.title}: Quellcode auf GitHub ansehen (öffnet in neuem Tab)`}
+                >
                   <span class="flex items-center gap-2">
-                    <span>💻</span> Code
+                    <span aria-hidden="true">💻</span> Code
                   </span>
                 </a>
               )}
             </div>
           </div>
 
-          <!-- Hover glow effect -->
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          <!-- Hover glow effect — decorative only -->
+          <div aria-hidden="true" class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
             <div class="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-orange-500/5"></div>
           </div>
         </article>
@@ -106,9 +127,14 @@ const projects = [
 
     <!-- GitHub CTA -->
     <div class="mt-12 text-center">
-      <a href="https://github.com/davidschuchert" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 text-gray-500 hover:text-amber-500 transition-colors font-mono">
-        <span class="text-amber-500">//</span> Mehr auf GitHub →
+      <a
+        href="https://github.com/davidschuchert"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-gray-500 hover:text-amber-500 transition-colors font-mono"
+        aria-label="Mehr Projekte auf GitHub ansehen (öffnet in neuem Tab)"
+      >
+        <span class="text-amber-500" aria-hidden="true">//</span> Mehr auf GitHub →
       </a>
     </div>
   </div>

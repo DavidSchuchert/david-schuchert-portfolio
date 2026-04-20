@@ -16,14 +16,29 @@ export default defineConfig({
     screenshot: 'only-on-failure',
   },
   projects: [
+    // Desktop browsers
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
     {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+    // Mobile
+    {
       name: 'chromium-mobile',
       use: { ...devices['Pixel 5'] },
     },
+    {
+      name: 'safari-mobile',
+      use: { ...devices['iPhone 12'] },
+    },
+    // Tablet
     {
       name: 'chromium-tablet',
       use: { ...devices['iPad (gen 7)'] },

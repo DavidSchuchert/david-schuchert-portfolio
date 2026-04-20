@@ -9,16 +9,27 @@
         <span class="text-amber-500">$</span> send_message --to david
       </div>
       <h2 class="section-title">Kontakt</h2>
-      <p class="text-gray-500 dark:text-gray-400 mt-2">Lass uns quatschen! 🚀</p>
+      <p class="text-gray-500 dark:text-gray-400 mt-2">Moin! Lass uns quatschen. 🚀</p>
+    </div>
+
+    <!-- Response time banner -->
+    <div class="mb-10 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-full text-sm text-emerald-700 dark:text-emerald-300">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        Ich antworte innerhalb von 24h — versprochen.
+      </div>
     </div>
 
     <!-- Contact Grid -->
     <div class="grid md:grid-cols-2 gap-8">
       <!-- Direct Contact -->
-      <div class="space-y-6">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Direkt</h3>
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Direkt</h3>
 
-        <a href="mailto:david@example.com" class="block p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-800 hover:border-amber-500">
+        <a href="mailto:david@dbe.academy" class="block p-5 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-800 hover:border-amber-500">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500 transition-colors">
               <span class="text-2xl">📧</span>
@@ -31,9 +42,9 @@
         </a>
 
         <a href="https://linkedin.com/in/david-schuchert-0ab892283/" target="_blank" rel="noopener noreferrer"
-           class="block p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-800 hover:border-amber-500">
+           class="block p-5 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-800 hover:border-blue-500">
           <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors">
+            <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
               <span class="text-2xl">💼</span>
             </div>
             <div>
@@ -43,10 +54,23 @@
           </div>
         </a>
 
-        <a href="https://github.com/davidschuchert" target="_blank" rel="noopener noreferrer"
-           class="block p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-800 hover:border-amber-500">
+        <a href="https://www.xing.com/profile/David_Schuchert" target="_blank" rel="noopener noreferrer"
+           class="block p-5 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-800 hover:border-green-600">
           <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-lg bg-gray-800/10 flex items-center justify-center group-hover:bg-gray-900 transition-colors">
+            <div class="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center group-hover:bg-green-600 transition-colors">
+              <span class="text-2xl">🌲</span>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Xing</p>
+              <p class="font-semibold text-gray-900 dark:text-white">David Schuchert</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://github.com/davidschuchert" target="_blank" rel="noopener noreferrer"
+           class="block p-5 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-800 hover:border-gray-800">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-gray-800/10 dark:bg-gray-800 flex items-center justify-center group-hover:bg-gray-900 transition-colors">
               <span class="text-2xl">🐙</span>
             </div>
             <div>
@@ -59,7 +83,8 @@
 
       <!-- Contact Form -->
       <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-800">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Nachricht senden</h3>
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Schreib mir eine Nachricht</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Frage zu einem Projekt? Zusammenarbeit? Oder einfach hallo sagen?</p>
 
         <form class="space-y-4" action="https://formspree.io/f/yourformid" method="POST">
           <div>
@@ -98,7 +123,7 @@
             ></textarea>
           </div>
 
-          <button type="submit" class="w-full btn-primary">
+          <button type="submit" class="w-full btn-primary btn-ripple">
             <span class="flex items-center justify-center gap-2">
               <span>🚀</span> Absenden
             </span>

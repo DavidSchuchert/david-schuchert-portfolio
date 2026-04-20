@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://davidschuchert.dev/sitemap.xml
+Sitemap: https://david-schuchert.de/sitemap-index.xml

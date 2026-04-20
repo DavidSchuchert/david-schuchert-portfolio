@@ -1,28 +1,14 @@
 ---
-const skills = [
-  { name: 'TypeScript', icon: 'typescript', color: 'bg-blue-500' },
-  { name: 'JavaScript', icon: 'javascript', color: 'bg-yellow-500' },
-  { name: 'React', icon: 'react', color: 'bg-cyan-500' },
-  { name: 'Angular', icon: 'angular', color: 'bg-red-600' },
-  { name: 'PHP', icon: 'php', color: 'bg-indigo-600' },
-  { name: 'Laravel', icon: 'laravel', color: 'bg-red-500' },
-  { name: 'MySQL', icon: 'mysql', color: 'bg-orange-500' },
-  { name: 'Tailwind CSS', icon: 'tailwindcss', color: 'bg-cyan-400' },
-  { name: 'Docker', icon: 'docker', color: 'bg-blue-500' },
-  { name: 'Git', icon: 'git', color: 'bg-orange-600' },
-  { name: 'Firebase', icon: 'firebase', color: 'bg-yellow-500' },
-  { name: 'Node.js', icon: 'nodejs', color: 'bg-green-600' },
-];
 ---
 
-<section id="about" class="py-20 px-4 relative">
+<section id="about" class="py-20 px-4 relative" aria-labelledby="about-heading">
   <div class="max-w-4xl mx-auto">
     <!-- Section header -->
     <div class="mb-12">
-      <div class="ascii-box inline-block mb-4">
+      <div class="ascii-box inline-block mb-4" aria-hidden="true">
         <span class="text-amber-500">$</span> cat about.md
       </div>
-      <h2 class="section-title">Über mich</h2>
+      <h2 id="about-heading" class="section-title">Über mich</h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-12 items-start">
@@ -44,37 +30,64 @@ const skills = [
           und der Frage, wie man LLMs sinnvoll in bestehende Systeme einbaut. Bleibt also spannend.
         </p>
 
-        <!-- GitHub Stats - Removed external shields.io images to reduce blocking requests -->
+        <!-- GitHub Stats -->
         <div class="border-t border-gray-200 dark:border-gray-800 pt-6 mt-6">
-          <p class="text-sm text-gray-500 dark:text-gray-500 font-mono mb-4">// GitHub Stats</p>
+          <p class="text-sm text-gray-500 dark:text-gray-500 font-mono mb-4" aria-hidden="true">// GitHub Stats</p>
+          <h3 class="sr-only">GitHub Statistiken</h3>
           <div class="grid grid-cols-3 gap-4">
-            <a href="https://github.com/davidschuchert" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors">
-              <span class="text-xs text-gray-500 mb-1">Followers</span>
-              <span class="font-mono font-bold text-amber-500">-</span>
+            <a
+              href="https://github.com/davidschuchert"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors min-h-[70px] justify-center"
+              aria-label="GitHub Followers anzeigen"
+            >
+              <img src="https://img.shields.io/github/followers/DavidSchuchert?style=flat-square&label=Followers" alt="GitHub Followers Badge" class="h-6 mb-1" loading="lazy" />
+              <span class="text-xs text-gray-500">Followers</span>
             </a>
-            <a href="https://github.com/DavidSchuchert?tab=repositories" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors">
-              <span class="text-xs text-gray-500 mb-1">Stars</span>
-              <span class="font-mono font-bold text-amber-500">-</span>
+            <a
+              href="https://github.com/DavidSchuchert?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors min-h-[70px] justify-center"
+              aria-label="GitHub Stars und Repository-Liste anzeigen"
+            >
+              <img src="https://img.shields.io/github/stars/DavidSchuchert?style=flat-square&label=Stars" alt="GitHub Stars Badge" class="h-6 mb-1" loading="lazy" />
+              <span class="text-xs text-gray-500">Stars</span>
             </a>
-            <a href="https://github.com/DavidSchuchert" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors">
-              <span class="text-xs text-gray-500 mb-1">Languages</span>
-              <span class="font-mono font-bold text-amber-500">-</span>
+            <a
+              href="https://github.com/DavidSchuchert"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors min-h-[70px] justify-center"
+              aria-label="Meine GitHub Profile anzeigen"
+            >
+              <img src="https://img.shields.io/github/languages/count/DavidSchuchert/DavidSchuchert?style=flat-square&label=Languages" alt="Programmier­sprachen Badge" class="h-6 mb-1" loading="lazy" />
+              <span class="text-xs text-gray-500">Languages</span>
             </a>
+          </div>
+          <div class="mt-4">
+            <img
+              src="https://github-readme-stats.vercel.app/api/top-langs/?username=DavidSchuchert&layout=compact&theme=amber&hide_border=false"
+              alt="Die am häufigsten verwendeten Programmiersprachen auf meinen GitHub Repositories"
+              class="rounded-lg"
+              loading="lazy"
+            />
           </div>
         </div>
 
         <!-- Fun facts -->
         <div class="border-t border-gray-200 dark:border-gray-800 pt-6 mt-6">
-          <p class="text-sm text-gray-500 dark:text-gray-500 font-mono mb-3">// Status: Gaming-Setup aktiviert 🎮</p>
-          <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+          <p class="text-sm text-gray-500 dark:text-gray-500 font-mono mb-3" aria-hidden="true">// Status: Gaming-Setup aktiviert 🎮</p>
+          <ul class="space-y-2 text-gray-600 dark:text-gray-400" role="list">
             <li class="flex items-center gap-2">
-              <span class="text-amber-500">🍻</span> Bad Hersfeld, Germany
+              <span class="text-amber-500" aria-hidden="true">🍻</span> Bad Hersfeld, Germany
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-400">⚡</span> TypeScript Enthusiast
+              <span class="text-emerald-400" aria-hidden="true">⚡</span> TypeScript Enthusiast
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-amber-500">📚</span> AI / MLOps Learner
+              <span class="text-amber-500" aria-hidden="true">📚</span> AI / MLOps Learner
             </li>
           </ul>
         </div>
@@ -82,8 +95,8 @@ const skills = [
 
       <!-- ASCII Art Character Card -->
       <div class="relative">
-        <div class="ascii-box p-6 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-900 dark:to-gray-950 border-amber-200 dark:border-amber-900">
-          <pre class="text-sm leading-tight text-gray-700 dark:text-gray-300 font-mono">
+        <div class="ascii-box p-6 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-900 dark:to-gray-950 border-amber-200 dark:border-amber-900" role="img" aria-label="ASCII Art Visitenkarte für David Schuchert: Gaming-Opa, Full-Stack Dev, DBE-Academy Dozent, AI/MLOps Explorer. Passion enabled.">
+          <pre class="text-sm leading-tight text-gray-700 dark:text-gray-300 font-mono" aria-hidden="true">
     ╔══════════════════════════╗
     ║  <span class="text-amber-500">David Schuchert</span>       ║
     ╠══════════════════════════╣
@@ -96,10 +109,10 @@ const skills = [
     ║  Passion enabled         ║
     ╚══════════════════════════╝
           </pre>
-          <div class="mt-4 flex justify-center gap-2">
-            <span class="text-2xl hover:scale-110 transition-transform cursor-pointer">🍻</span>
-            <span class="text-2xl hover:scale-110 transition-transform cursor-pointer">🎮</span>
-            <span class="text-2xl hover:scale-110 transition-transform cursor-pointer">💻</span>
+          <div class="mt-4 flex justify-center gap-2" aria-label="Interessen">
+            <span class="text-2xl" aria-hidden="true" role="img" aria-label="Bier">🍻</span>
+            <span class="text-2xl" aria-hidden="true" role="img" aria-label="Gaming">🎮</span>
+            <span class="text-2xl" aria-hidden="true" role="img" aria-label="Programmieren">💻</span>
           </div>
         </div>
       </div>

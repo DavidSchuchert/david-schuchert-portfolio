@@ -9,17 +9,20 @@ const navItems = [
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2 group">
-      <span class="text-2xl group-hover:animate-bounce">🍻</span>
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between" aria-label="Hauptnavigation">
+    <a href="#" class="flex items-center gap-2 group" aria-label="Zur Startseite">
+      <span class="text-2xl group-hover:animate-bounce" aria-hidden="true">🍻</span>
       <span class="font-bold text-xl gradient-text font-mono">&lt;DS&gt;</span>
     </a>
 
     <!-- Desktop Nav -->
-    <ul class="hidden md:flex items-center gap-8">
+    <ul class="hidden md:flex items-center gap-8" role="list">
       {navItems.map((item) => (
         <li>
-          <a href={item.href} class="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 transition-colors font-medium">
+          <a
+            href={item.href}
+            class="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 transition-colors font-medium focus-visible:outline-2 focus-visible:outline-amber-500 focus-visible:outline-offset-2 rounded px-2 py-1"
+          >
             {item.label}
           </a>
         </li>
@@ -28,30 +31,53 @@ const navItems = [
 
     <div class="flex items-center gap-4">
       <!-- Dark mode toggle -->
-      <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Theme wechseln">
-        <svg id="sun-icon" class="w-5 h-5 hidden dark:block text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button
+        id="theme-toggle"
+        class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+        aria-label="Theme wechseln"
+        aria-pressed="false"
+      >
+        <svg id="sun-icon" class="w-5 h-5 hidden dark:block text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
-        <svg id="moon-icon" class="w-5 h-5 block dark:hidden text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        <svg id="moon-icon" class="w-5 h-5 block dark:hidden text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
       </button>
 
       <!-- Mobile menu button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+        aria-label="Navigation öffnen"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
   </nav>
 
   <!-- Mobile Nav -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
-    <ul class="px-4 py-4 space-y-3">
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation"
+  >
+    <ul class="px-4 py-4 space-y-3" role="list">
       {navItems.map((item) => (
         <li>
-          <a href={item.href} class="block text-gray-600 dark:text-gray-300 hover:text-amber-500 py-2 font-medium">
+          <a
+            href={item.href}
+            class="block text-gray-600 dark:text-gray-300 hover:text-amber-500 py-2 font-medium"
+          >
             {item.label}
           </a>
         </li>
@@ -61,19 +87,67 @@ const navItems = [
 </header>
 
 <script is:inline>
-  // Theme toggle
-  document.getElementById('theme-toggle')?.addEventListener('click', function() {
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-  });
+  (function() {
+    var themeToggle = document.getElementById('theme-toggle');
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
 
-  // Mobile menu
-  document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
-    document.getElementById('mobile-menu')?.classList.toggle('hidden');
-  });
+    // Init theme on page load (prevent FOUC)
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
 
-  // Init theme on page load (prevent FOUC)
-  if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  }
+    // Set initial aria-pressed
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-pressed', String(document.documentElement.classList.contains('dark')));
+    }
+
+    // Theme toggle
+    themeToggle && themeToggle.addEventListener('click', function() {
+      var isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+    });
+
+    // Mobile menu toggle with aria-expanded
+    mobileMenuBtn && mobileMenuBtn.addEventListener('click', function() {
+      var isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+      if (!isOpen) {
+        mobileMenuBtn.setAttribute('aria-label', 'Navigation schließen');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileMenuBtn.setAttribute('aria-label', 'Navigation öffnen');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+
+    // Close mobile menu on Escape
+    mobileMenu && mobileMenu.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Navigation öffnen');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        mobileMenuBtn.focus();
+      }
+    });
+
+    // Close mobile menu when nav link is clicked (for small screens)
+    mobileMenu && mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Navigation öffnen');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+  })();
 </script>

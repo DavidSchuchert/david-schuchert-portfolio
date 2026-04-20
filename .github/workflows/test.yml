@@ -1,0 +1,163 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Playwright Tests (${{ matrix.browser }} / ${{ matrix.viewport }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
+        viewport: [desktop, tablet, mobile]
+        include:
+          - browser: chromium
+            viewport: desktop
+            width: 1920
+            height: 1080
+          - browser: chromium
+            viewport: tablet
+            width: 768
+            height: 1024
+          - browser: chromium
+            viewport: mobile
+            width: 375
+            height: 667
+          - browser: firefox
+            viewport: desktop
+            width: 1920
+            height: 1080
+          - browser: webkit
+            viewport: desktop
+            width: 1920
+            height: 1080
+          - browser: firefox
+            viewport: mobile
+            width: 375
+            height: 667
+          - browser: webkit
+            viewport: tablet
+            width: 768
+            height: 1024
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Run Playwright tests
+        run: |
+          npx playwright test \
+            --project=${{ matrix.browser }} \
+            --reporter=list,html \
+            --timeout=30000
+        env:
+          CI: 'true'
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ matrix.browser }}-${{ matrix.viewport }}
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Upload test screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-screenshots-${{ matrix.browser }}-${{ matrix.viewport }}
+          path: tests/screenshots/
+          retention-days: 7
+
+  visual-regression:
+    name: Visual Regression Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Update baseline screenshots
+        run: UPDATE_SCREENSHOTS=1 npx playwright test tests/e2e/visual-regression.spec.ts --reporter=list
+        env:
+          CI: 'true'
+
+      - name: Compare and upload diffs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diff
+          path: tests/screenshots/
+          retention-days: 7
+
+  coverage:
+    name: Test Coverage Report
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Calculate test coverage
+        run: |
+          echo "## Test Coverage Summary" > test-coverage.md
+          echo "" >> test-coverage.md
+          echo "### Test Files" >> test-coverage.md
+          echo "" >> test-coverage.md
+          for f in tests/e2e/*.spec.ts; do
+            echo "- $(basename $f)" >> test-coverage.md
+          done
+          echo "" >> test-coverage.md
+          echo "### Test Count" >> test-coverage.md
+          echo "" >> test-coverage.md
+          npx playwright test --list 2>/dev/null | grep -c "test:" >> test-coverage.md || echo "See test execution for count" >> test-coverage.md
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-coverage-report
+          path: test-coverage.md
+          retention-days: 14

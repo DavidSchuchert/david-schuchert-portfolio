@@ -1,0 +1,36 @@
+{
+  "name": "David Schuchert — Full-Stack Developer & Dozent",
+  "short_name": "David Portfolio",
+  "description": "Portfolio von David Schuchert — Full-Stack Developer, Dozent bei DBE-Academy, TypeScript & React Enthusiast.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f59e0b",
+  "theme_color": "#f59e0b",
+  "scope": "/",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["developer", "portfolio", "education"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Projekte ansehen",
+      "short_name": "Projekte",
+      "url": "/#projects",
+      "description": "Zu den Projekten scrollen"
+    },
+    {
+      "name": "Kontakt aufnehmen",
+      "short_name": "Kontakt",
+      "url": "/#contact",
+      "description": "Kontaktformular öffnen"
+    }
+  ]
+}

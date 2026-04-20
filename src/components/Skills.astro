@@ -1,17 +1,20 @@
 ---
 const skills = [
-  { name: 'TypeScript', icon: 'typescript', color: 'bg-blue-500' },
-  { name: 'JavaScript', icon: 'javascript', color: 'bg-yellow-500' },
-  { name: 'React', icon: 'react', color: 'bg-cyan-500' },
-  { name: 'Angular', icon: 'angular', color: 'bg-red-600' },
-  { name: 'PHP', icon: 'php', color: 'bg-indigo-600' },
-  { name: 'Laravel', icon: 'laravel', color: 'bg-red-500' },
-  { name: 'MySQL', icon: 'mysql', color: 'bg-orange-500' },
-  { name: 'Tailwind CSS', icon: 'tailwindcss', color: 'bg-cyan-400' },
-  { name: 'Docker', icon: 'docker', color: 'bg-blue-500' },
-  { name: 'Git', icon: 'git', color: 'bg-orange-600' },
-  { name: 'Firebase', icon: 'firebase', color: 'bg-yellow-500' },
-  { name: 'Node.js', icon: 'nodejs', color: 'bg-green-600' },
+  // Frontend (blue)
+  { name: 'TypeScript', icon: 'typescript', color: 'bg-blue-500', category: 'frontend' },
+  { name: 'React', icon: 'react', color: 'bg-cyan-500', category: 'frontend' },
+  { name: 'Angular', icon: 'angular', color: 'bg-red-600', category: 'frontend' },
+  { name: 'Tailwind CSS', icon: 'tailwindcss', color: 'bg-sky-500', category: 'frontend' },
+  // Backend (green)
+  { name: 'Node.js', icon: 'nodejs', color: 'bg-green-600', category: 'backend' },
+  { name: 'Laravel', icon: 'laravel', color: 'bg-red-500', category: 'backend' },
+  { name: 'PHP', icon: 'php', color: 'bg-indigo-600', category: 'backend' },
+  { name: 'MySQL', icon: 'mysql', color: 'bg-orange-500', category: 'backend' },
+  // Tools & Ops (gray/purple)
+  { name: 'Docker', icon: 'docker', color: 'bg-blue-600', category: 'tools' },
+  { name: 'Git', icon: 'git', color: 'bg-orange-700', category: 'tools' },
+  { name: 'Firebase', icon: 'firebase', color: 'bg-yellow-500', category: 'tools' },
+  { name: 'JavaScript', icon: 'javascript', color: 'bg-yellow-400', category: 'tools' },
 ];
 
 const getIconSvg = (icon: string) => {
@@ -25,33 +28,74 @@ const getIconSvg = (icon: string) => {
   };
   return icons[icon] || icons.default;
 };
+
+const categoryColors: Record<string, string> = {
+  frontend: 'from-blue-500/10 to-cyan-500/10 border-blue-200 dark:border-blue-800',
+  backend: 'from-green-500/10 to-emerald-500/10 border-green-200 dark:border-green-800',
+  tools: 'from-gray-500/10 to-purple-500/10 border-gray-200 dark:border-gray-700',
+};
+const categoryLabels: Record<string, string> = {
+  frontend: 'Frontend',
+  backend: 'Backend',
+  tools: 'Tools & Ops',
+};
+const categoryDots: Record<string, string> = {
+  frontend: 'bg-blue-500',
+  backend: 'bg-green-500',
+  tools: 'bg-gray-500',
+};
 ---
 
-<section id="skills" class="py-20 px-4 bg-gray-100 dark:bg-gray-900/50">
+<section id="skills" class="py-20 px-4 bg-gray-100 dark:bg-gray-900/50" aria-labelledby="skills-heading">
   <div class="max-w-5xl mx-auto">
     <!-- Section header -->
     <div class="mb-12 text-center">
-      <div class="ascii-box inline-block mb-4">
+      <div class="ascii-box inline-block mb-4" aria-hidden="true">
         <span class="text-amber-500">$</span> npm list --skills
       </div>
-      <h2 class="section-title">Skills</h2>
+      <h2 id="skills-heading" class="section-title">Skills</h2>
       <p class="text-gray-500 dark:text-gray-400 mt-2">Mein Tech-Stack, mein Arsenal</p>
     </div>
 
-    <!-- Skills Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-      {skills.map((skill, i) => (
-        <div
-          class="group p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 hover:border-amber-500 cursor-default"
-          style={`animation-delay: ${i * 50}ms`}
-        >
-          <div class="flex flex-col items-center gap-3">
-            <div class={`w-12 h-12 rounded-lg ${skill.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-              <span class="w-8 h-8 text-white" set:html={`<svg viewBox="0 0 24 24" class="w-6 h-6">${getIconSvg(skill.icon)}</svg>`} />
-            </div>
-            <span class="font-semibold text-sm text-gray-700 dark:text-gray-300 group-hover:text-amber-500 transition-colors">
-              {skill.name}
-            </span>
+    <!-- Category Legend -->
+    <div class="flex flex-wrap justify-center gap-6 mb-10" role="list" aria-label="Kategorie-Legende">
+      <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400" role="listitem">
+        <span class="w-3 h-3 rounded-full bg-blue-500" aria-hidden="true"></span> Frontend
+      </div>
+      <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400" role="listitem">
+        <span class="w-3 h-3 rounded-full bg-green-500" aria-hidden="true"></span> Backend
+      </div>
+      <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400" role="listitem">
+        <span class="w-3 h-3 rounded-full bg-gray-500" aria-hidden="true"></span> Tools &amp; Ops
+      </div>
+    </div>
+
+    <!-- Skills Grid by category -->
+    <div class="space-y-10">
+      {(['frontend', 'backend', 'tools'] as const).map((cat) => (
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class={`w-2 h-2 rounded-full ${categoryDots[cat]}`} aria-hidden="true"></span>
+            <h3 class="text-sm font-mono text-gray-500 dark:text-gray-400 uppercase tracking-wider">{categoryLabels[cat]}</h3>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" role="list" aria-label={`${categoryLabels[cat]} Skills`}>
+            {skills.filter(s => s.category === cat).map((skill, i) => (
+              <div
+                class="group relative p-5 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 hover:border-amber-500 cursor-default min-h-[100px] flex items-center justify-center"
+                style={`animation-delay: ${i * 50}ms`}
+                role="listitem"
+                aria-label={skill.name}
+              >
+                <div class="flex flex-col items-center gap-3">
+                  <div class={`w-12 h-12 rounded-lg ${skill.color} flex items-center justify-center group-hover:scale-110 transition-transform`} aria-hidden="true">
+                    <span class="w-8 h-8 text-white" set:html={`<svg viewBox="0 0 24 24" class="w-6 h-6">${getIconSvg(skill.icon)}</svg>`} />
+                  </div>
+                  <span class="font-semibold text-sm text-gray-700 dark:text-gray-300 group-hover:text-amber-500 transition-colors">
+                    {skill.name}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       ))}
@@ -60,7 +104,7 @@ const getIconSvg = (icon: string) => {
     <!-- Additional info -->
     <div class="mt-12 text-center">
       <p class="text-gray-500 dark:text-gray-400 font-mono text-sm">
-        <span class="text-amber-500">//</span> Und noch viel mehr — never stop learning 🚀
+        <span class="text-amber-500" aria-hidden="true">//</span> Und noch viel mehr — never stop learning 🚀
       </p>
     </div>
   </div>
