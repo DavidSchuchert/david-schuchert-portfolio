@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Seite nicht gefunden | David Schuchert" description="Die gesuchte Seite existiert leider nicht.">
+  <main class="min-h-screen flex items-center justify-center px-4 pt-16">
+    <div class="text-center max-w-xl">
+      <!-- ASCII Art 404 -->
+      <div class="ascii-box inline-block mb-8">
+        <span class="text-amber-500">$</span> grep -r "404" .
+        <br />
+        <span class="text-red-500">No results found.</span>
+      </div>
+
+      <h1 class="text-7xl font-black font-mono mb-4">
+        <span class="gradient-text">404</span>
+      </h1>
+
+      <h2 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-4">
+        Seite nicht gefunden
+      </h2>
+
+      <p class="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+        Die Seite, die du suchst, existiert leider nicht mehr oder wurde verschoben.
+        <br />
+        Vielleicht hilft ein Neuanfang:
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/" class="btn-primary">
+          <span class="flex items-center gap-2">
+            <span>🏠</span> Zur Startseite
+          </span>
+        </a>
+        <a href="#contact" class="btn-secondary">
+          <span class="flex items-center gap-2">
+            <span>💬</span> Kontakt aufnehmen
+          </span>
+        </a>
+      </div>
+
+      <!-- Fun easter egg -->
+      <div class="mt-16">
+        <pre class="text-xs text-gray-300 dark:text-gray-600 font-mono mx-auto inline-block text-left">
+╔════════════════════════════════╗
+║  System Error: Page Not Found  ║
+║  ────────────────────────────  ║
+║  Cause: Probably coding at 3am  ║
+║  Solution: More ☕ + 🍻         ║
+╚════════════════════════════════╝
+        </pre>
+      </div>
+    </div>
+  </main>
+</Layout>

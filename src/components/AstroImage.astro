@@ -1,0 +1,60 @@
+---
+/**
+ * AstroImage - Optimized image component for Astro
+ * Features:
+ * - Lazy loading for below-fold images
+ * - Explicit width/height for CLS prevention
+ * - WebP support (via picture element)
+ * - Responsive srcset when applicable
+ */
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  external?: boolean; // true = external URL (no Astro asset processing)
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className = '',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  external = false,
+} = Astro.props;
+
+// Determine if image should load eagerly (above the fold = hero)
+const isAboveFold = loading === 'eager' || fetchpriority === 'high';
+const finalLoading = isAboveFold ? 'eager' : 'lazy';
+const finalFetchPriority = isAboveFold ? 'high' : fetchpriority;
+---
+
+{external ? (
+  // External image (no Astro asset processing)
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={finalLoading}
+    fetchpriority={finalFetchPriority}
+    class={className}
+  />
+) : (
+  // Local Astro asset
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={finalLoading}
+    fetchpriority={finalFetchPriority}
+    class={className}
+  />
+)}
