@@ -8,66 +8,6 @@
     scroll-padding-top: 80px; /* account for fixed header */
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-
-  /* Screen-reader only — visually hidden but accessible */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
-  /* Make sr-only visible when focused (skip links) */
-  .sr-only:focus,
-  .sr-only.focus-visible {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 9999;
-    width: auto;
-    height: auto;
-    padding: 0.5rem 1rem;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-    background-color: #f59e0b;
-    color: #fff;
-    font-weight: 700;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    outline: 2px solid #fbbf24;
-    outline-offset: 2px;
-  }
-
-  /* Global focus-visible ring — replaces outline:none patterns */
-  :focus-visible {
-    outline: 2px solid #f59e0b;
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-
-  :focus:not(:focus-visible) {
-    outline: none;
-  }
-
   body {
     @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300;
   }
