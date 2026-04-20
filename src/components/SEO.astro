@@ -1,0 +1,69 @@
+<!--
+  SEO Component — Inject into Layout.astro
+  Usage: import SEO from '../components/SEO.astro';
+       and add <SEO /> in the <head> section.
+-->
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = 'David Schuchert | Full-Stack Developer & Dozent',
+  description = 'Full-Stack Developer und Dozent für Webentwicklung in Bad Hersfeld. Spezialisiert in TypeScript, React, Angular und Laravel.Professionell, praxisnah, mit Herz.',
+  ogImage = '/og-image.png',
+  canonicalUrl = 'https://david-schuchert.de',
+} = Astro.props;
+
+const keywords = [
+  'David Schuchert',
+  'Full-Stack Developer',
+  'Webentwicklung',
+  'Frontend',
+  'Backend',
+  'TypeScript',
+  'React',
+  'Angular',
+  'PHP',
+  'Laravel',
+  'Dozent Webentwicklung',
+  'Bad Hersfeld',
+  'DBE-Academy',
+  'Web Developer Bad Hersfeld',
+  'Softwareentwicklung',
+].join(', ');
+---
+
+<!-- Standard SEO -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="David Schuchert" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- OpenGraph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="David Schuchert Portfolio" />
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@davidschuchert" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Theme color -->
+<meta name="theme-color" content="#1a1a2e" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />

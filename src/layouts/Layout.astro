@@ -1,0 +1,104 @@
+---
+import SEO from '../components/SEO.astro';
+import Analytics from '../components/Analytics.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Full-Stack Developer & Dozent bei DBE-Academy. TypeScript, React, Laravel, und alles was mit Web zu tun hat." } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "David Schuchert",
+  "jobTitle": "Full-Stack Developer & Dozent",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "DBE-Academy"
+  },
+  "url": "https://david-schuchert.de",
+  "sameAs": [
+    "https://github.com/DavidSchuchert",
+    "https://www.linkedin.com/in/david-schuchert-0ab892283/"
+  ],
+  "knowsAbout": ["TypeScript", "React", "Angular", "PHP", "Laravel", "Web Development"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bad Hersfeld",
+    "addressCountry": "DE"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f59e0b" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="David Schuchert" />
+
+  <!-- SEO Component (title, description, OG, Twitter, favicon) -->
+  <SEO title={title} description={description} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@davidschuchert" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="/og-image.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <title>{title}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300 font-sans antialiased">
+  <slot />
+  <Analytics />
+</body>
+</body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent;
+  }
+
+  .terminal-glow {
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  }
+
+  .ascii-border {
+    font-family: 'Fira Code', monospace;
+  }
+
+  ::selection {
+    @apply bg-amber-500 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-200 dark:bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-amber-500 rounded-full;
+  }
+</style>
