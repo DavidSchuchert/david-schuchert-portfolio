@@ -162,7 +162,8 @@ const allSkills = skillCategories.flatMap(cat => cat.skills.map(s => ({...s, cat
 
 <script>
   document.querySelectorAll('.skill-box').forEach(box => {
-    box.addEventListener('mouseenter', () => {
+    
+    const updateSkillInfo = () => {
       const name = box.getAttribute('data-skill-name');
       const level = box.getAttribute('data-skill-level');
       const cat = box.getAttribute('data-skill-cat');
@@ -178,6 +179,10 @@ const allSkills = skillCategories.flatMap(cat => cat.skills.map(s => ({...s, cat
         barEl.style.width = `${level}%`;
         textEl.textContent = `${level}%`;
       }
+    };
+
+    ['mouseenter', 'click'].forEach(evt => {
+      box.addEventListener(evt, updateSkillInfo);
     });
   });
 </script>
