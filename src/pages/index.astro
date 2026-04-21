@@ -16,30 +16,30 @@ import Footer from '../components/Footer.astro';
   
   <main class="w-full flex flex-col font-sans">
     
-    <div id="era-8bit" class="w-full border-b-[16px] border-[#222]">
+    <section id="era-8bit" class="w-full border-b-[16px] border-[#222]" aria-label="8-Bit Era - Hero">
       <Hero />
-    </div>
+    </section>
 
-    <div id="era-16bit" class="w-full border-b-[16px] border-[#105600] shadow-xl">
+    <section id="era-16bit" class="w-full border-b-[16px] border-[#105600] shadow-xl" aria-label="16-Bit Era - About">
       <About />
-    </div>
+    </section>
 
-    <div id="era-gameboy" class="w-full border-b-8 border-gray-800 shadow-xl relative z-20">
+    <section id="era-gameboy" class="w-full border-b-8 border-gray-800 shadow-xl relative z-20" aria-label="Handheld Era - Pokedex Biography">
       <GameboyPokedex />
-    </div>
+    </section>
 
-    <div id="era-32bit" class="w-full relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-b-8 border-white/20">
+    <section id="era-32bit" class="w-full relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-b-8 border-white/20" aria-label="32-Bit Era - Skills and Tech">
       <Skills />
       <YouTube />
-    </div>
+    </section>
 
-    <div id="era-hd" class="w-full border-b-2 border-white/10 shadow-[inset_0_20px_50px_rgba(0,0,0,0.5)]">
+    <section id="era-hd" class="w-full border-b-2 border-white/10 shadow-[inset_0_20px_50px_rgba(0,0,0,0.5)]" aria-label="HD Era - Projects Dashboard">
       <Projects />
-    </div>
+    </section>
 
-    <div id="era-nextgen" class="w-full shadow-[inset_0_20px_50px_rgba(0,0,0,0.8)] relative z-30">
+    <section id="era-nextgen" class="w-full shadow-[inset_0_20px_50px_rgba(0,0,0,0.8)] relative z-30" aria-label="Next-Gen Era - Contact Lobby">
       <Contact />
-    </div>
+    </section>
   </main>
 
   <Footer />
