@@ -70,10 +70,9 @@ const systemSpecs = [
     <div class="flex items-center gap-2 mb-10 w-full overflow-hidden border-b-2 border-white shadow-sm pb-0">
       <button data-tab="games" class="tab-btn h-12 px-8 rounded-t-[20px] bg-gradient-to-b from-[#8eb837] to-[#71952a] flex items-center shadow-inner text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 group relative z-10">
         Games
-        <div class="absolute -bottom-1 left-0 w-full h-1 bg-white hidden group-[.active]:block"></div>
       </button>
       <button data-tab="media" class="tab-btn h-12 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold hover:opacity-100 transition-all active:scale-95">
-        Media
+        Trophies
       </button>
       <button data-tab="system" class="tab-btn h-12 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold hover:opacity-100 transition-all active:scale-95">
         System
@@ -87,32 +86,40 @@ const systemSpecs = [
       <div id="tab-games" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 translate-x-0 opacity-100">
         {projects.map(proj => (
           <div class="achievement-card flex flex-col bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-4 border-[#fff] overflow-hidden hover:scale-[1.02] transition-transform duration-300 group">
-            <div class={`w-full h-40 bg-gradient-to-br ${proj.coverGradient} relative overflow-hidden flex items-center justify-center shadow-inner`}>
-              <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDRMNCAwTDggNEw0IDhaIiBmaWxsPSIjMDAwIj48L3BhdGg+Cjwvc3ZnPg==')]"></div>
-              <div class="w-16 h-16 bg-black/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 z-10" set:html={proj.icon.replace('text-[#8eb837]', 'text-white drop-shadow-lg')}></div>
+            <!-- Mystery Header: Scanning Data Animation -->
+            <div class={`w-full h-40 bg-gray-900 relative overflow-hidden flex items-center justify-center shadow-inner`}>
+              <div class={`absolute inset-0 bg-gradient-to-br ${proj.coverGradient} opacity-30`}></div>
+              <div class="absolute inset-0 scan-lines opacity-20"></div>
+              <div class="data-grid absolute inset-0 opacity-20"></div>
+              
+              <div class="w-16 h-16 bg-black/40 backdrop-blur-md rounded-2xl flex items-center justify-center border-2 border-white/20 transform group-hover:scale-110 transition-all duration-500 z-10" set:html={proj.icon.replace('text-[#8eb837]', 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]')}></div>
+              
+              <div class="absolute bottom-2 right-4 text-white/40 text-[10px] font-black uppercase tracking-[0.3em] font-mono animate-pulse">
+                [CLASSIFIED_DATA]
+              </div>
             </div>
 
             <div class="p-6 relative z-10 flex flex-col flex-1 bg-gradient-to-b from-[#f8f9fa] to-[#e9ecef]">
               <div class="flex items-start justify-between mb-2">
-                <h3 class="font-bold text-xl text-gray-800 leading-tight">{proj.title}</h3>
+                <h3 class="font-bold text-xl text-gray-800 leading-tight tracking-tight">{proj.title}</h3>
                 <span class="text-[#8eb837] font-black text-lg shrink-0">{proj.pts}</span>
               </div>
               <p class="text-gray-600 text-sm flex-1 mb-6 focus-text-fix font-medium leading-relaxed">{proj.desc}</p>
               
-              <div class="flex items-center justify-between gap-2 mt-auto text-[10px] font-black uppercase tracking-tighter">
-                <div class="flex-1 bg-gray-300/80 h-10 rounded-lg flex items-center px-4 justify-between border-2 border-white/50">
-                  <span class="text-gray-500">{proj.unlocked}</span>
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-[#8eb837] to-[#71952a] flex items-center justify-center text-white shadow-md">✓</div>
+              <div class="flex flex-col gap-4 mt-auto">
+                <div class="flex-1 bg-gray-300/80 h-10 rounded-lg flex items-center px-4 justify-between border-2 border-white/50 shadow-inner group-hover:border-[#8eb837]/30 transition-colors">
+                  <span class="text-gray-500 text-[10px] uppercase font-black tracking-tighter">{proj.unlocked}</span>
+                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-[#8eb837] to-[#71952a] flex items-center justify-center text-white shadow-md text-[10px]">✓</div>
                 </div>
 
-                <div class="flex gap-2 shrink-0">
+                <div class="flex items-center justify-center gap-6">
                   <div class="flex flex-col items-center gap-1 group/btn">
-                    <a href={proj.github} target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-b from-blue-400 to-blue-700 border-2 border-white shadow-xl flex items-center justify-center text-white text-lg hover:scale-110 active:scale-90 transition-all font-black">X</a>
-                    <span class="text-[8px] opacity-0 group-hover/btn:opacity-100 transition-opacity">SOURCE</span>
+                    <a href={proj.github} target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-b from-blue-400 to-blue-700 border-[3px] border-white shadow-xl flex items-center justify-center text-white text-xl hover:scale-110 active:scale-90 transition-all font-black">X</a>
+                    <span class="text-[8px] font-black text-gray-400 opacity-0 group-hover/btn:opacity-100 transition-opacity">SOURCE</span>
                   </div>
                   <div class="flex flex-col items-center gap-1 group/btn">
-                    <a href={proj.link === '#' ? 'javascript:void(0)' : proj.link} target={proj.link === '#' ? '_self' : '_blank'} class="w-10 h-10 rounded-full bg-gradient-to-b from-green-400 to-green-700 border-2 border-white shadow-xl flex items-center justify-center text-white text-lg hover:scale-110 active:scale-90 transition-all font-black">A</a>
-                    <span class="text-[8px] opacity-0 group-hover/btn:opacity-100 transition-opacity">LIVE</span>
+                    <a href={proj.link === '#' ? 'javascript:void(0)' : proj.link} target={proj.link === '#' ? '_self' : '_blank'} class="w-12 h-12 rounded-full bg-gradient-to-b from-green-400 to-green-700 border-[3px] border-white shadow-xl flex items-center justify-center text-white text-xl hover:scale-110 active:scale-90 transition-all font-black">A</a>
+                    <span class="text-[8px] font-black text-gray-400 opacity-0 group-hover/btn:opacity-100 transition-opacity">LIVE</span>
                   </div>
                 </div>
               </div>
@@ -121,24 +128,17 @@ const systemSpecs = [
         ))}
       </div>
 
-      <!-- TAB 2: MEDIA (Project Gallery) -->
+      <!-- TAB 2: TROPHIES (Abstract view) -->
       <div id="tab-media" class="tab-content hidden absolute inset-0 transition-all duration-500 translate-x-20 opacity-0">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-6">
           {projects.map(proj => (
-            <div class="group relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-white shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer">
-              <div class={`absolute inset-0 bg-gradient-to-br ${proj.coverGradient}`}></div>
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors"></div>
-              <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
-                <span class="text-white font-bold text-sm uppercase">{proj.title}</span>
-              </div>
-              <div class="absolute top-2 right-2 bg-black/60 px-2 py-1 rounded text-[10px] text-white font-black italic">HD PREVIEW</div>
+            <div class="group relative aspect-square rounded-full border-4 border-white shadow-2xl flex items-center justify-center bg-gradient-to-br from-yellow-300 to-yellow-600 hover:scale-110 transition-transform duration-300">
+               <div class="w-12 h-12 text-white drop-shadow-lg scale-150" set:html={proj.icon}></div>
+               <div class="absolute inset-x-0 -bottom-8 text-center">
+                  <span class="text-[8px] font-black uppercase text-gray-600 px-2 bg-white/40">{proj.title}</span>
+               </div>
             </div>
           ))}
-          <!-- Decorative placeholders -->
-          <div class="aspect-[3/4] rounded-lg border-2 border-dashed border-gray-400 flex flex-col items-center justify-center text-gray-400 gap-4">
-             <div class="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center font-bold text-2xl">+</div>
-             <span class="text-[10px] font-bold uppercase">Add Media</span>
-          </div>
         </div>
       </div>
 
@@ -234,6 +234,28 @@ const systemSpecs = [
 
   .pattern-hatched {
     background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.02) 5px, rgba(0,0,0,0.02) 10px);
+  }
+
+  .scan-lines {
+    background: linear-gradient(to bottom, transparent 50%, rgba(0,255,0,0.05) 50%);
+    background-size: 100% 4px;
+    animation: scan 10s linear infinite;
+  }
+
+  .data-grid {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: pan 20s linear infinite;
+  }
+
+  @keyframes scan {
+    from { background-position: 0 0; }
+    to { background-position: 0 100%; }
+  }
+
+  @keyframes pan {
+    from { background-position: 0 0; }
+    to { background-position: 100% 100%; }
   }
 </style>
 
