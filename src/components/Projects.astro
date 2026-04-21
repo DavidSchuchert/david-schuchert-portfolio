@@ -1,40 +1,13 @@
 ---
 const projects = [
   {
-    title: 'DBE-Academy',
-    desc: 'TypeScript, React, Architecture.',
+    title: 'hermes-webui',
+    desc: 'Agentic AI Interface for LLM workflows.',
     pts: '100G',
-    icon: '🏆',
-    unlocked: 'Unlocked 2023',
-    link: 'https://dbe.academy',
-    github: null
-  },
-  {
-    title: 'Join',
-    desc: 'Kanban board application built with Angular and Firebase.',
-    pts: '75G',
-    icon: '📋',
-    unlocked: 'Unlocked 2022',
+    icon: '🤖',
+    unlocked: 'Unlocked 2025',
     link: '#',
-    github: 'https://github.com/DavidSchuchert/Join_Angular'
-  },
-  {
-    title: 'El Pollo Loco',
-    desc: 'Object-oriented Jump & Run game based on JavaScript.',
-    pts: '50G',
-    icon: '🐔',
-    unlocked: 'Unlocked 2022',
-    link: '#',
-    github: 'https://github.com/DavidSchuchert/el-pollo-loco'
-  },
-  {
-    title: 'Pokédex',
-    desc: 'A REST API based Pokédex using JavaScript and HTML.',
-    pts: '25G',
-    icon: '🔴',
-    unlocked: 'Unlocked 2021',
-    link: '#',
-    github: 'https://github.com/DavidSchuchert/Pokedex'
+    github: 'https://github.com/DavidSchuchert/hermes-webui'
   },
   {
     title: 'VereinsManagement',
@@ -46,13 +19,31 @@ const projects = [
     github: 'https://github.com/DavidSchuchert/VereinsManagementTool-Laravel'
   },
   {
-    title: 'hermes-webui',
-    desc: 'Agentic AI Interface for LLM workflows.',
-    pts: '90G',
-    icon: '🤖',
-    unlocked: 'Unlocked 2025',
+    title: 'Join',
+    desc: 'Kanban board application built with Angular and Firebase.',
+    pts: '60G',
+    icon: '📋',
+    unlocked: 'Unlocked 2022',
     link: '#',
-    github: 'https://github.com/DavidSchuchert/hermes-webui'
+    github: 'https://github.com/DavidSchuchert/Join_Angular'
+  },
+  {
+    title: 'El Pollo Loco',
+    desc: 'Object-oriented Jump & Run game based on JavaScript.',
+    pts: '40G',
+    icon: '🐔',
+    unlocked: 'Unlocked 2022',
+    link: '#',
+    github: 'https://github.com/DavidSchuchert/el-pollo-loco'
+  },
+  {
+    title: 'Pokédex',
+    desc: 'A REST API based Pokédex using JavaScript and HTML.',
+    pts: '20G',
+    icon: '🔴',
+    unlocked: 'Unlocked 2021',
+    link: '#',
+    github: 'https://github.com/DavidSchuchert/Pokedex'
   }
 ];
 ---
@@ -77,14 +68,14 @@ const projects = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
       
       {projects.map(proj => (
-        <a href={proj.link} class="achievement-card block bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-2 border-[#fff] overflow-hidden hover:scale-105 transition-transform duration-300">
+        <div class="achievement-card relative block bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-2 border-[#fff] overflow-hidden hover:scale-105 transition-transform duration-300">
           
           <!-- Gloss highlight -->
           <div class="h-1/2 w-full bg-gradient-to-b from-white/80 to-transparent absolute top-0 left-0 pointer-events-none rounded-t-xl"></div>
 
           <div class="p-6 relative z-10 flex flex-col h-full">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#e0e0e0] to-[#b0b0b0] border-4 border-[#8eb837] flex items-center justify-center text-3xl shadow-inner">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#e0e0e0] to-[#b0b0b0] border-4 border-[#8eb837] flex items-center justify-center text-3xl shadow-inner shrink-0">
                 {proj.icon}
               </div>
               <div>
@@ -93,15 +84,34 @@ const projects = [
               </div>
             </div>
             
-            <p class="text-gray-600 text-sm flex-1 mb-4">{proj.desc}</p>
+            <p class="text-gray-600 text-sm flex-1 mb-6 focus-text-fix">{proj.desc}</p>
             
-            <div class="w-full bg-gray-200 h-6 rounded-full flex items-center px-3 justify-between">
-              <span class="text-xs font-bold text-gray-500">{proj.unlocked}</span>
-              <div class="w-12 h-2 rounded-full bg-[#8eb837]"></div>
+            <div class="flex items-center justify-between gap-4">
+              
+              <!-- Achievement Progress Bar -->
+              <div class="flex-1 bg-gray-200 h-6 rounded-full flex items-center px-3 justify-between">
+                <span class="text-[10px] uppercase font-bold text-gray-500">{proj.unlocked}</span>
+                <div class="w-8 h-2 rounded-full bg-[#8eb837]"></div>
+              </div>
+
+              <!-- Links -->
+              <div class="flex gap-2 shrink-0">
+                {proj.github && (
+                  <a href={proj.github} target="_blank" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-800 hover:text-white transition-colors" title="GitHub">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  </a>
+                )}
+                {proj.link !== '#' && (
+                  <a href={proj.link} target="_blank" class="w-8 h-8 rounded-full bg-[#8eb837] flex items-center justify-center text-white hover:bg-[#71952a] transition-colors" title="Live Preview">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  </a>
+                )}
+              </div>
+
             </div>
           </div>
 
-        </a>
+        </div>
       ))}
 
     </div>
@@ -112,5 +122,13 @@ const projects = [
 <style>
   .xbox-blade {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Fix text color issues by enforcing text colors even on hover */
+  .achievement-card h3 {
+    color: #1f2937 !important;
+  }
+  .achievement-card .focus-text-fix {
+    color: #4b5563 !important;
   }
 </style>
