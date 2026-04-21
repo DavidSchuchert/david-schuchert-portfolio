@@ -31,7 +31,7 @@ const inventory = [
     <div class="flex items-end justify-between mb-4 px-2">
       <div class="flex items-end gap-6">
         <h2 class="text-3xl text-white tracking-widest font-bold ff7-text">ITEMS</h2>
-        <span class="text-[#20d720] text-sm md:text-base uppercase ff7-text">Player: Master</span>
+        <span class="text-[#8aff80] drop-shadow-[2px_2px_0_#000] text-sm md:text-base uppercase ff7-text">Player: Master</span>
       </div>
       <span class="text-[#a0a0ff] ff7-text text-xl">L1 / R1</span>
     </div>
@@ -40,7 +40,7 @@ const inventory = [
     <div class="ff7-menu w-full border-[3px] rounded-sm p-8 bg-gradient-to-br from-[#00004a] to-[#00001a]">
       
       <!-- Hand cursor icon (hidden on mobile, can be controlled mostly via hover) -->
-      <div class="relative grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
+      <div class="relative grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-16 gap-y-4">
         
         {inventory.map((item, index) => (
           <div class="group relative flex items-center justify-between cursor-default pl-8 hover:bg-white/5 transition-colors rounded-sm pb-1">
