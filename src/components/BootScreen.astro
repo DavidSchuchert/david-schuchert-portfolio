@@ -1,0 +1,88 @@
+---
+---
+
+<div id="boot-screen" class="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center transition-opacity duration-1000 overflow-hidden">
+  
+  <!-- Part 1: GameBoy Style Nintendo Logo Drop -->
+  <div id="boot-logo-gb" class="absolute top-[-200px] flex flex-col items-center gap-4 transition-all duration-[2000ms] ease-bounce">
+    <div class="px-8 py-2 border-4 border-white/80 rounded-full">
+      <span class="text-4xl md:text-6xl font-black text-white/80 tracking-tighter italic uppercase font-sans">DAVID</span>
+    </div>
+    <div class="px-3 py-1 bg-white/20 text-[10px] text-white/60 tracking-[0.5em] font-mono uppercase">COMPUTERS</div>
+  </div>
+
+  <!-- Part 2: PS1 Inspired Geometric Glows (Appear later) -->
+  <div id="boot-glows" class="absolute inset-0 hidden opacity-0 transition-opacity duration-1000">
+    <div class="absolute inset-0 bg-[#1a1a2a] opacity-30"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+       <div class="w-64 h-64 border-2 border-cyan-400 rotate-45 animate-pulse blur-sm opacity-20"></div>
+       <div class="w-48 h-48 border-2 border-magenta-400 -rotate-45 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse blur-xs opacity-20"></div>
+    </div>
+  </div>
+
+  <!-- Final Text (Modern) -->
+  <div id="boot-status" class="absolute bottom-20 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-500">
+    <p class="ps1-hud-font text-white/40 text-[10px] tracking-[0.4em] uppercase">Boot Sequence: System Ready</p>
+  </div>
+</div>
+
+<style>
+  #boot-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .ease-bounce {
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .font-sans {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .ps1-hud-font {
+    font-family: 'Press Start 2P', system-ui;
+  }
+</style>
+
+<script>
+  function runBootSequence() {
+    const screen = document.getElementById('boot-screen');
+    const logoGB = document.getElementById('boot-logo-gb');
+    const glows = document.getElementById('boot-glows');
+    const status = document.getElementById('boot-status');
+    const body = document.body;
+
+    if (!screen || !logoGB) return;
+
+    // Phase 1: Logo Drop (GameBoy Style)
+    setTimeout(() => {
+      logoGB.style.top = '40%';
+    }, 500);
+
+    // Phase 2: Switch to PS1 Style Glows
+    setTimeout(() => {
+      logoGB.classList.add('opacity-0');
+      glows.classList.remove('hidden');
+      setTimeout(() => glows.style.opacity = '1', 50);
+      status.style.opacity = '1';
+    }, 2500);
+
+    // Phase 3: Reveal Portfolio
+    setTimeout(() => {
+      screen.classList.add('fade-out');
+      body.classList.remove('overflow-hidden'); // Restore scrolling
+      setTimeout(() => screen.remove(), 1000);
+    }, 4500);
+  }
+
+  // Pre-init: Lock scroll
+  document.body.classList.add('overflow-hidden');
+
+  // Trigger on load
+  if (document.readyState === 'complete') {
+    runBootSequence();
+  } else {
+    window.addEventListener('load', runBootSequence);
+  }
+</script>

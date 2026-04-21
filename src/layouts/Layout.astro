@@ -1,6 +1,7 @@
 ---
 import SEO from '../components/SEO.astro';
 import Analytics from '../components/Analytics.astro';
+import BootScreen from '../components/BootScreen.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -26,7 +27,7 @@ const jsonLd = {
 ---
 
 <!DOCTYPE html>
-<html lang="de" class="dark">
+<html lang="de" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,37 +41,112 @@ const jsonLd = {
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500&family=Outfit:wght@300;500;700;800;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;500;700;800;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
 </head>
-<body class="font-sans antialiased text-white bg-black selection:bg-accent-500 selection:text-white">
+<body class="font-sans antialiased text-white bg-black selection:bg-accent-500 selection:text-white overflow-x-hidden cursor-none">
 
-  <!-- Mouse tracking script for glow effects -->
-  <script is:inline>
-    const handleMouseMove = (e) => {
-      // Use requestAnimationFrame for smooth performance
-      requestAnimationFrame(() => {
-        // Apply global coords for background ambient lighting
-        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
-        
-        // Also apply local coords to all bento cards
-        const cards = document.querySelectorAll('.bento-card');
-        cards.forEach(card => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
-        });
-      });
-    };
-    
-    // Attach event listener
-    window.addEventListener('mousemove', handleMouseMove);
-  </script>
+  <BootScreen />
+
+  <!-- DYNAMIC GAME CURSOR -->
+  <div id="game-cursor" class="fixed w-8 h-8 pointer-events-none z-[10000] flex items-center justify-center mix-blend-difference transition-all duration-300 opacity-0 md:opacity-100">
+    <div class="cursor-dot w-2 h-2 bg-white rounded-full"></div>
+    <div class="cursor-ring absolute inset-0 border border-white/40 rounded-full scale-150"></div>
+    <div class="cursor-hud absolute inset-0 border-t border-l border-cyan-400 rotate-45 opacity-0 scale-50 transition-all duration-500"></div>
+    <span class="cursor-label absolute text-[6px] top-10 font-black tracking-widest uppercase opacity-40">P1</span>
+  </div>
 
   <slot />
   <Analytics />
+
+  <!-- Mouse tracking & Era Detection -->
+  <script is:inline>
+    const cursor = document.getElementById('game-cursor');
+    const cursorDot = cursor.querySelector('.cursor-dot');
+    const cursorRing = cursor.querySelector('.cursor-ring');
+    const cursorHud = cursor.querySelector('.cursor-hud');
+    const cursorLabel = cursor.querySelector('.cursor-label');
+
+    // 1. Smooth Cursor Follow
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      // Update global CSS vars for other effects
+      document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+    });
+
+    function animateCursor() {
+      // Linear interpolation for smoothness
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      
+      cursor.style.transform = `translate3d(${cursorX - 16}px, ${cursorY - 16}px, 0)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // 2. Era Detection & Cursor Styling
+    const eraMapping = {
+      'era-8bit': { cls: 'cursor-nes', label: '[8BIT_SCAN]' },
+      'era-16bit': { cls: 'cursor-snes', label: '[16BIT_LINK]' },
+      'era-gameboy': { cls: 'cursor-gb', label: '[MATRIX_DOT]' },
+      'era-32bit': { cls: 'cursor-ps1', label: '[BIOS_HUD]' },
+      'era-hd': { cls: 'cursor-hd', label: '[X_SYSTEM]' },
+      'era-nextgen': { cls: 'cursor-ps5', label: '[DUALSENSE]' }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const eraId = entry.target.id;
+          const config = eraMapping[eraId];
+          
+          if (config) {
+            cursorLabel.innerText = config.label;
+            
+            // Apply specific visual states
+            if (eraId === 'era-32bit') {
+              cursorHud.style.opacity = '1';
+              cursorHud.style.transform = 'rotate(45deg) scale(1.5)';
+              cursorRing.style.borderColor = '#22d3ee'; // Cyan
+            } else if (eraId === 'era-8bit' || eraId === 'era-gameboy') {
+              cursorHud.style.opacity = '0';
+              cursorRing.classList.add('rounded-none');
+              cursorDot.classList.add('rounded-none');
+            } else {
+              cursorHud.style.opacity = '0';
+              cursorHud.style.transform = 'scale(0.5)';
+              cursorRing.classList.remove('rounded-none');
+              cursorDot.classList.remove('rounded-none');
+              cursorRing.style.borderColor = 'rgba(255,255,255,0.4)';
+            }
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+
+    // Watch all era divs
+    document.querySelectorAll('[id^="era-"]').forEach(era => observer.observe(era));
+  </script>
+
+  <style is:global>
+    /* Hide native cursor globally */
+    * {
+      cursor: none !important;
+    }
+
+    /* Fallback for interactives to show they are clickable */
+    a:hover ~ #game-cursor, 
+    button:hover ~ #game-cursor {
+      transform: scale(1.5);
+    }
+  </style>
 
 </body>
 </html>
