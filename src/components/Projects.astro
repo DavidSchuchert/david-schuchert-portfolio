@@ -4,7 +4,7 @@ const projects = [
     title: 'hermes-webui',
     desc: 'Agentic AI Interface for LLM workflows.',
     pts: '100G',
-    icon: '🤖',
+    icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>',
     unlocked: 'Unlocked 2025',
     link: '#',
     github: 'https://github.com/DavidSchuchert/hermes-webui'
@@ -13,7 +13,7 @@ const projects = [
     title: 'VereinsManagement',
     desc: 'Laravel SaaS for complex club structures.',
     pts: '80G',
-    icon: '🏅',
+    icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>',
     unlocked: 'Unlocked 2024',
     link: '#',
     github: 'https://github.com/DavidSchuchert/VereinsManagementTool-Laravel'
@@ -22,7 +22,7 @@ const projects = [
     title: 'Join',
     desc: 'Kanban board application built with Angular and Firebase.',
     pts: '60G',
-    icon: '📋',
+    icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>',
     unlocked: 'Unlocked 2022',
     link: '#',
     github: 'https://github.com/DavidSchuchert/Join_Angular'
@@ -31,7 +31,7 @@ const projects = [
     title: 'El Pollo Loco',
     desc: 'Object-oriented Jump & Run game based on JavaScript.',
     pts: '40G',
-    icon: '🐔',
+    icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
     unlocked: 'Unlocked 2022',
     link: '#',
     github: 'https://github.com/DavidSchuchert/el-pollo-loco'
@@ -40,7 +40,7 @@ const projects = [
     title: 'Pokédex',
     desc: 'A REST API based Pokédex using JavaScript and HTML.',
     pts: '20G',
-    icon: '🔴',
+    icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>',
     unlocked: 'Unlocked 2021',
     link: '#',
     github: 'https://github.com/DavidSchuchert/Pokedex'
@@ -75,8 +75,7 @@ const projects = [
 
           <div class="p-6 relative z-10 flex flex-col h-full">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#e0e0e0] to-[#b0b0b0] border-4 border-[#8eb837] flex items-center justify-center text-3xl shadow-inner shrink-0">
-                {proj.icon}
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#e0e0e0] to-[#b0b0b0] border-4 border-[#8eb837] flex items-center justify-center shadow-inner shrink-0" set:html={proj.icon}>
               </div>
               <div>
                 <h3 class="font-bold text-xl text-gray-800 leading-tight">{proj.title}</h3>
