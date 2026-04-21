@@ -1,47 +1,67 @@
 ---
-const skills = [
-  { name: 'TypeScript', level: 95, hpLvl: '9999', cost: '12 MP' },
-  { name: 'React', level: 90, hpLvl: '8500', cost: '15 MP' },
-  { name: 'Node.js', level: 85, hpLvl: '7200', cost: '10 MP' },
-  { name: 'Laravel', level: 88, hpLvl: '7800', cost: '18 MP' },
-  { name: 'AI / LLMs', level: 80, hpLvl: '6000', cost: '40 MP' },
-  { name: 'Docker', level: 75, hpLvl: '5500', cost: '8 MP' },
+const inventory = [
+  { name: 'TypeScript', count: 'x99' },
+  { name: 'JavaScript', count: 'x99' },
+  { name: 'React', count: 'x99' },
+  { name: 'Angular', count: 'x99' },
+  { name: 'PHP', count: 'x99' },
+  { name: 'Laravel', count: 'x99' },
+  { name: 'Node.js', count: 'x99' },
+  { name: 'HTML & SCSS', count: 'x99' },
+  { name: 'Tailwind CSS', count: 'x99' },
+  { name: 'Bootstrap', count: 'x99' },
+  { name: 'MySQL', count: 'x99' },
+  { name: 'SQLite', count: 'x99' },
+  { name: 'Firebase', count: 'x99' },
+  { name: 'Docker', count: 'x99' },
+  { name: 'Git', count: 'x99' },
+  { name: 'AI / LLMs', count: 'x99' },
 ];
 ---
 
-<section class="ps1-skills w-full min-h-screen bg-black py-20 px-4 md:px-8 flex flex-col items-center">
+<section class="ps1-inventory w-full min-h-screen bg-black py-20 px-4 md:px-8 flex flex-col items-center">
   
-  <div class="max-w-5xl w-full">
+  <div class="max-w-4xl w-full">
     
-    <div class="flex items-end gap-4 mb-4">
-      <h2 class="text-3xl text-[#e0e0e0] uppercase tracking-wider font-bold ff7-text">Materia / Status</h2>
-      <span class="text-[#888] text-sm uppercase">Lvl 99</span>
+    <div class="flex items-end justify-between mb-4 px-2">
+      <div class="flex items-end gap-6">
+        <h2 class="text-3xl text-white tracking-widest font-bold ff7-text">ITEMS</h2>
+        <span class="text-[#20d720] text-sm md:text-base uppercase ff7-text">Player: Master</span>
+      </div>
+      <span class="text-[#a0a0ff] ff7-text text-xl">L1 / R1</span>
     </div>
 
-    <div class="ff7-menu w-full border-[3px] rounded-md p-6 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 bg-gradient-to-br from-[#00004a] to-[#00001a]">
+    <!-- The classic FF7 style blue/gray menu box -->
+    <div class="ff7-menu w-full border-[3px] rounded-sm p-8 bg-gradient-to-br from-[#00004a] to-[#00001a]">
       
-      {skills.map((skill) => (
-        <div class="skill-row flex items-center justify-between border-b-2 border-[#aaaaaa30] pb-2">
-          
-          <div class="flex-1">
-            <span class="text-[#e2e2e2] uppercase text-xl md:text-2xl ff7-text tracking-widest">{skill.name}</span>
-            <div class="flex items-center gap-2 mt-1">
-              <span class="text-[#4ea4e8] text-sm ff7-text">AP</span>
-              <!-- Experience Bar -->
-              <div class="h-2 flex-1 bg-black border border-[#555] rounded-sm mr-4 relative overflow-hidden">
-                <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-[#20d720] to-[#baffba]" style={`width: ${skill.level}%;`}></div>
-              </div>
+      <!-- Hand cursor icon (hidden on mobile, can be controlled mostly via hover) -->
+      <div class="relative grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
+        
+        {inventory.map((item, index) => (
+          <div class="group relative flex items-center justify-between cursor-default pl-8 hover:bg-white/5 transition-colors rounded-sm pb-1">
+            
+            <!-- Classic RPG Arrow Pointer (visible on hover) -->
+            <span class="absolute left-0 top-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl ff7-text">
+              ▶
+            </span>
+            
+            <div class="flex items-center gap-3">
+              <!-- Small Item Icon (Bullet) -->
+              <div class="w-3 h-3 rounded-full bg-gradient-to-br from-white to-gray-400 shadow-[inset_0_0_3px_#000]"></div>
+              <span class="text-white text-xl md:text-2xl ff7-text tracking-widest drop-shadow-[2px_2px_0px_#000]">
+                {item.name}
+              </span>
             </div>
-          </div>
-          
-          <div class="text-right shrink-0 min-w-[80px]">
-            <span class="block text-[#fff] ff7-text text-xl">{skill.hpLvl}</span>
-            <span class="block text-[#8bc34a] ff7-text text-base">{skill.cost}</span>
-          </div>
+            
+            <span class="text-white text-xl md:text-2xl ff7-text tracking-widest drop-shadow-[2px_2px_0px_#000]">
+              {item.count}
+            </span>
 
-        </div>
-      ))}
-      
+          </div>
+        ))}
+
+      </div>
+
     </div>
 
   </div>
@@ -49,22 +69,22 @@ const skills = [
 </section>
 
 <style>
-  /* Attempting to emulate classic early 3D era fonts */
+  /* Emulating classic early 3D era fonts */
   .ff7-text {
     font-family: 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 0 #000;
+    letter-spacing: 0.1em;
   }
 
-  .ps1-skills {
+  .ps1-inventory {
     /* Slight CRT noise for 32-bit era */
     background-image: 
-      linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      linear-gradient(rgba(0,0,0,0.95), rgba(0,0,0,0.95)),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
   .ff7-menu {
     border-color: #cacaca;
-    box-shadow: inset 0 0 10px rgba(0,0,0,1), 4px 4px 0 rgba(0,0,0,0.8);
+    box-shadow: inset 0 0 10px rgba(0,0,0,1), 6px 6px 0px rgba(0,0,0,0.8);
     /* Metallic glossy border trick */
     border-image: linear-gradient(to bottom right, #fff, #555, #ccc, #333) 1;
   }
