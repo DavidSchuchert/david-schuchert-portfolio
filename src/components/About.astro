@@ -1,69 +1,68 @@
 ---
 ---
 
-<section class="mario-world w-full min-h-[90vh] py-20 px-4 md:px-8 relative flex items-center justify-center overflow-hidden">
+<section class="smw-map w-full min-h-[90vh] py-20 px-4 md:px-8 relative flex items-center justify-center overflow-hidden">
   
-  <!-- Subtle pixel grid overworld background pattern -->
-  <div class="absolute inset-0 z-0 bg-[#388700] pixel-grass opacity-90"></div>
-
-  <div class="max-w-5xl w-full relative z-10">
+  <div class="max-w-5xl w-full relative z-10 flex flex-col items-center">
     
-    <div class="text-center mb-16 relative">
-      <h2 class="text-4xl text-white font-black snes-font drop-shadow-[4px_4px_0_#000] tracking-widest uppercase">
-        World 1: About
+    <div class="text-center mb-10 w-full bg-[#000000aa] p-4 border-4 border-white mb-16 max-w-lg mx-auto rounded-lg shadow-[4px_4px_0_#000]">
+      <h2 class="text-2xl md:text-3xl text-white font-black snes-font uppercase">
+        WORLD 1: ABOUT
       </h2>
     </div>
 
     <!-- The Map Container -->
-    <div class="relative w-full h-[500px] sm:h-[400px] flex flex-col sm:flex-row items-center justify-between px-8 md:px-16 mt-20">
+    <div class="relative w-full h-[400px] flex flex-col sm:flex-row items-center justify-center gap-16 md:gap-32 mt-10">
       
-      <!-- SVG Winding Path (Responsive) -->
-      <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="none" viewBox="0 0 1000 200">
-        <!-- Dashed black line -->
-        <path d="M 100,100 Q 300,20 500,100 T 900,100" fill="none" stroke="#000" stroke-width="8" stroke-dasharray="16, 12" />
+      <!-- Thick White Path (SMW Style) -->
+      <svg class="absolute inset-x-0 mx-auto top-1/2 -translate-y-1/2 w-3/4 h-[100px] pointer-events-none z-0" preserveAspectRatio="none" viewBox="0 0 1000 100">
+        <!-- Black Border Path -->
+        <path d="M 50,50 L 450,50 L 500,20 L 950,20" fill="none" stroke="#000" stroke-width="14" stroke-linejoin="round" />
+        <!-- Inner White Path -->
+        <path d="M 50,50 L 450,50 L 500,20 L 950,20" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round" />
       </svg>
 
       <!-- Node 1: Start -->
-      <div class="relative z-10 flex flex-col items-center group mb-16 sm:mb-0 transform sm:-translate-y-8 mt-5 sm:mt-0">
+      <div class="relative z-10 flex flex-col items-center group mb-8 sm:mb-0 transform sm:translate-y-6">
         <!-- Info Popup -->
-        <div class="absolute bottom-12 w-48 bg-[#fff] border-4 border-black p-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg shadow-[4px_4px_0_rgba(0,0,0,0.5)]">
-          <p class="snes-font text-black text-sm leading-tight font-bold">Start: Bad Hersfeld. Full-Stack Developer.</p>
+        <div class="absolute bottom-16 sm:bottom-12 w-48 bg-[#fff] border-4 border-black p-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-sm shadow-[4px_4px_0_rgba(0,0,0,0.5)] z-20">
+          <p class="snes-font text-black text-xs leading-relaxed font-bold">Start: Bad Hersfeld. Full-Stack Developer.</p>
         </div>
-        <!-- Yellow Level Dot -->
-        <div class="w-8 h-8 rounded-full bg-[#fce000] border-4 border-black shadow-[2px_2px_0_#000] cursor-pointer hover:scale-125 transition-transform duration-200"></div>
-        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-xl">1-1</span>
+        <!-- Yellow Level Node -->
+        <div class="w-8 h-8 rounded-full bg-[#fce000] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.4)] cursor-pointer hover:scale-125 transition-transform"></div>
+        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-sm">1-1</span>
       </div>
 
       <!-- Node 2: Development -->
-      <div class="relative z-10 flex flex-col items-center group mb-16 sm:mb-0 transform sm:translate-y-8 mt-5 sm:mt-0">
+      <div class="relative z-10 flex flex-col items-center group mb-8 sm:mb-0 transform sm:translate-y-6">
         <!-- Info Popup -->
-        <div class="absolute bottom-12 w-48 bg-[#fff] border-4 border-black p-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg shadow-[4px_4px_0_rgba(0,0,0,0.5)]">
-          <p class="snes-font text-black text-sm leading-tight font-bold">5+ Jahre Code. Typescript, React, Backend Systeme.</p>
+        <div class="absolute bottom-16 sm:bottom-12 w-56 bg-[#fff] border-4 border-black p-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-sm shadow-[4px_4px_0_rgba(0,0,0,0.5)] z-20">
+          <p class="snes-font text-black text-xs leading-relaxed font-bold">5+ Jahre Code. Typescript, React, Backend Systeme.</p>
         </div>
-        <!-- Yellow Level Dot -->
-        <div class="w-8 h-8 rounded-full bg-[#fce000] border-4 border-black shadow-[2px_2px_0_#000] cursor-pointer hover:scale-125 transition-transform duration-200"></div>
-        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-xl">1-2</span>
+        <!-- Yellow Level Node -->
+        <div class="w-8 h-8 rounded-full bg-[#fce000] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.4)] cursor-pointer hover:scale-125 transition-transform"></div>
+        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-sm">1-2</span>
       </div>
 
       <!-- Node 3: Current Boss/Status (Red Dot) -->
-      <div class="relative z-10 flex flex-col items-center group transform sm:-translate-y-4">
+      <div class="relative z-10 flex flex-col items-center group transform sm:-translate-y-6">
         
         <!-- Player Avatar standing on the red node -->
-        <div class="absolute -top-20 animate-bounce">
-           <img src="https://avatars.githubusercontent.com/u/142668300?v=4" alt="David" class="w-16 h-16 rounded-md border-2 border-black object-cover shadow-[2px_2px_0_#000]" style="image-rendering: pixelated;" />
+        <div class="absolute -top-16 animate-bounce pointer-events-none">
+           <img src="https://avatars.githubusercontent.com/u/142668300?v=4" alt="David" class="w-12 h-12 rounded-md border-2 border-black object-cover shadow-[2px_2px_0_#000]" style="image-rendering: pixelated; image-rendering: crisp-edges;" />
         </div>
 
-        <!-- Info Popup (Always visible or larger) -->
-        <div class="absolute bottom-14 left-12 w-64 bg-[#fff] border-4 border-black p-4 text-left rounded-lg shadow-[4px_4px_0_rgba(0,0,0,0.5)] z-20">
-          <p class="snes-font text-black text-sm leading-tight font-bold">
-            <span class="text-red-600 block mb-1">Dozent & Developer</span>
-            DBE-Academy Guild. Begleitet von 1x Hund & 1x Chamäleon!
+        <!-- Info Popup -->
+        <div class="absolute bottom-16 sm:bottom-14 -left-12 sm:left-auto w-64 bg-[#fff] border-4 border-black p-4 text-left rounded-sm shadow-[4px_4px_0_rgba(0,0,0,0.5)] z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <p class="snes-font text-black text-xs leading-relaxed font-bold">
+            <span class="text-red-600 block mb-2 text-sm">Dozent & Developer</span>
+            DBE-Academy Guild.<br/> Party: 1x Hund, 1x Chamäleon.
           </p>
         </div>
 
-        <!-- Red Boss Level Dot -->
-        <div class="w-10 h-10 rounded-full bg-[#e52521] border-4 border-black shadow-[2px_2px_0_#000] cursor-pointer hover:scale-125 transition-transform duration-200 z-10"></div>
-        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-xl">CASTLE</span>
+        <!-- Red Level Node -->
+        <div class="w-8 h-8 rounded-full bg-[#f44336] border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.4)] cursor-pointer hover:scale-125 transition-transform z-10"></div>
+        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-sm">CASTLE</span>
       </div>
 
     </div>
@@ -76,25 +75,17 @@
     font-family: 'Press Start 2P', 'VT323', monospace;
   }
 
-  .mario-world {
-    background-color: #388700;
-  }
-
-  /* Emulating simple 16-bit grass via CSS checkerboard trick */
-  .pixel-grass {
-    background-image: 
-      linear-gradient(45deg, #4aa80b 25%, transparent 25%, transparent 75%, #4aa80b 75%, #4aa80b), 
-      linear-gradient(45deg, #4aa80b 25%, transparent 25%, transparent 75%, #4aa80b 75%, #4aa80b);
-    background-size: 32px 32px;
-    background-position: 0 0, 16px 16px;
+  /* Authentic SMW Flat Green */
+  .smw-map {
+    background-color: #00B800;
   }
 
   .animate-bounce {
-    animation: mario-jump 1s infinite alternate;
+    animation: mario-jump 1s steps(2, end) infinite alternate;
   }
 
   @keyframes mario-jump {
     0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
+    100% { transform: translateY(-6px); }
   }
 </style>
