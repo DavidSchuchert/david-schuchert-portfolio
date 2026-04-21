@@ -16,9 +16,9 @@ const navLinks = [
         DAVID-SCHUCHERT.DE
       </a>
 
-      <nav class="flex flex-wrap justify-center gap-4 md:gap-6">
+      <nav class="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 sm:gap-4 md:gap-6">
         {navLinks.map((link) => (
-          <a href={link.href} class="text-[10px] md:text-xs pixel-font tracking-widest uppercase text-gray-400 hover:text-white transition-colors hover:scale-110 transform">
+          <a href={link.href} class="text-[9px] min-[400px]:text-[10px] md:text-xs pixel-font tracking-tight min-[400px]:tracking-widest uppercase text-gray-400 hover:text-white transition-colors hover:scale-110 transform whitespace-nowrap">
             [{link.label}]
           </a>
         ))}
