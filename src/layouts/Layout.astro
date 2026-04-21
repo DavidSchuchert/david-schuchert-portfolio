@@ -7,9 +7,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  showBoot?: boolean;
 }
 
-const { title, description = "Creative Developer & Dozent. Building next-gen web experiences." } = Astro.props;
+const { title, description = "Creative Developer & Dozent. Building next-gen web experiences.", showBoot = false } = Astro.props;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -63,7 +64,7 @@ const jsonLd = {
 </head>
 <body class="font-sans antialiased text-white bg-black selection:bg-accent-500 selection:text-white overflow-x-hidden">
 
-  <BootScreen />
+  {showBoot && <BootScreen />}
 
   <slot />
   <Analytics />
