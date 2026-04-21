@@ -1,46 +1,80 @@
 ---
 ---
 
-<section class="next-gen-contact w-full relative overflow-hidden rounded-[2rem] bg-[#020202] py-24 px-8 md:px-16 border border-[#222] shadow-[0_0_100px_rgba(0,0,0,1)]">
+<section class="aaa-lobby w-full min-h-[60vh] bg-[#0b0c10] py-16 px-4 md:px-8 flex items-center justify-center relative overflow-hidden">
   
-  <!-- Subtle top-down lighting (Raytraced vibe) -->
-  <div class="absolute top-0 inset-x-0 mx-auto w-1/2 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
-  <div class="absolute -top-32 inset-x-0 mx-auto w-3/4 h-64 bg-white/5 blur-[80px] rounded-full pointer-events-none"></div>
+  <!-- Subtle diagonal pattern background typical in modern shooters (Valorant, CoD) -->
+  <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: repeating-linear-gradient(45deg, #ffffff 0, #ffffff 1px, transparent 1px, transparent 10px);"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent"></div>
 
-  <div class="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
+  <div class="max-w-5xl w-full relative z-10 flex flex-col md:flex-row items-stretch gap-8">
     
-    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md mb-12">
-      <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-      </span>
-      <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">System Online • Ready for Input</span>
+    <!-- Player Card -->
+    <div class="flex-1 bg-[#151720] border border-[#2a2c38] rounded-sm flex flex-col transform transition-transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(99,102,241,0.15)] group relative overflow-hidden">
+      <!-- Banner/Header graphic -->
+      <div class="h-32 w-full bg-gradient-to-r from-indigo-900 to-[#151720] relative">
+        <div class="absolute top-4 right-4 bg-black/50 px-2 py-1 flex items-center gap-2 rounded-sm border border-white/10">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          <span class="text-[10px] text-white tracking-widest font-bold">ONLINE</span>
+        </div>
+      </div>
+
+      <div class="px-8 pb-8 -mt-12 flex flex-col relative z-20">
+        <div class="w-24 h-24 rounded-sm border-4 border-[#151720] bg-gray-800 shadow-xl overflow-hidden mb-4">
+          <img src="https://avatars.githubusercontent.com/u/142668300?v=4" alt="David Schuchert" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <span class="px-2 py-1 bg-indigo-600 text-white text-xs font-black tracking-widest rounded-sm">Lvl 99</span>
+          <h2 class="text-3xl font-black text-white uppercase tracking-wider">
+            David Schuchert
+          </h2>
+        </div>
+        <span class="text-indigo-400 font-medium tracking-widest text-sm uppercase mt-1 mb-6">[DEV] CLAN</span>
+
+        <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+          Bereit für den nächsten Raid auf komplexe Web-Architekturen. Lade mich in deine Party ein, um das Backend zu dominieren.
+        </p>
+      </div>
     </div>
 
-    <h2 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 mb-6 tracking-tighter">
-      Initiate Contact
-    </h2>
-    
-    <p class="text-gray-400 text-lg max-w-2xl text-balance mb-16 font-light">
-      Gute Architektur entsteht nicht zufällig. Ping mich an, wenn du Performance, Stabilität und ein Level-Up für dein Stack brauchst.
-    </p>
-
-    <!-- The Next-Gen Action Button -->
-    <a href="mailto:david@dbe.academy" class="group relative px-12 py-5 rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden hover:scale-105 transition-transform duration-500 hover:border-white/30 hover:bg-white/[0.05]">
-      <!-- Animated glass sweep -->
-      <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-[shimmer_1.5s_infinite]"></div>
+    <!-- Lobby Actions -->
+    <div class="md:w-80 flex flex-col gap-3 justify-center">
+      <h3 class="text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-bold pl-2">Social Menu</h3>
       
-      <span class="relative z-10 flex items-center gap-4 text-white font-medium text-lg tracking-wide">
-        <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        david@dbe.academy
-      </span>
-    </a>
+      <!-- Action Button 1 -->
+      <a href="mailto:kontakt@david-schuchert.de" class="lobby-action group relative w-full bg-[#151720] border-l-4 border-transparent hover:border-indigo-500 hover:bg-[#1a1d28] p-4 flex items-center justify-between transition-all">
+        <span class="text-white font-bold tracking-wide group-hover:translate-x-2 transition-transform">
+          INVITE TO PARTY
+        </span>
+        <svg class="w-5 h-5 text-gray-500 group-hover:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+      </a>
+
+      <!-- Action Button 2 -->
+      <a href="https://github.com/DavidSchuchert" target="_blank" class="lobby-action group relative w-full bg-[#151720] border-l-4 border-transparent hover:border-white hover:bg-[#1a1d28] p-4 flex items-center justify-between transition-all">
+        <span class="text-white font-bold tracking-wide group-hover:translate-x-2 transition-transform">
+          VIEW PROFILE
+        </span>
+        <span class="text-xs text-gray-500 uppercase font-bold tracking-widest">GitHub</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/david-schuchert-0ab892283/" target="_blank" class="lobby-action group relative w-full bg-[#151720] border-l-4 border-transparent hover:border-blue-500 hover:bg-[#1a1d28] p-4 flex items-center justify-between transition-all">
+        <span class="text-white font-bold tracking-wide group-hover:translate-x-2 transition-transform">
+          SEND FRIEND REQUEST
+        </span>
+        <span class="text-xs text-gray-500 uppercase font-bold tracking-widest">LinkedIn</span>
+      </a>
+    </div>
 
   </div>
 </section>
 
 <style>
-  @keyframes shimmer {
-    100% { transform: translateX(100%); }
+  .aaa-lobby {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .lobby-action {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
   }
 </style>
