@@ -1,0 +1,14 @@
+node_modules
+dist
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+.dockerignore
+npm-debug.log
+README.md
+.vscode
+.astro
+package-lock.json
+playwright-report
+test-results
