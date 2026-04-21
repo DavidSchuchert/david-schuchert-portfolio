@@ -10,6 +10,36 @@ interface Props {
 }
 
 const { title, description = "Creative Developer & Dozent. Building next-gen web experiences." } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "David Schuchert",
+  "jobTitle": "Full-Stack Developer, Dozent & Web Architect",
+  "description": "Expert in Agentic AI, TypeScript, React and Laravel. Building immersive web experiences and teaching modern software engineering.",
+  "url": "https://david-schuchert.de",
+  "image": "https://avatars.githubusercontent.com/u/142668300?v=4",
+  "sameAs": [
+    "https://github.com/DavidSchuchert",
+    "https://www.linkedin.com/in/david-schuchert-0ab892283/",
+    "https://www.youtube.com/c/hochdruck3d"
+  ],
+  "knowsAbout": [
+    "Software Architecture",
+    "Agentic AI",
+    "Full-Stack Development",
+    "TypeScript",
+    "React",
+    "Laravel",
+    "Three.js",
+    "Retro Gaming Ethics"
+  ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Dozent für Fachinformatiker Anwendungsentwicklung",
+    "description": "Lehrtätigkeit an der DBE-Academy in Bad Hersfeld."
+  }
+};
 ---
 
 <!DOCTYPE html>
