@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="IMPRESSUM | DAVID SCHUCHERT">
+  <main class="min-h-screen bg-black text-gray-300 font-mono p-8 md:p-20 overflow-x-hidden relative">
+    
+    <!-- Background Technical Grid -->
+    <div class="fixed inset-0 pointer-events-none opacity-20 z-0">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    </div>
+
+    <!-- HUD Lines -->
+    <div class="fixed top-10 left-10 w-20 h-20 border-t border-l border-white/20 z-10"></div>
+    <div class="fixed bottom-10 right-10 w-20 h-20 border-b border-r border-white/20 z-10"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10 pt-10">
+      <header class="mb-16 border-b border-white/20 pb-8 flex items-center justify-between">
+         <div>
+            <h1 class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-white mb-2">Legal Notice</h1>
+            <p class="text-xs text-blue-400 tracking-[0.5em] font-bold uppercase">System_EULA_v1.0</p>
+         </div>
+         <a href="/" class="px-6 py-2 border border-white/40 text-xs hover:bg-white/10 transition-all uppercase tracking-widest">[B] Back to Start</a>
+      </header>
+
+      <section class="space-y-12">
+        <div>
+          <h2 class="text-xl font-bold text-white uppercase tracking-widest border-l-4 border-blue-500 pl-4 mb-6">Angaben gemäß § 5 TMG</h2>
+          <div class="bg-white/5 p-6 border border-white/10 rounded-sm">
+            <p class="text-lg leading-relaxed">
+              David Schuchert<br />
+              Am Lax 31<br />
+              36251 Bad Hersfeld
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white uppercase tracking-widest border-l-4 border-blue-500 pl-4 mb-6">Kontakt</h2>
+          <div class="bg-white/5 p-6 border border-white/10 rounded-sm">
+            <p class="leading-relaxed">
+              E-Mail: <a href="mailto:davidschuchert@icloud.com" class="text-blue-400 hover:underline">davidschuchert@icloud.com</a><br />
+              Aus rechtlichen Gründen weise ich darauf hin, dass die Kontaktaufnahme primär elektronisch erfolgt.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white uppercase tracking-widest border-l-4 border-blue-500 pl-4 mb-6">Redaktionell verantwortlich</h2>
+          <div class="bg-white/5 p-6 border border-white/10 rounded-sm">
+            <p>
+              David Schuchert<br />
+              Am Lax 31<br />
+              36251 Bad Hersfeld
+            </p>
+          </div>
+        </div>
+
+        <div class="opacity-50 text-[10px] leading-relaxed pt-12 border-t border-white/10">
+           <p>Dieses Impressum gilt auch für die Social Media Präsenzen auf GitHub, YouTube und LinkedIn, sofern dort auf diese Webseite verlinkt wird.</p>
+        </div>
+      </section>
+
+      <footer class="mt-20 text-center">
+         <p class="text-[8px] tracking-[1em] text-white/30 uppercase italic">David Computer Entertainment - All Rights Reserved</p>
+      </footer>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  h1, h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+</style>

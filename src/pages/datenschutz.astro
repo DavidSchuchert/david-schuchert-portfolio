@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="DATENSCHUTZ | DAVID SCHUCHERT">
+  <main class="min-h-screen bg-black text-gray-300 font-mono p-8 md:p-20 overflow-x-hidden relative">
+    
+    <!-- Background Technical Grid -->
+    <div class="fixed inset-0 pointer-events-none opacity-20 z-0">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    </div>
+
+    <!-- HUD Lines -->
+    <div class="fixed top-10 left-10 w-20 h-20 border-t border-l border-white/20 z-10"></div>
+    <div class="fixed bottom-10 right-10 w-20 h-20 border-b border-r border-white/20 z-10"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10 pt-10">
+      <header class="mb-16 border-b border-white/20 pb-8 flex items-center justify-between">
+         <div>
+            <h1 class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic text-white mb-2">Privacy Policy</h1>
+            <p class="text-xs text-green-400 tracking-[0.5em] font-bold uppercase">System_Privacy_v1.0</p>
+         </div>
+         <a href="/" class="px-6 py-2 border border-white/40 text-xs hover:bg-white/10 transition-all uppercase tracking-widest">[B] Back to Start</a>
+      </header>
+
+      <section class="space-y-12">
+        <div>
+          <h2 class="text-xl font-bold text-white uppercase tracking-widest border-l-4 border-green-500 pl-4 mb-6">1. Datenschutz auf einen Blick</h2>
+          <div class="bg-white/5 p-6 border border-white/10 rounded-sm leading-relaxed text-sm">
+            <p class="mb-4">Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+            <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis.</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white uppercase tracking-widest border-l-4 border-green-500 pl-4 mb-6">2. Hosting & Server-Logs</h2>
+          <div class="bg-white/5 p-6 border border-white/10 rounded-sm leading-relaxed text-sm">
+            <p class="mb-4">Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
+            <ul class="list-disc pl-6 space-y-2 opacity-80">
+              <li>Browsertyp und Browserversion</li>
+              <li>verwendetes Betriebssystem</li>
+              <li>Referrer URL</li>
+              <li>Hostname des zugreifenden Rechners</li>
+              <li>Uhrzeit der Serveranfrage</li>
+              <li>IP-Adresse</li>
+            </ul>
+            <p class="mt-4 italic">Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-white uppercase tracking-widest border-l-4 border-green-500 pl-4 mb-6">3. Cookies & Tracking</h2>
+          <div class="bg-white/5 p-6 border border-white/10 rounded-sm leading-relaxed text-sm">
+            <p>Diese Webseite ist eine rein statische Präsentation und verwendet **keine Cookies** und **keine Tracking-Tools** (wie Google Analytics). Es findet keine Analyse Ihres Surfverhaltens statt.</p>
+          </div>
+        </div>
+
+        <div>
+           <h2 class="text-xl font-bold text-white uppercase tracking-widest border-l-4 border-green-500 pl-4 mb-6">4. Ihre Rechte</h2>
+           <div class="bg-white/5 p-6 border border-white/10 rounded-sm leading-relaxed text-sm">
+             <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+           </div>
+        </div>
+
+      </section>
+
+      <footer class="mt-20 text-center">
+         <p class="text-[8px] tracking-[1em] text-white/30 uppercase italic">Encrypted Connection Status: [OK]</p>
+      </footer>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  h1, h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+</style>

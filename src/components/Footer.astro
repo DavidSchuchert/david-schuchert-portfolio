@@ -2,20 +2,50 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="w-full py-12 mt-12 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 md:px-8 text-center flex flex-col items-center">
-    
-    <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center mb-6">
-      <span class="w-2 h-2 rounded-full bg-accent-500 shadow-[0_0_10px_rgba(99,102,241,0.8)]"></span>
-    </span>
+<footer class="w-full py-20 bg-black/40 border-t border-white/5 relative overflow-hidden">
+  
+  <!-- Subtle Gradient Background to blend with Next-Gen section -->
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-950/20 opacity-30 pointer-events-none"></div>
 
-    <div class="text-xs font-mono tracking-widest uppercase text-surface-500 mb-2">
-      Creative Developer
+  <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col items-center relative z-10">
+    
+    <div class="flex items-center gap-4 mb-8">
+       <div class="w-10 h-[1px] bg-white/10"></div>
+       <span class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center p-2">
+         <svg class="text-white/20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z"/></svg>
+       </span>
+       <div class="w-10 h-[1px] bg-white/10"></div>
+    </div>
+
+    <div class="text-[10px] font-mono tracking-[0.5em] uppercase text-white/40 mb-4">
+      System Ready • Player 1 Authenticated
     </div>
     
-    <p class="text-surface-600 text-xs">
-      © {currentYear} David Schuchert. All rights reserved. Built with Astro & Tailwind.
+    <p class="text-white/20 text-[10px] uppercase font-bold tracking-widest mb-10 text-center">
+      © {currentYear} David Schuchert • BAD HERSFELD, DE • ALL RIGHTS RESERVED
     </p>
+
+    <!-- Legal Links in Technical Dashboard Style -->
+    <div class="flex flex-wrap justify-center gap-8 mb-4">
+      <a href="/impressum" class="group flex items-center gap-2">
+        <div class="w-6 h-6 rounded-sm border border-white/20 flex items-center justify-center text-[10px] font-black text-white/40 group-hover:border-white/60 group-hover:text-white transition-all">L</div>
+        <span class="text-[10px] font-bold uppercase text-white/20 tracking-widest group-hover:text-white transition-all">LEGAL / IMPRESSUM</span>
+      </a>
+      <a href="/datenschutz" class="group flex items-center gap-2">
+        <div class="w-6 h-6 rounded-sm border border-white/20 flex items-center justify-center text-[10px] font-black text-white/40 group-hover:border-white/60 group-hover:text-white transition-all">P</div>
+        <span class="text-[10px] font-bold uppercase text-white/20 tracking-widest group-hover:text-white transition-all">PRIVACY / DATENSCHUTZ</span>
+      </a>
+    </div>
+
+    <div class="mt-12 text-[8px] text-white/10 uppercase tracking-[1em] italic">
+       Execution Engine: Astro x Vite
+    </div>
 
   </div>
 </footer>
+
+<style>
+  footer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+</style>
