@@ -1,0 +1,295 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; 
+    margin: 0; 
+    padding: 0; 
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('img/5_background/desert.png');
+    background-position: center;
+    height: 100svh;
+    background-size: cover;
+    font-family: 'Bangers', cursive;
+    font-size: 78px;
+    color: #ffda18;
+    text-shadow: 3px 5px 0px rgba(0, 0, 0, 0.278);
+    text-decoration: underline;
+    margin: 0px;
+    justify-content: center;
+}
+h1{
+    margin: 16px;
+}
+.game {
+    background-color: black;
+    border-radius: 16px;
+    box-shadow: 3px 5px 0px rgba(0, 0, 0, 0.278);
+}
+
+.startscreen {
+    display: flex;
+    position: relative;
+}
+
+.startscreen img {
+    border-radius: 16px;
+    box-shadow: 3px 5px 0px rgba(0, 0, 0, 0.278);
+}
+
+.startbutton, .endbutton {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #d8d900;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.endscreen {
+    display:none;
+    background-image: url('img/5_background/first_half_background.png');
+    border-radius: 16px;
+    height: 480px;
+    width: 720px;
+    position: relative;
+}
+
+.endscreen img {
+    border-radius: 16px;
+    box-shadow: 3px 5px 0px rgba(0, 0, 0, 0.278);
+}
+.mute_button{
+    display:block;
+}
+.mute_button button{
+    border-radius: 16px;
+    background-color: #d8d900;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.mute_button img{
+   height: 35px; 
+}
+
+.unmute_button{
+    display:none;
+}
+.unmute_button button{
+    border-radius: 16px;
+    background-color: #d8d900;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.unmute_button img{
+   height: 35px; 
+}
+
+.buttons_left{
+    position: absolute;
+    top: 92%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    display: none;
+    gap: 16px;
+}
+.buttons_right{
+    position: absolute;
+    top: 92%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    display: none;
+    gap: 16px;
+}
+
+.Hud_Game{
+    position: relative;
+    display: none;
+}
+
+.Hud_Game button{
+    background-color: transparent;
+    height: 46px;
+    width: 46px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+
+}
+
+.Hud_Game button img{
+    height: 46px;
+    width: 46px;
+}
+
+.info{
+    
+        display: flex;
+        justify-content: space-between;
+        gap: 137px;
+        padding-bottom: 8px;
+        align-items: center;
+    
+}
+.controls{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-align: start;
+    font-size: 32px;
+}
+.rotate_device{
+    display:none;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.rotate_device img{
+        filter: invert(95%) sepia(100%) saturate(7497%) hue-rotate(357deg) brightness(106%) contrast(101%);
+        margin-top: 64px;
+        animation: rotation 2s infinite linear;
+        max-height: 128px;
+        max-width: 128px;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+@media (max-width: 770px){
+    h1{
+        font-size: 64px;
+    }
+}
+@media (max-width: 710px){
+.controls{
+    font-size: 28px;
+}
+}
+@media (max-width: 650px){
+    .info{
+        gap:64px;
+    }
+}
+@media (max-width: 570px){
+    .info{
+        gap:8px;
+    }
+    .controls{
+        font-size: 22px;
+    }
+    .rotate_device span{
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 470px){
+    .rotate_device span{
+        font-size: 48px;
+    }
+}
+
+/* Smartphone */
+@media only screen and (max-width: 720px){
+    .game{
+        display:none;
+    }
+    .startscreen{
+        display:none;
+    }
+    .startscreen img{
+        display:none;
+        display: none;
+    }
+    .endscreen img{
+        display:none;
+        display:none;
+    }
+    h1{
+        display:none;
+    }
+    .buttons_left{
+        display:none;
+    }
+    .buttons_right{
+        display:none;
+    }
+.rotate_device{
+    display:flex;
+}
+.info{
+    display:none;
+}
+}
+
+@media only screen and (max-height: 480px){
+    .game{
+        height: 100vh;
+        display:flex;
+    }
+    .startscreen img{
+        height: 100vh;
+        width: auto;
+    }
+    .endscreen{
+        height: 100vh;
+        width: auto;
+    }
+    .endscreen img{
+        height: 100vh;
+        width: auto;
+    }
+    h1{
+        display:none;
+    }
+    .buttons_left{
+        display:flex;
+    }
+    .buttons_right{
+        display:flex;
+    }
+    .rotate_device{
+        display:none;
+    }
+    .info{
+        display:none;
+    }
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: game.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: game.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Reference to the game's canvas element.
+ * @type {HTMLCanvasElement}
+ */
+let canvas;
+
+/**
+ * Reference to the game's world object.
+ * @type {Object}
+ */
+let world;
+
+/**
+ * Keyboard instance for tracking key states.
+ * @type {Keyboard}
+ */
+let keyboard = new Keyboard();
+
+/**
+ * Reference to the game's start button element.
+ * @type {HTMLElement}
+ */
+let startButton = document.getElementById("startbutton");
+
+
+
+/**
+ * Initializes the game by hiding the start screen and displaying the game canvas.
+ */
+function init() {
+  document.getElementById("startscreen").style.display = 'none';
+  document.getElementById("Hud_Game").style.display = 'block';
+  canvas = document.getElementById("canvas");
+  world = new World(canvas, keyboard);
+  addTouch();
+}
+
+/**
+ * Mutes all game sounds and displays the unmute button.
+ */
+function muteAllSounds(){
+  world.StopSounds = true;
+  world.bg_music.pause()
+  document.getElementById("unmutebutton").style.display = "block";
+  document.getElementById("mutebutton").style.display = "none";
+}
+/**
+ * Unmutes all game sounds and displays the mute button.
+ */
+function unmuteAllSounds(){
+  world.StopSounds = false;
+  world.bg_music.play()
+  document.getElementById("unmutebutton").style.display = "none";
+  document.getElementById("mutebutton").style.display = "block";
+}
+
+/** Thats the implementation of our Touch Controls for Smartphones */
+function addTouch() {
+  document.getElementById('btnLeft').addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      keyboard.LEFT = true;
+  });
+  document.getElementById('btnLeft').addEventListener('touchend', (event) => {
+      event.preventDefault();
+      keyboard.LEFT = false;
+  });
+  document.getElementById('btnJump').addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      keyboard.SPACE = true;
+  });
+  document.getElementById('btnJump').addEventListener('touchend', (event) => {
+      event.preventDefault();
+      keyboard.SPACE = false;
+  });
+  document.getElementById('btnRight').addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      keyboard.RIGHT = true;
+  });
+  document.getElementById('btnRight').addEventListener('touchend', (event) => {
+      event.preventDefault();
+      keyboard.RIGHT = false;
+  });
+  document.getElementById('btnThrow').addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      keyboard.D = true;
+  });
+  document.getElementById('btnThrow').addEventListener('touchend', (event) => {
+      event.preventDefault();
+      keyboard.D = false;
+  });
+}
+
+/**
+ * Event listener for keyboard keydown events.
+ * Sets the appropriate keyboard state based on the pressed key.
+ *
+ * @param {KeyboardEvent} e - The keydown event.
+ */
+
+document.addEventListener("keydown", (e) => {
+  if (e.keyCode == 39) {
+    keyboard.RIGHT = true;
+  }
+  if (e.keyCode == 68) {
+    keyboard.D = true;
+  }
+  if (e.keyCode == 37) {
+    keyboard.LEFT = true;
+  }
+  if (e.keyCode == 38) {
+    keyboard.UP = true;
+  }
+
+  if (e.keyCode == 40) {
+    keyboard.DOWN = true;
+  }
+
+  if (e.keyCode == 32) {
+    keyboard.SPACE = true;
+  }
+
+  console.log(e);
+});
+
+/**
+ * Event listener for keyboard keyup events.
+ * Resets the appropriate keyboard state based on the released key.
+ *
+ * @param {KeyboardEvent} e - The keyup event.
+ */
+
+document.addEventListener("keyup", (e) => {
+  if (e.keyCode == 39) {
+    keyboard.RIGHT = false;
+  }
+  if (e.keyCode == 68) {
+    keyboard.D = false;
+  }
+  if (e.keyCode == 37) {
+    keyboard.LEFT = false;
+  }
+  if (e.keyCode == 38) {
+    keyboard.UP = false;
+  }
+
+  if (e.keyCode == 40) {
+    keyboard.DOWN = false;
+  }
+
+  if (e.keyCode == 32) {
+    keyboard.SPACE = false;
+  }
+
+  console.log(e);
+});
+
+
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addTouch">addTouch</a></li><li><a href="global.html#canvas">canvas</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#keyboard">keyboard</a></li><li><a href="global.html#muteAllSounds">muteAllSounds</a></li><li><a href="global.html#startButton">startButton</a></li><li><a href="global.html#unmuteAllSounds">unmuteAllSounds</a></li><li><a href="global.html#world">world</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Oct 06 2023 11:08:04 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

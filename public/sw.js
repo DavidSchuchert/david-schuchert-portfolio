@@ -46,7 +46,8 @@ self.addEventListener('fetch', (event) => {
     fetch(event.request)
       .then((response) => {
         // Clone and cache successful responses
-        if (response.ok) {
+        // Skip caching partial content (status 206) as it's not supported by the Cache API
+        if (response.ok && response.status !== 206) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
         }

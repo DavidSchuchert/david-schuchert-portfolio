@@ -1,64 +1,66 @@
 ---
+import { Image } from 'astro:assets';
+import vmtImg from '../assets/projects/vmt.png';
+import joinImg from '../assets/projects/join.png';
+import pokedexImg from '../assets/projects/pokedex.png';
+import pollolocoImg from '../assets/projects/polloloco.png';
+
 const projects = [
   {
+    "title": "VereinsManagement",
+    "desc": "Specialized Laravel SaaS platform for managing complex club logic and administrative workflows. My most comprehensive architectural challenge.",
+    "pts": "200G",
+    "icon": '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>',
+    "unlocked": "Unlocked 2024",
+    "link": "https://vmt.david-schuchert.de/",
+    "github": "https://github.com/DavidSchuchert/VereinsManagementTool-Laravel",
+    "coverGradient": "from-green-700 to-emerald-500",
+    "preview": vmtImg
+  },
+  {
     "title": "hermes-webui",
-    "desc": "Agentic AI Interface for LLM workflows, offering a sophisticated control layer for autonomous models.",
+    "desc": "Agentic AI Interface for LLM workflows, offering a sophisticated control layer for autonomous models and agentic logic.",
     "pts": "150G",
     "icon": '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>',
     "unlocked": "Unlocked 2025",
     "link": "#",
     "github": "https://github.com/DavidSchuchert/hermes-webui",
-    "coverGradient": "from-blue-600 to-cyan-500"
-  },
-  {
-    "title": "Ring of Fire",
-    "desc": "Online multiplayer drinking card game built with Angular and Firebase for real-time synchronization.",
-    "pts": "100G",
-    "icon": '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
-    "unlocked": "Unlocked 2024",
-    "link": "https://ring-of-fire-8ec56.web.app/",
-    "github": "https://github.com/DavidSchuchert/ringoffire",
-    "coverGradient": "from-orange-500 to-red-600"
+    "coverGradient": "from-blue-600 to-cyan-500",
+    "preview": vmtImg,
+    "isAi": true
   },
   {
     "title": "Join",
-    "desc": "Kanban-inspired task manager with drag-and-drop mechanics, user assignment, and category filters.",
-    "pts": "80G",
+    "desc": "Kanban-inspired task manager with drag-and-drop mechanics, user assignment, and category filters. Built with modern JS.",
+    "pts": "100G",
     "icon": '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>',
     "unlocked": "Unlocked 2022",
-    "link": "https://david-schuchert.de/projects/join/index.html",
+    "link": "/projects/join/index.html",
     "github": "https://github.com/DavidSchuchert/Join_David",
-    "coverGradient": "from-indigo-600 to-blue-700"
-  },
-  {
-    "title": "El Pollo Loco",
-    "desc": "Object-oriented Jump-and-Run adventure. Combat killer chickens while collecting salsa power-ups.",
-    "pts": "60G",
-    "icon": '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>',
-    "unlocked": "Unlocked 2022",
-    "link": "https://david-schuchert.de/projects/polloloco/index.html",
-    "github": "https://github.com/DavidSchuchert/ElPoloLoco",
-    "coverGradient": "from-yellow-400 to-orange-600"
+    "coverGradient": "from-indigo-600 to-blue-700",
+    "preview": joinImg
   },
   {
     "title": "Pokédex",
-    "desc": "REST API library indexing Pokémon data with PokéAPI integration for comprehensive search capability.",
-    "pts": "40G",
+    "desc": "REST API library indexing Pokémon data with PokéAPI integration for comprehensive search capability and retro UI.",
+    "pts": "50G",
     "icon": '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>',
     "unlocked": "Unlocked 2021",
-    "link": "https://david-schuchert.de/projects/PokeDex/",
+    "link": "/projects/PokeDex/index.html",
     "github": "https://github.com/DavidSchuchert/Pokedex",
-    "coverGradient": "from-red-600 to-rose-700"
+    "coverGradient": "from-red-600 to-rose-700",
+    "preview": pokedexImg
   },
   {
-    "title": "VereinsManagement",
-    "desc": "Specialized Laravel SaaS platform for managing complex club logic and administrative workflows.",
-    "pts": "20G",
-    "icon": '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>',
-    "unlocked": "Unlocked 2024",
-    "link": "#",
-    "github": "https://github.com/DavidSchuchert/VereinsManagementTool-Laravel",
-    "coverGradient": "from-green-700 to-emerald-500"
+    "title": "El Pollo Loco",
+    "desc": "Object-oriented Jump-and-Run adventure. Combat killer chickens while collecting salsa power-ups. A JS classic.",
+    "pts": "25G",
+    "icon": '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>',
+    "unlocked": "Unlocked 2022",
+    "link": "/projects/polloloco/index.html",
+    "github": "https://github.com/DavidSchuchert/ElPoloLoco",
+    "coverGradient": "from-yellow-400 to-orange-600",
+    "preview": pollolocoImg
   }
 ];
 
@@ -66,7 +68,7 @@ const systemSpecs = [
   { label: 'OS Version', value: 'Astro v5.0.0 "Starlight"' },
   { label: 'System Kernel', value: 'Vite v6.0.0 / Node.js 20' },
   { label: 'UI Engine', value: 'TailwindCSS v3.4 "Hyper-Speed"' },
-  { label: 'Graphics', value: 'Nostalgic 16-bit / 32-bit Hybrid' },
+  { label: 'Production Mode', value: 'Dockerized SSR (Port 8486)' },
   { label: 'Developer', value: 'David Schuchert (Player 1)' },
   { label: 'Achievements', value: '100% Finalized UX' },
 ];
@@ -94,15 +96,34 @@ const systemSpecs = [
         {projects.map(proj => (
           <div class="achievement-card flex flex-col bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-4 border-[#fff] overflow-hidden hover:scale-[1.02] transition-transform duration-300 group">
             <!-- Mystery Header: Scanning Data Animation -->
-            <div class={`w-full h-40 bg-gray-900 relative overflow-hidden flex items-center justify-center shadow-inner`}>
-              <div class={`absolute inset-0 bg-gradient-to-br ${proj.coverGradient} opacity-30`}></div>
-              <div class="absolute inset-0 scan-lines opacity-20"></div>
-              <div class="data-grid absolute inset-0 opacity-20"></div>
+            <div class={`w-full h-48 bg-gray-900 relative overflow-hidden flex items-center justify-center shadow-inner`}>
+              <!-- Project Preview Image -->
+              <div class="absolute inset-0 z-0">
+                <Image 
+                   src={proj.preview} 
+                   alt={proj.title}
+                   width={800}
+                   height={450}
+                   class={`w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 ${proj.isAi ? 'grayscale opacity-40 blur-[2px] contrast-150' : 'opacity-80'}`}
+                />
+              </div>
+
+              <!-- Overlays -->
+              <div class={`absolute inset-0 bg-gradient-to-br ${proj.coverGradient} mix-blend-multiply opacity-40 group-hover:opacity-20 transition-opacity`}></div>
+              <div class="absolute inset-0 scan-lines opacity-20 pointer-events-none"></div>
+              <div class="data-grid absolute inset-0 opacity-10 pointer-events-none"></div>
               
-              <div class="w-16 h-16 bg-black/40 backdrop-blur-md rounded-2xl flex items-center justify-center border-2 border-white/20 transform group-hover:scale-110 transition-all duration-500 z-10" set:html={proj.icon.replace('text-[#8eb837]', 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]')}></div>
+              <!-- Floating Icon in Glass Container -->
+              <div class="w-16 h-16 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center border-2 border-white/30 transform group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 z-10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]" set:html={proj.icon.replace('text-[#8eb837]', 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]')}></div>
               
-              <div class="absolute bottom-2 right-4 text-white/40 text-[10px] font-black uppercase tracking-[0.3em] font-mono animate-pulse">
-                [CLASSIFIED_DATA]
+              {proj.isAi && (
+                <div class="absolute top-2 left-4 text-[#8eb837] text-[8px] font-black uppercase tracking-tighter bg-black/60 px-2 py-1 rounded backdrop-blur-md z-10 animate-pulse">
+                  NEURAL_LINK_ACTIVE
+                </div>
+              )}
+
+              <div class="absolute bottom-2 right-4 text-white/60 text-[9px] font-black uppercase tracking-[0.3em] font-mono z-10">
+                [PROJECT_SCAN_{proj.pts}]
               </div>
             </div>
 
@@ -125,8 +146,12 @@ const systemSpecs = [
                     <span class="text-[8px] font-black text-gray-400 opacity-0 group-hover/btn:opacity-100 transition-opacity">SOURCE</span>
                   </div>
                   <div class="flex flex-col items-center gap-1 group/btn">
-                    <a href={proj.link === '#' ? 'javascript:void(0)' : proj.link} target={proj.link === '#' ? '_self' : '_blank'} class="w-12 h-12 rounded-full bg-gradient-to-b from-green-400 to-green-700 border-[3px] border-white shadow-xl flex items-center justify-center text-white text-xl hover:scale-110 active:scale-90 transition-all font-black">A</a>
-                    <span class="text-[8px] font-black text-gray-400 opacity-0 group-hover/btn:opacity-100 transition-opacity">LIVE</span>
+                    {proj.link === '#' ? (
+                      <div class="w-12 h-12 rounded-full bg-gray-400 border-[3px] border-white shadow-md flex items-center justify-center text-gray-200 text-xl cursor-not-allowed font-black opacity-50">A</div>
+                    ) : (
+                      <a href={proj.link} target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-b from-green-400 to-green-700 border-[3px] border-white shadow-xl flex items-center justify-center text-white text-xl hover:scale-110 active:scale-90 transition-all font-black">A</a>
+                    )}
+                    <span class="text-[8px] font-black text-gray-400 opacity-0 group-hover/btn:opacity-100 transition-opacity">{proj.link === '#' ? 'LOCKED' : 'LIVE'}</span>
                   </div>
                 </div>
               </div>
