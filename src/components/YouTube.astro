@@ -33,11 +33,7 @@ const emptySlots = Array(15 - memorySlots.length).fill(null);
 
   <!-- HUD INTERFACE (Architectural Edges) -->
   <div class="absolute inset-0 pointer-events-none p-4 md:p-12 transition-opacity duration-500 group/hud z-20">
-    <!-- Corners -->
-    <div class="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/20"></div>
-    <div class="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/20"></div>
-    <div class="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-white/20"></div>
-    <div class="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-white/20"></div>
+    <!-- Corners Removed per user request -->
     
     <!-- Technical Readouts -->
     <div class="absolute top-10 left-24 hidden md:flex flex-col gap-1">
@@ -124,11 +120,7 @@ const emptySlots = Array(15 - memorySlots.length).fill(null);
   <div id="memcard-overlay" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center p-4 md:p-12">
     <div class="max-w-6xl w-full h-full bg-[#1a1a2a]/60 border border-white/20 relative flex flex-col items-center p-8 backdrop-blur-2xl shadow-[0_0_100px_rgba(0,0,0,0.8)] overflow-hidden">
       
-      <!-- Overlay HUD Edges -->
-      <div class="absolute inset-0 pointer-events-none opacity-40">
-        <div class="absolute top-10 left-10 w-24 h-24 border-t-2 border-l-2 border-cyan-400"></div>
-        <div class="absolute bottom-10 right-10 w-24 h-24 border-b-2 border-r-2 border-magenta-400"></div>
-      </div>
+      <!-- Overlay HUD Edges Removed per user request -->
 
       <div class="w-full flex flex-col md:flex-row items-center justify-between mb-12 gap-4 relative z-10">
          <div class="flex flex-col">
@@ -142,7 +134,7 @@ const emptySlots = Array(15 - memorySlots.length).fill(null);
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 w-full flex-1 mb-12 overflow-y-auto overflow-x-hidden pr-2 custom-scrollbar relative z-10 p-2">
         
         {memorySlots.map((slot, index) => (
-          <div class="group relative aspect-square bg-white/[0.05] border border-white/20 hover:border-cyan-400 hover:bg-white/[0.1] transition-all p-2 md:p-4 flex flex-col items-center justify-center cursor-help shadow-lg overflow-hidden">
+          <div class="group relative aspect-square bg-white/[0.05] border border-white/20 hover:border-cyan-400 hover:bg-white/[0.1] transition-all p-2 md:p-4 flex flex-col items-center justify-center cursor-help shadow-lg">
             <div class={`w-12 h-12 md:w-24 md:h-24 ${slot.color} rounded-sm mb-2 md:mb-4 shadow-[0_0_40px_rgba(0,0,0,0.9),0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center border-2 border-white/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                <span class="text-white font-black text-2xl md:text-4xl drop-shadow-[2px_2px_4px_rgba(0,0,0,0.5)] select-none uppercase">{slot.icon}</span>
             </div>
