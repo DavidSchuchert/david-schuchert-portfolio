@@ -56,15 +56,16 @@ const allSkills = skillCategories.flatMap(cat => cat.skills.map(s => ({...s, cat
 <section class="smash-skills w-full min-h-screen py-20 px-4 md:px-8 bg-[#111] relative flex flex-col items-center justify-center overflow-hidden">
   
   <!-- Background patterns -->
-  <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+  <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#fff 1.5px, transparent 1.5px); background-size: 20px 20px;"></div>
+  <div class="absolute inset-0 scanlines pointer-events-none opacity-20"></div>
   
   <div class="max-w-6xl w-full relative z-10">
     <!-- Header: CHOOSE YOUR CHARACTER -->
-    <div class="text-center mb-12">
-      <h2 class="smash-font text-3xl md:text-5xl italic font-black text-white uppercase tracking-tighter drop-shadow-[4px_4px_0_#ff0055]">
-        Choose Your Tech Stack
+    <div class="text-center mb-12 relative">
+      <h2 class="smash-font text-3xl md:text-5xl italic font-black text-white uppercase tracking-tighter drop-shadow-[2px_2px_0_#ff0055] drop-shadow-blue">
+        CHOOSE YOUR CHARACTER
       </h2>
-      <div class="h-2 w-full bg-gradient-to-r from-transparent via-[#ff0055] to-transparent mt-4 shadow-[0_0_20px_#ff0055]"></div>
+      <div class="h-1 w-full bg-gradient-to-r from-transparent via-[#ff0055] to-transparent mt-4"></div>
     </div>
 
     <!-- The Character Roster Grid -->
@@ -155,8 +156,21 @@ const allSkills = skillCategories.flatMap(cat => cat.skills.map(s => ({...s, cat
   }
 
   .skill-box:hover {
-    box-shadow: 0 0 20px #ff0055;
+    box-shadow: 0 0 15px #ff0055;
     z-index: 20;
+  }
+
+  .drop-shadow-blue {
+    filter: drop-shadow(-2px -2px 0 #00ffff);
+  }
+
+  .scanlines {
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    background-attachment: fixed;
   }
 </style>
 

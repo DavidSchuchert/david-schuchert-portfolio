@@ -13,8 +13,8 @@
       <span class="text-xs md:text-sm text-[#00ff00] px-2 py-1 bg-black/40 border border-[#00ff00]/40 rounded-sm drop-shadow-[0_0_5px_#00ff00] pixel-font tracking-widest font-black">CREDIT 99</span>
     </div>
 
-    <h1 class="pixel-font font-black tracking-widest text-[#ffffff] text-[2.5rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] leading-none mb-6 relative z-10 glitch retro-shadow" data-text="David.">
-      David.
+    <h1 class="pixel-font font-black tracking-[0.2em] text-[#ffffff] text-[2.5rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] leading-none mb-6 relative z-10 glitch retro-shadow" data-text="David.">
+      David<span class="inline-block translate-y-[0.1em]">.</span>
     </h1>
 
     <p class="pixel-font text-xs md:text-sm text-gray-300 mb-16 leading-relaxed max-w-xl">
@@ -59,10 +59,12 @@
   .scanlines {
     background: linear-gradient(
       rgba(18, 16, 16, 0) 50%,
-      rgba(0, 0, 0, 0.15) 50%
+      rgba(0, 0, 0, 0.1) 50%
     );
     background-size: 100% 4px;
     z-index: 100;
+    pointer-events: none;
+    background-attachment: fixed;
   }
 
   @keyframes flicker {

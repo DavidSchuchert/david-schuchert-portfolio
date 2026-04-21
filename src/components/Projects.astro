@@ -74,7 +74,10 @@ const systemSpecs = [
 ];
 ---
 
-<section id="era-hd" class="xbox-blade w-full min-h-[90vh] py-20 px-4 md:px-8 bg-gradient-to-b from-[#e6e7eb] to-[#b3b6c2] text-[#333] overflow-hidden relative border-t-8 border-indigo-900 shadow-[0_-10px_20px_rgba(0,0,0,0.2)]">
+<section id="era-hd" class="xbox-blade w-full min-h-[90vh] py-32 px-4 md:px-8 bg-gradient-to-b from-[#e6e7eb] to-[#b3b6c2] text-[#333] overflow-hidden relative border-t-[12px] border-indigo-900 shadow-[0_-20px_40px_rgba(0,0,0,0.3)]">
+  
+  <!-- Subtle blade overlap to smooth transition -->
+  <div class="absolute top-0 left-0 w-full h-8 bg-indigo-900/10 pointer-events-none"></div>
   
   <div class="max-w-7xl mx-auto flex flex-col h-full">
     
@@ -92,7 +95,7 @@ const systemSpecs = [
     <div class="relative flex-1 min-h-[600px]">
       
       <!-- TAB 1: GAMES (Achievements) -->
-      <div id="tab-games" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 translate-x-0 opacity-100">
+      <div id="tab-games" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 transition-all duration-500 translate-x-0 opacity-100">
         {projects.map(proj => (
           <div class="achievement-card flex flex-col bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-4 border-[#fff] overflow-hidden hover:scale-[1.02] transition-transform duration-300 group">
             <!-- Mystery Header: Scanning Data Animation -->
