@@ -6,8 +6,9 @@ const projects = [
     pts: '100G',
     icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>',
     unlocked: 'Unlocked 2025',
-    link: '#',
-    github: 'https://github.com/DavidSchuchert/hermes-webui'
+    link: '#', // The user hasn't provided live links, they just mentioned they were missing.
+    github: 'https://github.com/DavidSchuchert/hermes-webui',
+    coverGradient: 'from-blue-600 to-cyan-500' // AI Agent theme
   },
   {
     title: 'VereinsManagement',
@@ -16,7 +17,8 @@ const projects = [
     icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>',
     unlocked: 'Unlocked 2024',
     link: '#',
-    github: 'https://github.com/DavidSchuchert/VereinsManagementTool-Laravel'
+    github: 'https://github.com/DavidSchuchert/VereinsManagementTool-Laravel',
+    coverGradient: 'from-green-700 to-emerald-500' // Laravel / Sports theme
   },
   {
     title: 'Join',
@@ -25,7 +27,8 @@ const projects = [
     icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>',
     unlocked: 'Unlocked 2022',
     link: '#',
-    github: 'https://github.com/DavidSchuchert/Join_Angular'
+    github: 'https://github.com/DavidSchuchert/Join_Angular',
+    coverGradient: 'from-orange-500 to-amber-600' // Firebase / Kanban theme
   },
   {
     title: 'El Pollo Loco',
@@ -34,7 +37,8 @@ const projects = [
     icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
     unlocked: 'Unlocked 2022',
     link: '#',
-    github: 'https://github.com/DavidSchuchert/el-pollo-loco'
+    github: 'https://github.com/DavidSchuchert/el-pollo-loco',
+    coverGradient: 'from-amber-400 to-yellow-600' // Desert chicken theme
   },
   {
     title: 'Pokédex',
@@ -43,68 +47,82 @@ const projects = [
     icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>',
     unlocked: 'Unlocked 2021',
     link: '#',
-    github: 'https://github.com/DavidSchuchert/Pokedex'
+    github: 'https://github.com/DavidSchuchert/Pokedex',
+    coverGradient: 'from-red-600 to-rose-700' // Pokedex Red theme
   }
 ];
 ---
 
 <section class="xbox-blade w-full min-h-[80vh] py-20 px-4 md:px-8 bg-gradient-to-b from-[#e6e7eb] to-[#b3b6c2] text-[#333]">
   
-  <div class="max-w-6xl mx-auto">
+  <div class="max-w-7xl mx-auto">
     
     <!-- Top Nav Blade Style -->
     <div class="flex items-center gap-2 mb-10 w-full overflow-hidden border-b-2 border-white shadow-sm pb-4">
       <div class="h-10 px-8 rounded-t-[20px] bg-gradient-to-b from-[#8eb837] to-[#71952a] flex items-center shadow-inner text-white font-bold text-lg">
-        Achievements
-      </div>
-      <div class="h-10 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold opacity-50">
-        Games
+        Achievements & Games
       </div>
       <div class="h-10 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold opacity-50">
         Media
       </div>
+      <div class="h-10 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold opacity-50">
+        System
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+    <!-- Redesigned Grid: Larger Game Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
       
       {projects.map(proj => (
-        <div class="achievement-card relative block bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-2 border-[#fff] overflow-hidden hover:scale-105 transition-transform duration-300">
+        <div class="achievement-card flex flex-col bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-4 border-[#fff] overflow-hidden hover:scale-[1.02] transition-transform duration-300 group">
           
-          <!-- Gloss highlight -->
-          <div class="h-1/2 w-full bg-gradient-to-b from-white/80 to-transparent absolute top-0 left-0 pointer-events-none rounded-t-xl"></div>
+          <!-- Box Art / Preview Screen (Massive Top Header) -->
+          <div class={`w-full h-48 bg-gradient-to-br ${proj.coverGradient} relative overflow-hidden flex items-center justify-center shadow-inner`}>
+            
+            <!-- Diagonal stripes overlay to mimic game case / cyber texture -->
+            <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDRMNCAwTDggNEw0IDhaIiBmaWxsPSIjMDAwIj48L3BhdGg+Cjwvc3ZnPg==')]"></div>
 
-          <div class="p-6 relative z-10 flex flex-col h-full">
-            <div class="flex items-center gap-4 mb-4">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#e0e0e0] to-[#b0b0b0] border-4 border-[#8eb837] flex items-center justify-center shadow-inner shrink-0" set:html={proj.icon}>
-              </div>
-              <div>
-                <h3 class="font-bold text-xl text-gray-800 leading-tight">{proj.title}</h3>
-                <span class="text-[#8eb837] font-black text-lg">{proj.pts}</span>
-              </div>
+            <!-- Central Holographic Icon representing Live Preview -->
+            <div class="w-20 h-20 bg-black/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 z-10" set:html={proj.icon.replace('text-[#8eb837]', 'text-white drop-shadow-lg')}>
             </div>
             
-            <p class="text-gray-600 text-sm flex-1 mb-6 focus-text-fix">{proj.desc}</p>
+            <!-- Inserted Text to indicate Live Preview Space -->
+            <div class="absolute bottom-2 right-4 text-white/50 text-[10px] font-bold uppercase tracking-widest hidden group-hover:block">
+              [Live Preview Space]
+            </div>
+
+            <!-- Gloss highlight overlay simulating plastic cover -->
+            <div class="h-full w-1/2 bg-gradient-to-r from-white/20 to-transparent absolute top-0 left-0 pointer-events-none transform -skew-x-12 -translate-x-10"></div>
+          </div>
+
+          <!-- Bottom Console Info Pane -->
+          <div class="p-6 relative z-10 flex flex-col flex-1 bg-gradient-to-b from-[#f8f9fa] to-[#e9ecef]">
             
-            <div class="flex items-center justify-between gap-4">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-bold text-2xl text-gray-800 leading-tight">{proj.title}</h3>
+              <span class="text-[#8eb837] font-black text-xl shrink-0">{proj.pts}</span>
+            </div>
+            
+            <p class="text-gray-600 text-[15px] flex-1 mb-6 focus-text-fix font-medium leading-relaxed">{proj.desc}</p>
+            
+            <div class="flex items-center justify-between gap-4 mt-auto">
               
               <!-- Achievement Progress Bar -->
-              <div class="flex-1 bg-gray-200 h-6 rounded-full flex items-center px-3 justify-between">
-                <span class="text-[10px] uppercase font-bold text-gray-500">{proj.unlocked}</span>
-                <div class="w-8 h-2 rounded-full bg-[#8eb837]"></div>
+              <div class="flex-1 bg-gray-300/80 h-8 rounded-full flex items-center px-4 justify-between shadow-inner">
+                <span class="text-xs uppercase font-bold text-gray-600">{proj.unlocked}</span>
+                <div class="w-10 h-3 rounded-full bg-gradient-to-r from-[#8eb837] to-[#60801e] shadow-sm"></div>
               </div>
 
               <!-- Links -->
               <div class="flex gap-2 shrink-0">
                 {proj.github && (
-                  <a href={proj.github} target="_blank" class="w-8 h-8 rounded-full bg-gradient-to-b from-[#1c98db] to-[#125d88] border-[3px] border-[#c0cbdb] shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),_0_2px_4px_rgba(0,0,0,0.4)] flex items-center justify-center text-white font-black text-sm hover:scale-110 active:scale-95 transition-transform" title="GitHub">
+                  <a href={proj.github} target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-b from-[#1c98db] to-[#125d88] border-[3px] border-[#c0cbdb] shadow-[inset_0_2px_4px_rgba(255,255,255,0.6),_0_3px_5px_rgba(0,0,0,0.5)] flex items-center justify-center text-white font-black text-lg hover:scale-110 active:scale-95 transition-transform" title="GitHub">
                     X
                   </a>
                 )}
-                {proj.link !== '#' && (
-                  <a href={proj.link} target="_blank" class="w-8 h-8 rounded-full bg-gradient-to-b from-[#76b900] to-[#4c7a00] border-[3px] border-[#c0cbdb] shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),_0_2px_4px_rgba(0,0,0,0.4)] flex items-center justify-center text-white font-black text-sm hover:scale-110 active:scale-95 transition-transform" title="Live Preview">
-                    A
-                  </a>
-                )}
+                <a href={proj.link === '#' ? 'javascript:alert("Live preview currently offline/unavailable.")' : proj.link} target={proj.link === '#' ? '_self' : '_blank'} class="w-10 h-10 rounded-full bg-gradient-to-b from-[#76b900] to-[#4c7a00] border-[3px] border-[#c0cbdb] shadow-[inset_0_2px_4px_rgba(255,255,255,0.6),_0_3px_5px_rgba(0,0,0,0.5)] flex items-center justify-center text-white font-black text-lg hover:scale-110 active:scale-95 transition-transform" title="Live Preview">
+                  A
+                </a>
               </div>
 
             </div>
