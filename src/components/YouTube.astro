@@ -1,48 +1,83 @@
 ---
 ---
 
-<section class="ps1-youtube w-full bg-black flex justify-center py-10 px-4 md:px-8">
+<section class="ps1-bios w-full py-20 px-4 md:px-8 flex flex-col items-center justify-center overflow-hidden relative">
   
-  <div class="max-w-3xl w-full">
+  <!-- Floating background squares (PS1 Bios aesthetic) -->
+  <div class="absolute inset-0 pointer-events-none opacity-20">
+    <div class="absolute top-1/4 left-1/4 w-32 h-32 border-4 border-[#00FFFF] transform rotate-45"></div>
+    <div class="absolute top-1/2 right-1/4 w-24 h-24 border-4 border-[#FF00FF] transform rotate-12"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-40 h-40 border-4 border-[#FFFF00] transform -rotate-12"></div>
+  </div>
+
+  <div class="max-w-4xl w-full relative z-10 flex flex-col items-center">
     
-    <!-- Emulating a PS1 Sony Memory Card or save slot -->
-    <div class="ps1-memory-card w-full bg-[#8c8c8c] p-1 shadow-[4px_4px_0_#000] border-t-2 border-l-2 border-[#d0d0d0] border-b-2 border-r-2 border-[#404040]">
+    <!-- Sony BIOS Text Vibe -->
+    <div class="text-center mb-16">
+      <h2 class="text-2xl md:text-3xl text-white tracking-[0.3em] font-bold ps1-bios-font mb-2 drop-shadow-[0_2px_4px_#000]">
+        HOCHDRUCK 3D
+      </h2>
+      <p class="text-xs text-[#a0a0ff] uppercase tracking-widest ps1-bios-font">
+        Computer Entertainment
+      </p>
+    </div>
+
+    <!-- The Two Classic Console Buttons: Memory Card & CD Player -->
+    <div class="flex flex-col md:flex-row items-center justify-center gap-10 w-full mb-8">
       
-      <div class="bg-[#2a2a2a] w-full p-6 pb-8 border-2 border-[#1a1a1a] flex flex-col md:flex-row items-center gap-6">
-        
-        <!-- Retro CD / Memory Icon Placeholder -->
-        <div class="shrink-0 w-24 h-24 bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border-2 border-[#555] rounded-sm flex items-center justify-center p-2 shadow-inner">
-          <svg class="w-12 h-12 text-[#ff0000] drop-shadow-[0_0_5px_rgba(255,0,0,0.8)]" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-          </svg>
+      <!-- Memory Card (Decorative) -->
+      <div class="ps1-button w-48 h-48 rounded-lg flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.8)] border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.8)] cursor-default">
+        <div class="w-16 h-20 bg-gray-300 border-b-4 border-gray-500 rounded-sm mb-4 flex items-start justify-center pt-2 shadow-[2px_2px_0_#000]">
+           <div class="w-12 h-6 bg-black opacity-80"></div>
         </div>
-
-        <div class="flex-1 flex flex-col">
-          <div class="flex items-end justify-between border-b-2 border-[#444] pb-2 mb-3">
-            <h3 class="text-xl md:text-2xl text-white uppercase tracking-widest ps1-font">HOCHDRUCK 3D</h3>
-            <span class="text-[#ffb74d] ps1-font text-sm">SLOT 1</span>
-          </div>
-          
-          <p class="text-[#ccc] ps1-font text-sm leading-relaxed mb-6">
-            Hardware, 3D-Druck und DIY Tech-Projekte. <br />
-            Lade Spielstand...
-          </p>
-          
-          <a href="https://youtube.com/c/hochdruck3d" target="_blank" class="self-start relative inline-block bg-[#404040] border-t-2 border-l-2 border-[#8c8c8c] border-b-2 border-r-2 border-[#202020] px-6 py-2 active:border-t-[#202020] active:border-l-[#202020] active:border-b-[#8c8c8c] active:border-r-[#8c8c8c] text-[#fff] uppercase ps1-font text-xs tracking-wider hover:text-[#ff0000] transition-colors">
-            Kanal ansehen
-          </a>
-        </div>
-
+        <span class="ps1-bios-font text-[#ffeb3b] text-sm tracking-widest drop-shadow-[1px_1px_0_#000]">MEMORY CARD</span>
       </div>
+
+      <!-- CD Player (YouTube Link) -->
+      <a href="https://youtube.com/c/hochdruck3d" target="_blank" class="ps1-button w-48 h-48 rounded-lg flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.8)] border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.8)] hover:scale-110 transition-transform duration-300">
+        <!-- CD Graphic -->
+        <div class="w-20 h-20 rounded-full border-[8px] border-gray-200 bg-gradient-to-tr from-[#ff00ff] via-[#00ffff] to-[#ffff00] flex items-center justify-center mb-4 shadow-[2px_2px_0_#000]">
+           <div class="w-4 h-4 rounded-full bg-black"></div>
+        </div>
+        <span class="ps1-bios-font text-[#00e5ff] text-sm tracking-widest drop-shadow-[1px_1px_0_#000] text-center px-2">CD PLAYER<br/><span class="text-[10px] text-white">YOUTUBE</span></span>
+      </a>
 
     </div>
 
+    <!-- Description Text (Emulating BIOS messages) -->
+    <div class="mt-8 text-center bg-[#00000080] border border-[#a0a0ff] p-4 min-w-[300px]">
+      <p class="ps1-bios-font text-[#ffffff] text-sm tracking-wider blink-text">
+        Please insert 3D Printing media.
+      </p>
+    </div>
+
   </div>
+
 </section>
 
 <style>
-  .ps1-font {
-    font-family: 'Times New Roman', Times, serif;
-    letter-spacing: 0.05em;
+  .ps1-bios-font {
+    font-family: 'Arial', sans-serif;
+    /* PS1 bios font is usually a very basic sans-serif like Arial/Helvetica, bold, with huge letter spacing */
+    font-weight: bold;
+  }
+
+  .ps1-bios {
+    background: radial-gradient(circle at center, #1b269b 0%, #000018 80%);
+    box-shadow: inset 0 0 50px #000;
+  }
+
+  .ps1-button {
+    background: linear-gradient(135deg, rgba(80,80,200,0.4) 0%, rgba(20,20,80,0.8) 100%);
+    backdrop-filter: blur(4px);
+  }
+
+  .blink-text {
+    animation: blink 2s infinite;
+  }
+
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
   }
 </style>
