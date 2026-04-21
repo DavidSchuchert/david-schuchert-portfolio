@@ -3,72 +3,115 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-color: #000000;
+    --text-primary: #ffffff;
+    --text-muted: #888888;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    /* For the spotlight cursor effect */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+  }
+
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
   }
 
   body {
-    @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    /* Hide scrollbar for a cleaner look */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Deep intense background glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(99, 102, 241, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(200, 50, 150, 0.05), transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Subtle noise */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply relative overflow-hidden px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200;
+  /* Bento Box / Glassmorphism Cards */
+  .bento-card {
+    @apply relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-md transition-all duration-300;
   }
 
-  .btn-secondary {
-    @apply px-6 py-3 border-2 border-amber-500 text-amber-500 font-semibold rounded-lg hover:bg-amber-500 hover:text-white transition-all duration-200;
+  .bento-card::before {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none;
+    content: '';
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+    z-index: 1;
   }
 
-  .card {
-    @apply bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6;
+  /* Spotlight border glow */
+  .bento-card::after {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none rounded-3xl;
+    content: '';
+    padding: 1px;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 2;
   }
 
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-2 gradient-text;
+  .bento-card:hover::before,
+  .bento-card:hover::after {
+    @apply opacity-100;
   }
 
-  .ascii-box {
-    @apply font-mono text-sm text-gray-600 dark:text-gray-400 border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-gray-100 dark:bg-gray-900;
+  .bento-content {
+    @apply relative z-10 p-8 h-full flex flex-col;
+  }
+
+  /* Buttons */
+  .btn-glass {
+    @apply relative inline-flex items-center justify-center px-6 py-3 rounded-full bg-white/[0.05] border border-white/10 hover:bg-white/[0.1] hover:border-white/20 transition-all text-sm font-medium tracking-wide backdrop-blur-sm;
   }
 }
 
 @layer utilities {
-  .animate-delay-100 { animation-delay: 100ms; }
-  .animate-delay-200 { animation-delay: 200ms; }
-  .animate-delay-300 { animation-delay: 300ms; }
-  .animate-delay-400 { animation-delay: 400ms; }
-  .animate-delay-500 { animation-delay: 500ms; }
-
-  .gradient-border {
-    @apply relative;
+  .text-glow {
+    text-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/50;
   }
 
-  .gradient-border::before {
-    content: '';
-    @apply absolute inset-0 rounded-xl p-px bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 -z-10;
+  .text-balance {
+    text-wrap: balance;
   }
+}
 
-  .btn-ripple {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-ripple::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-    transform: scale(0);
-    opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-
-  .btn-ripple:active::after {
-    transform: scale(2);
-    opacity: 1;
-    transition: 0s;
-  }
+::selection {
+  @apply bg-accent-500 text-white;
 }

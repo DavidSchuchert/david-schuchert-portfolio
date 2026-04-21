@@ -10,15 +10,31 @@ import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="David Schuchert — Full-Stack Developer & Dozent">
+<Layout title="David. — Player 1">
   <Header />
-  <main id="main-content">
-    <Hero />
-    <About />
-    <Skills />
-    <Projects />
-    <YouTube />
-    <Contact />
+  
+  <main class="w-full flex flex-col font-sans">
+    <div id="era-8bit" class="w-full">
+      <Hero />
+    </div>
+
+    <div id="era-16bit" class="w-full">
+      <About />
+    </div>
+
+    <div id="era-32bit" class="w-full">
+      <Skills />
+    </div>
+
+    <div id="era-hd" class="w-full">
+      <Projects />
+    </div>
+
+    <div id="era-nextgen" class="w-full">
+      <YouTube />
+      <Contact />
+    </div>
   </main>
+
   <Footer />
 </Layout>

@@ -1,149 +1,76 @@
 ---
 import SEO from '../components/SEO.astro';
 import Analytics from '../components/Analytics.astro';
+import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Full-Stack Developer & Dozent bei DBE-Academy. TypeScript, React, Laravel, und alles was mit Web zu tun hat." } = Astro.props;
+const { title, description = "Creative Developer & Dozent. Building next-gen web experiences." } = Astro.props;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "David Schuchert",
-  "jobTitle": "Full-Stack Developer & Dozent",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "DBE-Academy"
-  },
+  "jobTitle": "Creative Developer & Dozent",
   "url": "https://david-schuchert.de",
   "sameAs": [
     "https://github.com/DavidSchuchert",
     "https://www.linkedin.com/in/david-schuchert-0ab892283/",
     "https://xing.com/profile/David_Schuchert",
     "https://www.youtube.com/c/hochdruck3d"
-  ],
-  "knowsAbout": ["TypeScript", "React", "Angular", "PHP", "Laravel", "Web Development"],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Bad Hersfeld",
-    "addressCountry": "DE"
-  }
+  ]
 };
 ---
 
 <!DOCTYPE html>
-<html lang="de" class="scroll-smooth">
+<html lang="de" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f59e0b" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#000000" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="David Schuchert" />
 
-  <!-- SEO Component (title, description, OG, Twitter, favicon) -->
   <SEO title={title} description={description} />
-
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="David Schuchert" />
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.svg" />
   <title>{title}</title>
 
-  <!-- Google Fonts with preconnect and font-display: swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500&family=Outfit:wght@300;500;700;800;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans antialiased">
-  <!-- Skip Link: hidden until focused -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-amber-500 focus:text-white focus:font-bold focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-300">
-    Zum Hauptinhalt springen
-  </a>
+<body class="font-sans antialiased text-white bg-black selection:bg-accent-500 selection:text-white">
+
+  <!-- Mouse tracking script for glow effects -->
+  <script is:inline>
+    const handleMouseMove = (e) => {
+      // Use requestAnimationFrame for smooth performance
+      requestAnimationFrame(() => {
+        // Apply global coords for background ambient lighting
+        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+        
+        // Also apply local coords to all bento cards
+        const cards = document.querySelectorAll('.bento-card');
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        });
+      });
+    };
+    
+    // Attach event listener
+    window.addEventListener('mousemove', handleMouseMove);
+  </script>
+
   <slot />
   <Analytics />
 
-  <!-- Service Worker Registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch((err) => {
-          console.warn('SW registration failed:', err);
-        });
-      });
-    }
-  </script>
 </body>
 </html>
-
-<style is:global>
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-  }
-
-  /* Respect prefers-reduced-motion */
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-
-  /* Visible focus — safe replacement for any outline:none */
-  :focus-visible {
-    outline: 2px solid #f59e0b;
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-  :focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  /* Font-display: swap prevents FOIT (Flash of Invisible Text) */
-  /* Google Fonts sends subsetted, highly-compressed fonts */
-
-  .gradient-text {
-    @apply bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent;
-  }
-
-  .terminal-glow {
-    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
-  }
-
-  .ascii-border {
-    font-family: 'Fira Code', monospace;
-  }
-
-  ::selection {
-    @apply bg-amber-500 text-white;
-  }
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-200 dark:bg-gray-900;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-amber-500 rounded-full;
-  }
-</style>
