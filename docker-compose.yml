@@ -6,7 +6,7 @@ services:
     container_name: david-portfolio-app
     restart: unless-stopped
     ports:
-      - "8080:4321"
+      - "8486:4321"
     environment:
       - NODE_ENV=production
       - HOST=0.0.0.0
