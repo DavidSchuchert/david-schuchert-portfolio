@@ -1,0 +1,64 @@
+---
+---
+
+<section class="gameboy-era w-full min-h-[90vh] py-20 px-4 md:px-8 bg-[#d0d0d0] relative flex items-center justify-center border-y-8 border-[#a0a0a0]">
+  
+  <div class="max-w-4xl w-full flex flex-col items-center relative z-10">
+    
+    <!-- Gameboy Frame -->
+    <div class="w-full bg-[#e0e0e0] rounded-t-3xl rounded-bl-3xl rounded-br-[6rem] p-4 md:p-10 shadow-[20px_20px_0px_rgba(0,0,0,0.2)] border-4 border-white pb-20 relative">
+      
+      <!-- Screen Bezel -->
+      <div class="w-full bg-[#555] rounded-t-xl rounded-bl-xl rounded-br-[4rem] p-6 md:p-12 shadow-inner border-y-4 border-[#333]">
+        
+        <!-- Dot Matrix Screen -->
+        <div class="w-full bg-[#8bac0f] border-4 border-[#306230] shadow-[inset_4px_4px_10px_rgba(48,98,48,0.5)] p-4 sm:p-8 flex flex-col sm:flex-row gap-8 relative overflow-hidden" style="image-rendering: pixelated;">
+          
+          <!-- Screen Grid effect -->
+          <div class="absolute inset-0 pointer-events-none opacity-20" style="background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, 0.4) 25%, rgba(0, 0, 0, 0.4) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.4) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, 0.4) 25%, rgba(0, 0, 0, 0.4) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.4) 76%, transparent 77%, transparent); background-size: 4px 4px;"></div>
+          
+          <!-- Left: Dex Image -->
+          <div class="w-full sm:w-2/5 shrink-0 border-r-4 border-[#306230] pr-8 flex flex-col items-center">
+            <h3 class="gb-font text-[#0f380f] text-xl mb-4 uppercase">NO. 099</h3>
+            <!-- Heavily filtered Gameboy Image -->
+            <div class="w-32 h-32 md:w-48 md:h-48 border-4 border-[#306230] overflow-hidden bg-[#9bbc0f] shadow-[4px_4px_0_#306230] p-1">
+               <img src="https://avatars.githubusercontent.com/u/142668300?v=4" alt="David Schuchert" class="w-full h-full object-cover gb-filter" />
+            </div>
+          </div>
+          
+          <!-- Right: Dex Text -->
+          <div class="flex-1 flex flex-col justify-center">
+            <h2 class="gb-font text-[#0f380f] text-2xl md:text-3xl mb-4 font-bold uppercase drop-shadow-[2px_2px_0_#8bac0f]">David.</h2>
+            <p class="gb-font text-[#0f380f] text-sm md:text-base leading-loose">
+              HT: 1.80m / WT: ???<br/>
+              TYPE: DEV / DOZENT<br/><br/>
+              Ein Entwickler, der es liebt, komplexe Web-Architekturen zu entmystifizieren.
+              Seine stärkste Attacke ist das Unterrichten der neuen Generation Fullstack-Entwickler.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Nintendo Gameboy branding text placeholder -->
+      <div class="absolute bottom-6 left-10 text-[#a0a0a0] font-bold tracking-widest text-xl italic" style="font-family: Arial, sans-serif;">
+        Nintendo <span class="text-sm">GAME BOY</span>™
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .gb-font {
+    font-family: 'Press Start 2P', monospace;
+  }
+
+  /* Extreme SVG Filter to mimic Gameboy 4-color palette for the photo */
+  .gb-filter {
+    filter: sepia(1) hue-rotate(60deg) saturate(3) contrast(2) brightness(0.8) opacity(0.8);
+    mix-blend-mode: multiply;
+  }
+</style>
