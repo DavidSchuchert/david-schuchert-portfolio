@@ -26,6 +26,9 @@ const emptySlots = Array(15 - memorySlots.length).fill(null);
     <div class="absolute top-1/2 left-1/4 w-12 h-12 bg-gradient-to-br from-[cyan] via-[white] to-[blue] opacity-30 floating-box box-8 blur-[1px]"></div>
     <div class="absolute bottom-1/3 right-1/4 w-22 h-22 bg-gradient-to-br from-[green] via-[red] to-[orange] opacity-15 floating-box box-9 blur-[1px]"></div>
     <div class="absolute top-3/4 right-1/2 w-30 h-30 bg-gradient-to-br from-[blue] via-[purple] to-[cyan] opacity-10 floating-box box-10 blur-[1px]"></div>
+    <div class="absolute top-1/4 right-10 w-20 h-20 bg-gradient-to-br from-[cyan] via-[blue] to-[white] opacity-20 floating-box box-11 blur-[1px]"></div>
+    <div class="absolute bottom-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-[magenta] via-[purple] to-[blue] opacity-15 floating-box box-12 blur-[1px]"></div>
+    <div class="absolute top-2/3 right-1/4 w-32 h-32 bg-gradient-to-br from-[yellow] via-[green] to-[cyan] opacity-10 floating-box box-13 blur-[1px]"></div>
   </div>
 
   <!-- HUD INTERFACE (Architectural Edges) -->
@@ -117,49 +120,54 @@ const emptySlots = Array(15 - memorySlots.length).fill(null);
 
   </div>
 
-  <!-- MEMORY CARD MANAGER OVERLAY (STAYS AS IS BUT WITH REFINED STYLE) -->
-  <div id="memcard-overlay" class="fixed inset-0 z-[100] bg-[#000] hidden flex-col items-center justify-center p-4">
-    <div class="max-w-6xl w-full h-full bg-[#111] border-2 border-white/10 relative flex flex-col items-center p-8 bg-[radial-gradient(circle_at_center,#1a1a2a_0%,#000000_100%)] overflow-hidden">
+  <!-- MEMORY CARD MANAGER OVERLAY (REFINED JP BIOS STYLE) -->
+  <div id="memcard-overlay" class="fixed inset-0 z-[100] bg-[#000] hidden flex-col items-center justify-center p-4 md:p-12">
+    <div class="max-w-6xl w-full h-full bg-black/40 border-l border-r border-white/10 relative flex flex-col items-center p-8 backdrop-blur-3xl overflow-hidden">
       
       <!-- Overlay HUD Edges -->
       <div class="absolute inset-0 pointer-events-none opacity-20">
-        <div class="absolute top-0 left-0 w-full h-[1px] bg-white/40"></div>
-        <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/40"></div>
+        <div class="absolute top-10 left-10 w-20 h-20 border-t border-l border-cyan-400"></div>
+        <div class="absolute bottom-10 right-10 w-20 h-20 border-b border-r border-magenta-400"></div>
       </div>
 
-      <div class="w-full flex items-center justify-between mb-8 border-b border-white/20 pb-4 relative z-10">
-         <h3 class="ps1-hud-font text-white text-xl tracking-[0.4em] uppercase italic">Memory Card Manager</h3>
-         <button id="btn-memcard-close" class="ps1-hud-font text-white hover:text-cyan-400 transition-colors text-sm tracking-widest">[X] EXIT_SYSTEM</button>
+      <div class="w-full flex flex-col md:flex-row items-center justify-between mb-12 gap-4 relative z-10">
+         <div class="flex flex-col">
+            <h3 class="ps1-hud-font text-white text-2xl tracking-[0.5em] uppercase italic">Memory Card Manager</h3>
+            <span class="ps1-hud-font text-[8px] text-cyan-400 opacity-60 tracking-[1em]">SYSTEM_FILE_ACCESS: GRANTED</span>
+         </div>
+         <button id="btn-memcard-close" class="ps1-hud-font text-white hover:text-cyan-400 transition-all text-xs tracking-[0.5em] border border-white/20 px-6 py-2 hover:bg-white/5 active:scale-95">EXIT_CONSOE_v3.0</button>
       </div>
 
       <!-- 15 Slots Grid (3x5) -->
-      <div class="grid grid-cols-3 sm:grid-cols-5 gap-6 w-full flex-1 mb-8 overflow-y-auto pr-2 custom-scrollbar relative z-10">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 w-full flex-1 mb-12 overflow-y-auto pr-2 custom-scrollbar relative z-10">
         
         {memorySlots.map((slot) => (
-          <div class="group relative aspect-square bg-white/5 border border-white/10 hover:border-cyan-400/50 hover:bg-white/10 transition-all p-4 flex flex-col items-center justify-center cursor-help">
-            <div class={`w-14 h-14 md:w-20 md:h-20 ${slot.color} rounded-sm mb-4 shadow-[0_0_20px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden border border-white/20 group-hover:scale-110 transition-transform`}>
-               <span class="text-white font-black text-2xl drop-shadow-md">{slot.icon}</span>
+          <div class="group relative aspect-square bg-white/[0.02] border border-white/5 hover:border-white/40 hover:bg-white/[0.05] transition-all p-4 flex flex-col items-center justify-center cursor-help">
+            <div class={`w-14 h-14 md:w-20 md:h-20 ${slot.color} rounded-sm mb-4 shadow-[0_0_30px_rgba(0,0,0,0.8),0_0_15px_rgba(255,255,255,0.1)] flex items-center justify-center overflow-hidden border border-white/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+               <span class="text-white font-black text-2xl drop-shadow-md select-none">{slot.icon}</span>
             </div>
-            <span class="ps1-hud-font text-white text-[8px] md:text-[10px] uppercase tracking-widest opacity-60">{slot.title}</span>
+            <span class="ps1-hud-font text-white text-[10px] uppercase tracking-widest opacity-40 group-hover:opacity-100 transition-opacity">{slot.title}</span>
+            <div class="w-8 h-[1px] bg-white/20 mt-2"></div>
             
             <!-- Tooltip -->
-            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 translate-y-full w-56 bg-[#0a0a0a] border border-white/20 p-4 z-20 opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-[0_10px_40px_rgba(0,0,0,0.8)] backdrop-blur-md">
-               <p class="ps1-hud-font text-[9px] text-cyan-400 tracking-widest mb-2 border-b border-white/10 pb-1">SAVE_DATA_FOUND</p>
-               <p class="ps1-hud-font text-[10px] text-white leading-relaxed uppercase opacity-80">{slot.sub}</p>
+            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 translate-y-full w-56 bg-black/90 border border-white/20 p-4 z-20 opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-[0_20px_50px_rgba(0,0,0,1)] backdrop-blur-xl">
+               <p class="ps1-hud-font text-[9px] text-cyan-400 tracking-[0.3em] mb-2 border-b border-white/10 pb-1">DAT_BLOCK_LOADED</p>
+               <p class="ps1-hud-font text-[10px] text-white/80 leading-relaxed uppercase">{slot.sub}</p>
             </div>
           </div>
         ))}
 
         {emptySlots.map(() => (
-          <div class="aspect-square bg-white/5 border border-white/5 opacity-10 flex items-center justify-center pattern-hatched">
-            <span class="ps1-hud-font text-white text-[8px] uppercase tracking-widest italic">EMPTY_SEC</span>
+          <div class="aspect-square bg-white/[0.01] border border-white/5 opacity-05 flex items-center justify-center pattern-hatched grayscale group hover:grayscale-0 transition-all">
+            <span class="ps1-hud-font text-white/20 text-[8px] uppercase tracking-widest italic select-none">EMPTY_BLOCK</span>
           </div>
         ))}
 
       </div>
 
-      <div class="w-full text-center border-t border-white/10 pt-4 relative z-10">
-        <p class="ps1-hud-font text-white/30 text-[8px] tracking-[0.5em]">DAVID COMPUTER ENTERTAINMENT - KERNEL-v3.0.21</p>
+      <div class="w-full flex items-center justify-between border-t border-white/10 pt-6 relative z-10">
+        <p class="ps1-hud-font text-white/20 text-[8px] tracking-[0.5em]">AUTH: DAVID_SCHUCHERT</p>
+        <p class="ps1-hud-font text-white/20 text-[8px] tracking-[0.5em]">SYSTEM_CLOCK: v3.0.21 [OK]</p>
       </div>
     </div>
   </div>
@@ -213,6 +221,9 @@ const emptySlots = Array(15 - memorySlots.length).fill(null);
   .box-8 { animation: float-rotate 15s linear infinite; }
   .box-9 { animation: float-rotate 33s linear infinite reverse; }
   .box-10 { animation: float-rotate 50s linear infinite; }
+  .box-11 { animation: float-rotate 22s linear infinite reverse; }
+  .box-12 { animation: float-rotate 38s linear infinite; }
+  .box-13 { animation: float-rotate 42s linear infinite reverse; }
 
   @keyframes float-rotate {
     0% { transform: translate(0, 0) rotate(0deg) scale(1); }
