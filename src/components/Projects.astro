@@ -71,9 +71,6 @@ const systemSpecs = [
       <button data-tab="games" class="tab-btn h-12 px-8 rounded-t-[20px] bg-gradient-to-b from-[#8eb837] to-[#71952a] flex items-center shadow-inner text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 group relative z-10">
         Games
       </button>
-      <button data-tab="media" class="tab-btn h-12 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold hover:opacity-100 transition-all active:scale-95">
-        Trophies
-      </button>
       <button data-tab="system" class="tab-btn h-12 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold hover:opacity-100 transition-all active:scale-95">
         System
       </button>
@@ -128,19 +125,7 @@ const systemSpecs = [
         ))}
       </div>
 
-      <!-- TAB 2: TROPHIES (Abstract view) -->
-      <div id="tab-media" class="tab-content hidden absolute inset-0 transition-all duration-500 translate-x-20 opacity-0">
-        <div class="grid grid-cols-3 md:grid-cols-6 gap-6">
-          {projects.map(proj => (
-            <div class="group relative aspect-square rounded-full border-4 border-white shadow-2xl flex items-center justify-center bg-gradient-to-br from-yellow-300 to-yellow-600 hover:scale-110 transition-transform duration-300">
-               <div class="w-12 h-12 text-white drop-shadow-lg scale-150" set:html={proj.icon}></div>
-               <div class="absolute inset-x-0 -bottom-8 text-center">
-                  <span class="text-[8px] font-black uppercase text-gray-600 px-2 bg-white/40">{proj.title}</span>
-               </div>
-            </div>
-          ))}
-        </div>
-      </div>
+
 
       <!-- TAB 3: SYSTEM (Specs) -->
       <div id="tab-system" class="tab-content hidden absolute inset-0 transition-all duration-500 translate-x-20 opacity-0">
