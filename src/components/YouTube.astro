@@ -134,15 +134,15 @@ const emptySlots = Array(15 - memorySlots.length).fill(null);
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 w-full flex-1 mb-12 overflow-y-auto overflow-x-hidden pr-2 custom-scrollbar relative z-10 p-2">
         
         {memorySlots.map((slot, index) => (
-          <div class="group relative aspect-square bg-white/[0.05] border border-white/20 hover:border-cyan-400 hover:bg-white/[0.1] transition-all p-2 md:p-4 flex flex-col items-center justify-center cursor-help shadow-lg">
-            <div class={`w-12 h-12 md:w-24 md:h-24 ${slot.color} rounded-sm mb-2 md:mb-4 shadow-[0_0_40px_rgba(0,0,0,0.9),0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center border-2 border-white/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+          <div tabindex="0" class="group relative aspect-square bg-white/[0.05] border border-white/20 hover:border-cyan-400 focus:border-cyan-400 hover:bg-white/[0.1] focus:bg-white/[0.1] outline-none transition-all p-2 md:p-4 flex flex-col items-center justify-center cursor-help shadow-lg">
+            <div class={`w-12 h-12 md:w-24 md:h-24 ${slot.color} rounded-sm mb-2 md:mb-4 shadow-[0_0_40px_rgba(0,0,0,0.9),0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center border-2 border-white/30 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 transition-all duration-500`}>
                <span class="text-white font-black text-2xl md:text-4xl drop-shadow-[2px_2px_4px_rgba(0,0,0,0.5)] select-none uppercase">{slot.icon}</span>
             </div>
             <span class="ps1-hud-font text-white text-sm md:text-base text-center uppercase tracking-wider font-bold drop-shadow-md px-1 leading-tight">{slot.title}</span>
             <div class="w-8 md:w-12 h-[2px] bg-cyan-400/30 mt-2"></div>
             
             <!-- Tooltip -->
-            <div class={`absolute -bottom-2 ${index % 2 === 0 ? 'left-0' : 'right-0'} md:${index % 5 === 0 ? 'left-0' : index % 5 === 4 ? 'right-0' : 'left-1/2 -translate-x-1/2'} translate-y-full w-48 md:w-64 bg-black border-2 border-cyan-400/50 p-3 md:p-4 z-20 opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-[0_30px_60px_rgba(0,0,0,1)] backdrop-blur-3xl`}>
+            <div class={`absolute -bottom-2 ${index % 2 === 0 ? 'left-0' : 'right-0'} md:${index % 5 === 0 ? 'left-0' : index % 5 === 4 ? 'right-0' : 'left-1/2 -translate-x-1/2'} translate-y-full w-48 md:w-64 bg-black border-2 border-cyan-400/50 p-3 md:p-4 z-20 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-all pointer-events-none shadow-[0_30px_60px_rgba(0,0,0,1)] backdrop-blur-3xl`}>
                <p class="ps1-hud-font text-[10px] md:text-xs text-cyan-400 tracking-[0.3em] mb-2 border-b-2 border-white/20 pb-1 font-black">DAT_BLOCK_LOADED</p>
                <p class="ps1-hud-font text-xs md:text-sm text-white leading-relaxed uppercase font-bold break-words">{slot.sub}</p>
             </div>
