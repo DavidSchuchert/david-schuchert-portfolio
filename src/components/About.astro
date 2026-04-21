@@ -1,36 +1,69 @@
 ---
 ---
 
-<section class="snes-about w-full min-h-screen bg-[#0a0a2a] py-20 px-4 md:px-8 flex items-center justify-center relative overflow-hidden" style="background-image: radial-gradient(circle at center, #1a1a4a 0%, #000 100%);">
+<section class="mario-world w-full min-h-[90vh] py-20 px-4 md:px-8 relative flex items-center justify-center overflow-hidden">
   
-  <div class="max-w-4xl w-full flex flex-col md:flex-row gap-8 items-start">
+  <!-- Subtle pixel grid overworld background pattern -->
+  <div class="absolute inset-0 z-0 bg-[#388700] pixel-grass opacity-90"></div>
+
+  <div class="max-w-5xl w-full relative z-10">
     
-    <!-- 16-Bit Sprite Avatar Placeholder -->
-    <div class="sprite-container border-4 border-gray-400 bg-gray-800 p-2 shrink-0 self-center md:self-start object-pixelated bg-blue-900/50">
-      <img src="https://avatars.githubusercontent.com/u/142668300?v=4" alt="David" class="w-32 h-32 md:w-48 md:h-48 snes-avatar object-cover" />
+    <div class="text-center mb-16 relative">
+      <h2 class="text-4xl text-white font-black snes-font drop-shadow-[4px_4px_0_#000] tracking-widest uppercase">
+        World 1: About
+      </h2>
     </div>
 
-    <!-- The JRPG Dialog Box -->
-    <div class="dialog-box relative w-full border-4 md:border-8 border-gray-200 rounded-lg p-6 md:p-10 shadow-[8px_8px_0_rgba(0,0,0,0.5)] bg-gradient-to-b from-[#0000c8] to-[#000088]">
+    <!-- The Map Container -->
+    <div class="relative w-full h-[500px] sm:h-[400px] flex flex-col sm:flex-row items-center justify-between px-8 md:px-16 mt-20">
       
-      <!-- Name Tag -->
-      <div class="absolute -top-6 left-4 bg-gray-200 text-black px-4 py-1 border-2 border-white snes-font font-bold text-xl md:text-2xl">
-        DAVID
+      <!-- SVG Winding Path (Responsive) -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="none" viewBox="0 0 1000 200">
+        <!-- Dashed black line -->
+        <path d="M 100,100 Q 300,20 500,100 T 900,100" fill="none" stroke="#000" stroke-width="8" stroke-dasharray="16, 12" />
+      </svg>
+
+      <!-- Node 1: Start -->
+      <div class="relative z-10 flex flex-col items-center group mb-16 sm:mb-0 transform sm:-translate-y-8 mt-5 sm:mt-0">
+        <!-- Info Popup -->
+        <div class="absolute bottom-12 w-48 bg-[#fff] border-4 border-black p-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg shadow-[4px_4px_0_rgba(0,0,0,0.5)]">
+          <p class="snes-font text-black text-sm leading-tight font-bold">Start: Bad Hersfeld. Full-Stack Developer.</p>
+        </div>
+        <!-- Yellow Level Dot -->
+        <div class="w-8 h-8 rounded-full bg-[#fce000] border-4 border-black shadow-[2px_2px_0_#000] cursor-pointer hover:scale-125 transition-transform duration-200"></div>
+        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-xl">1-1</span>
       </div>
 
-      <!-- Text Content -->
-      <div class="snes-font text-white text-xl md:text-3xl leading-relaxed tracking-wide min-h-[150px]">
-        <p class="mb-4 text-shadow-snes text-wrap-balance">
-          Greetings! Ich bin Full-Stack Entwickler aus Bad Hersfeld. Neben komplexen Architekturen trainiere ich die <span class="text-yellow-300">DBE-Academy Guild</span>.
-        </p>
-        <p class="mb-4 text-gray-300 text-shadow-snes text-wrap-balance">
-          Wenn ich nicht gerade code oder Retro-Games spiele, kümmere ich mich um meine Party-Member: Einen Hund und ein Chamäleon!
-        </p>
+      <!-- Node 2: Development -->
+      <div class="relative z-10 flex flex-col items-center group mb-16 sm:mb-0 transform sm:translate-y-8 mt-5 sm:mt-0">
+        <!-- Info Popup -->
+        <div class="absolute bottom-12 w-48 bg-[#fff] border-4 border-black p-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg shadow-[4px_4px_0_rgba(0,0,0,0.5)]">
+          <p class="snes-font text-black text-sm leading-tight font-bold">5+ Jahre Code. Typescript, React, Backend Systeme.</p>
+        </div>
+        <!-- Yellow Level Dot -->
+        <div class="w-8 h-8 rounded-full bg-[#fce000] border-4 border-black shadow-[2px_2px_0_#000] cursor-pointer hover:scale-125 transition-transform duration-200"></div>
+        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-xl">1-2</span>
       </div>
 
-      <!-- Arrow Blinking -->
-      <div class="absolute bottom-4 right-6 text-white snes-font text-3xl animate-bounce">
-        ▼
+      <!-- Node 3: Current Boss/Status (Red Dot) -->
+      <div class="relative z-10 flex flex-col items-center group transform sm:-translate-y-4">
+        
+        <!-- Player Avatar standing on the red node -->
+        <div class="absolute -top-20 animate-bounce">
+           <img src="https://avatars.githubusercontent.com/u/142668300?v=4" alt="David" class="w-16 h-16 rounded-md border-2 border-black object-cover shadow-[2px_2px_0_#000]" style="image-rendering: pixelated;" />
+        </div>
+
+        <!-- Info Popup (Always visible or larger) -->
+        <div class="absolute bottom-14 left-12 w-64 bg-[#fff] border-4 border-black p-4 text-left rounded-lg shadow-[4px_4px_0_rgba(0,0,0,0.5)] z-20">
+          <p class="snes-font text-black text-sm leading-tight font-bold">
+            <span class="text-red-600 block mb-1">Dozent & Developer</span>
+            DBE-Academy Guild. Begleitet von 1x Hund & 1x Chamäleon!
+          </p>
+        </div>
+
+        <!-- Red Boss Level Dot -->
+        <div class="w-10 h-10 rounded-full bg-[#e52521] border-4 border-black shadow-[2px_2px_0_#000] cursor-pointer hover:scale-125 transition-transform duration-200 z-10"></div>
+        <span class="mt-4 snes-font text-white drop-shadow-[2px_2px_0_#000] text-xl">CASTLE</span>
       </div>
 
     </div>
@@ -40,26 +73,28 @@
 
 <style>
   .snes-font {
-    font-family: 'VT323', monospace;
+    font-family: 'Press Start 2P', 'VT323', monospace;
   }
 
-  /* Hard pixelated borders for image */
-  .snes-avatar {
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-    filter: contrast(1.2) saturate(1.5);
+  .mario-world {
+    background-color: #388700;
   }
 
-  .text-shadow-snes {
-    text-shadow: 2px 2px 0 #000;
+  /* Emulating simple 16-bit grass via CSS checkerboard trick */
+  .pixel-grass {
+    background-image: 
+      linear-gradient(45deg, #4aa80b 25%, transparent 25%, transparent 75%, #4aa80b 75%, #4aa80b), 
+      linear-gradient(45deg, #4aa80b 25%, transparent 25%, transparent 75%, #4aa80b 75%, #4aa80b);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
   }
 
   .animate-bounce {
-    animation: bounce 1s infinite;
+    animation: mario-jump 1s infinite alternate;
   }
 
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
+  @keyframes mario-jump {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
   }
 </style>
