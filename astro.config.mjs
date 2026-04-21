@@ -14,16 +14,4 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto',
   },
-  vite: {
-    build: {
-      cssCodeSplit: true,
-      rollupOptions: {
-        output: {
-          assetFileNames: 'assets/[name].[hash][extname]',
-          chunkFileNames: 'chunks/[name].[hash].js',
-          entryFileNames: 'chunks/[name].[hash].js',
-        },
-      },
-    },
-  },
 });
