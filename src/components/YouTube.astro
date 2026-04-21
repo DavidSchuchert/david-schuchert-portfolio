@@ -1,7 +1,18 @@
 ---
+const memorySlots = [
+  { id: 'code', title: 'Coding', sub: 'Passion: Code / Lvl: Overflow', icon: '</>', color: 'bg-blue-500' },
+  { id: 'print', title: '3D Printing', sub: 'Project: Physical / Status: Printing', icon: '3D', color: 'bg-green-500' },
+  { id: 'mentor', title: 'Mentoring', sub: 'Class: Mentor / XP: Shared', icon: '?!', color: 'bg-yellow-400' },
+  { id: 'pets', title: 'The Zoo', sub: 'Party: Dog & Chameleon / Buff: Joy', icon: '🐾', color: 'bg-orange-500' },
+  { id: 'nerd', title: 'Nerd Mode', sub: 'Attribute: Nerd / Level: MAX', icon: '🤓', color: 'bg-purple-600' },
+  { id: 'gamedev', title: 'GameDev', sub: 'Legacy: GameDev / World: Exported', icon: '🎮', color: 'bg-red-500' },
+  { id: 'linux', title: 'Linux', sub: 'Host: Linux / Kernel: Love', icon: '🐧', color: 'bg-gray-800' },
+];
+
+const emptySlots = Array(15 - memorySlots.length).fill(null);
 ---
 
-<section class="ps1-bios w-full min-h-[100vh] py-20 px-4 md:px-8 flex flex-col items-center justify-center overflow-hidden relative border-t-4 border-b-4 border-indigo-900">
+<section class="ps1-bios w-full min-h-[100vh] py-20 px-4 md:px-8 flex flex-col items-center justify-center overflow-hidden relative border-t-4 border-b-4 border-indigo-900 group/bios">
   
   <!-- PS1 Floating Cubes (Background) -->
   <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -17,7 +28,7 @@
     <div class="absolute top-3/4 right-1/2 w-30 h-30 bg-gradient-to-br from-[blue] via-[purple] to-[cyan] opacity-10 floating-box box-10 blur-[1px]"></div>
   </div>
 
-  <div class="max-w-4xl w-full relative z-10 flex flex-col items-center">
+  <div id="ps1-main-menu" class="max-w-4xl w-full relative z-10 flex flex-col items-center transition-all duration-500">
     
     <!-- Sony BIOS Text Vibe -->
     <div class="text-center mb-16">
@@ -32,13 +43,13 @@
     <!-- The Two Classic Console Buttons: Memory Card & CD Player -->
     <div class="flex flex-col md:flex-row items-center justify-center gap-10 w-full mb-8">
       
-      <!-- Memory Card (Decorative) -->
-      <div class="ps1-button w-48 h-48 rounded-lg flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.8)] border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.8)] cursor-default">
-        <div class="w-16 h-20 bg-gray-300 border-b-4 border-gray-500 rounded-sm mb-4 flex items-start justify-center pt-2 shadow-[2px_2px_0_#000]">
+      <!-- Memory Card (Button) -->
+      <button id="btn-memcard" class="ps1-button w-48 h-48 rounded-lg flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.8)] border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.8)] hover:scale-110 transition-transform duration-300 active:scale-95 group/btn">
+        <div class="w-16 h-20 bg-gray-300 border-b-4 border-gray-500 rounded-sm mb-4 flex items-start justify-center pt-2 shadow-[2px_2px_0_#000] group-hover/btn:bg-white transition-colors">
            <div class="w-12 h-6 bg-black opacity-80"></div>
         </div>
         <span class="ps1-bios-font text-[#ffeb3b] text-sm tracking-widest drop-shadow-[1px_1px_0_#000]">MEMORY CARD</span>
-      </div>
+      </button>
 
       <!-- CD Player (YouTube Link) -->
       <a href="https://youtube.com/c/hochdruck3d" target="_blank" class="ps1-button w-48 h-48 rounded-lg flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.8)] border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.8)] hover:scale-110 transition-transform duration-300">
@@ -60,18 +71,58 @@
 
   </div>
 
+  <!-- MEMORY CARD MANAGER OVERLAY -->
+  <div id="memcard-overlay" class="fixed inset-0 z-[100] bg-[#222] hidden flex-col items-center justify-center p-4">
+    <div class="max-w-6xl w-full h-full bg-[#3a3a3a] border-4 border-[#555] shadow-2xl relative flex flex-col items-center p-8 bg-[radial-gradient(circle_at_center,#4a4a4a_0%,#1a1a1a_100%)]">
+      
+      <div class="w-full flex items-center justify-between mb-8 border-b-2 border-white/20 pb-4">
+         <h3 class="ps1-bios-font text-white text-xl md:text-3xl tracking-widest italic uppercase">Memory Card Manage</h3>
+         <button id="btn-memcard-close" class="ps1-bios-font text-white hover:text-red-500 transition-colors text-xl">[X] BACK</button>
+      </div>
+
+      <!-- 15 Slots Grid (3x5) -->
+      <div class="grid grid-cols-3 sm:grid-cols-5 gap-4 w-full flex-1 mb-8 overflow-y-auto pr-2 custom-scrollbar">
+        
+        {memorySlots.map((slot) => (
+          <div class="group relative aspect-square bg-[#1a1a1a] border-2 border-white/10 hover:border-white transition-all p-2 flex flex-col items-center justify-center cursor-help">
+            <div class={`w-12 h-12 md:w-16 md:h-16 ${slot.color} rounded-sm mb-2 shadow-[2px_2px_0_#000] flex items-center justify-center overflow-hidden border-2 border-white/20`}>
+               <span class="text-white font-black text-xl md:text-2xl drop-shadow-md">{slot.icon}</span>
+            </div>
+            <span class="ps1-bios-font text-white text-[8px] md:text-[10px] uppercase tracking-tighter opacity-80">{slot.title}</span>
+            
+            <!-- Tooltip -->
+            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 translate-y-full w-48 bg-black border border-white p-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+               <p class="ps1-bios-font text-[10px] text-yellow-400 mb-1">Save Data Found:</p>
+               <p class="ps1-bios-font text-[10px] text-white leading-tight">{slot.sub}</p>
+            </div>
+          </div>
+        ))}
+
+        {emptySlots.map(() => (
+          <div class="aspect-square bg-[#1a1a1a] border-2 border-white/5 opacity-40 flex items-center justify-center pattern-hatched">
+            <span class="ps1-bios-font text-white/10 text-[8px] uppercase tracking-widest italic">Empty Slot</span>
+          </div>
+        ))}
+
+      </div>
+
+      <div class="w-full text-center border-t border-white/10 pt-4">
+        <p class="ps1-bios-font text-white/50 text-xs tracking-widest">SONY COMPUTER ENTERTAINMENT - DB-SYSTEM-v3.0</p>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <style>
   .ps1-bios-font {
     font-family: 'Arial', sans-serif;
-    /* PS1 bios font is usually a very basic sans-serif like Arial/Helvetica, bold, with huge letter spacing */
     font-weight: bold;
   }
 
   .ps1-bios {
     background: radial-gradient(circle at center, #1b269b 0%, #000018 80%);
-    box-shadow: inset 0 0 50px #000;
+    box-shadow: inset 0 0 100px #000;
   }
 
   .ps1-button {
@@ -112,4 +163,44 @@
     66% { transform: translate(-30px, 40px) rotate(240deg) scale(0.9); }
     100% { transform: translate(0, 0) rotate(360deg) scale(1); }
   }
+
+  .pattern-hatched {
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,0.05) 5px, rgba(255,255,255,0.05) 10px);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+  }
 </style>
+
+<script>
+  const btnMemcard = document.getElementById('btn-memcard');
+  const btnMemcardClose = document.getElementById('btn-memcard-close');
+  const overlay = document.getElementById('memcard-overlay');
+  const mainMenu = document.getElementById('ps1-main-menu');
+
+  if (btnMemcard && overlay && mainMenu) {
+    btnMemcard.addEventListener('click', () => {
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      mainMenu.classList.add('opacity-0', 'scale-95');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  if (btnMemcardClose && overlay && mainMenu) {
+    btnMemcardClose.addEventListener('click', () => {
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      mainMenu.classList.remove('opacity-0', 'scale-95');
+      document.body.style.overflow = '';
+    });
+  }
+</script>
