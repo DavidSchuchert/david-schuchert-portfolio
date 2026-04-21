@@ -6,9 +6,9 @@ const projects = [
     pts: '100G',
     icon: '<svg class="w-8 h-8 text-[#8eb837]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>',
     unlocked: 'Unlocked 2025',
-    link: '#', // The user hasn't provided live links, they just mentioned they were missing.
+    link: '#',
     github: 'https://github.com/DavidSchuchert/hermes-webui',
-    coverGradient: 'from-blue-600 to-cyan-500' // AI Agent theme
+    coverGradient: 'from-blue-600 to-cyan-500'
   },
   {
     title: 'VereinsManagement',
@@ -18,7 +18,7 @@ const projects = [
     unlocked: 'Unlocked 2024',
     link: '#',
     github: 'https://github.com/DavidSchuchert/VereinsManagementTool-Laravel',
-    coverGradient: 'from-green-700 to-emerald-500' // Laravel / Sports theme
+    coverGradient: 'from-green-700 to-emerald-500'
   },
   {
     title: 'Join',
@@ -28,7 +28,7 @@ const projects = [
     unlocked: 'Unlocked 2022',
     link: '#',
     github: 'https://github.com/DavidSchuchert/Join_Angular',
-    coverGradient: 'from-orange-500 to-amber-600' // Firebase / Kanban theme
+    coverGradient: 'from-orange-500 to-amber-600'
   },
   {
     title: 'El Pollo Loco',
@@ -38,7 +38,7 @@ const projects = [
     unlocked: 'Unlocked 2022',
     link: '#',
     github: 'https://github.com/DavidSchuchert/el-pollo-loco',
-    coverGradient: 'from-amber-400 to-yellow-600' // Desert chicken theme
+    coverGradient: 'from-amber-400 to-yellow-600'
   },
   {
     title: 'Pokédex',
@@ -48,89 +48,151 @@ const projects = [
     unlocked: 'Unlocked 2021',
     link: '#',
     github: 'https://github.com/DavidSchuchert/Pokedex',
-    coverGradient: 'from-red-600 to-rose-700' // Pokedex Red theme
+    coverGradient: 'from-red-600 to-rose-700'
   }
+];
+
+const systemSpecs = [
+  { label: 'OS Version', value: 'Astro v5.0.0 "Starlight"' },
+  { label: 'System Kernel', value: 'Vite v6.0.0 / Node.js 20' },
+  { label: 'UI Engine', value: 'TailwindCSS v3.4 "Hyper-Speed"' },
+  { label: 'Graphics', value: 'Nostalgic 16-bit / 32-bit Hybrid' },
+  { label: 'Developer', value: 'David Schuchert (Player 1)' },
+  { label: 'Achievements', value: '100% Finalized UX' },
 ];
 ---
 
-<section class="xbox-blade w-full min-h-[80vh] py-20 px-4 md:px-8 bg-gradient-to-b from-[#e6e7eb] to-[#b3b6c2] text-[#333]">
+<section id="era-hd" class="xbox-blade w-full min-h-[90vh] py-20 px-4 md:px-8 bg-gradient-to-b from-[#e6e7eb] to-[#b3b6c2] text-[#333] overflow-hidden relative border-t-8 border-indigo-900 shadow-[0_-10px_20px_rgba(0,0,0,0.2)]">
   
-  <div class="max-w-7xl mx-auto">
+  <div class="max-w-7xl mx-auto flex flex-col h-full">
     
     <!-- Top Nav Blade Style -->
-    <div class="flex items-center gap-2 mb-10 w-full overflow-hidden border-b-2 border-white shadow-sm pb-4">
-      <div class="h-10 px-8 rounded-t-[20px] bg-gradient-to-b from-[#8eb837] to-[#71952a] flex items-center shadow-inner text-white font-bold text-lg">
-        Achievements & Games
-      </div>
-      <div class="h-10 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold opacity-50">
+    <div class="flex items-center gap-2 mb-10 w-full overflow-hidden border-b-2 border-white shadow-sm pb-0">
+      <button data-tab="games" class="tab-btn h-12 px-8 rounded-t-[20px] bg-gradient-to-b from-[#8eb837] to-[#71952a] flex items-center shadow-inner text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 group relative z-10">
+        Games
+        <div class="absolute -bottom-1 left-0 w-full h-1 bg-white hidden group-[.active]:block"></div>
+      </button>
+      <button data-tab="media" class="tab-btn h-12 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold hover:opacity-100 transition-all active:scale-95">
         Media
-      </div>
-      <div class="h-10 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold opacity-50">
+      </button>
+      <button data-tab="system" class="tab-btn h-12 px-8 rounded-t-lg bg-gradient-to-b from-[#e5e5e5] to-[#cccccc] flex items-center text-gray-500 font-semibold hover:opacity-100 transition-all active:scale-95">
         System
-      </div>
+      </button>
     </div>
 
-    <!-- Redesigned Grid: Larger Game Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+    <!-- TAB CONTENT CONTAINER -->
+    <div class="relative flex-1 min-h-[600px]">
       
-      {projects.map(proj => (
-        <div class="achievement-card flex flex-col bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-4 border-[#fff] overflow-hidden hover:scale-[1.02] transition-transform duration-300 group">
-          
-          <!-- Box Art / Preview Screen (Massive Top Header) -->
-          <div class={`w-full h-48 bg-gradient-to-br ${proj.coverGradient} relative overflow-hidden flex items-center justify-center shadow-inner`}>
-            
-            <!-- Diagonal stripes overlay to mimic game case / cyber texture -->
-            <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDRMNCAwTDggNEw0IDhaIiBmaWxsPSIjMDAwIj48L3BhdGg+Cjwvc3ZnPg==')]"></div>
-
-            <!-- Central Holographic Icon representing Live Preview -->
-            <div class="w-20 h-20 bg-black/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 z-10" set:html={proj.icon.replace('text-[#8eb837]', 'text-white drop-shadow-lg')}>
-            </div>
-            
-            <!-- Inserted Text to indicate Live Preview Space -->
-            <div class="absolute bottom-2 right-4 text-white/50 text-[10px] font-bold uppercase tracking-widest hidden group-hover:block">
-              [Live Preview Space]
+      <!-- TAB 1: GAMES (Achievements) -->
+      <div id="tab-games" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 translate-x-0 opacity-100">
+        {projects.map(proj => (
+          <div class="achievement-card flex flex-col bg-white rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-4 border-[#fff] overflow-hidden hover:scale-[1.02] transition-transform duration-300 group">
+            <div class={`w-full h-40 bg-gradient-to-br ${proj.coverGradient} relative overflow-hidden flex items-center justify-center shadow-inner`}>
+              <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDRMNCAwTDggNEw0IDhaIiBmaWxsPSIjMDAwIj48L3BhdGg+Cjwvc3ZnPg==')]"></div>
+              <div class="w-16 h-16 bg-black/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 z-10" set:html={proj.icon.replace('text-[#8eb837]', 'text-white drop-shadow-lg')}></div>
             </div>
 
-            <!-- Gloss highlight overlay simulating plastic cover -->
-            <div class="h-full w-1/2 bg-gradient-to-r from-white/20 to-transparent absolute top-0 left-0 pointer-events-none transform -skew-x-12 -translate-x-10"></div>
-          </div>
-
-          <!-- Bottom Console Info Pane -->
-          <div class="p-6 relative z-10 flex flex-col flex-1 bg-gradient-to-b from-[#f8f9fa] to-[#e9ecef]">
-            
-            <div class="flex items-start justify-between mb-2">
-              <h3 class="font-bold text-2xl text-gray-800 leading-tight">{proj.title}</h3>
-              <span class="text-[#8eb837] font-black text-xl shrink-0">{proj.pts}</span>
-            </div>
-            
-            <p class="text-gray-600 text-[15px] flex-1 mb-6 focus-text-fix font-medium leading-relaxed">{proj.desc}</p>
-            
-            <div class="flex items-center justify-between gap-4 mt-auto">
+            <div class="p-6 relative z-10 flex flex-col flex-1 bg-gradient-to-b from-[#f8f9fa] to-[#e9ecef]">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-bold text-xl text-gray-800 leading-tight">{proj.title}</h3>
+                <span class="text-[#8eb837] font-black text-lg shrink-0">{proj.pts}</span>
+              </div>
+              <p class="text-gray-600 text-sm flex-1 mb-6 focus-text-fix font-medium leading-relaxed">{proj.desc}</p>
               
-              <!-- Achievement Progress Bar -->
-              <div class="flex-1 bg-gray-300/80 h-8 rounded-full flex items-center px-4 justify-between shadow-inner">
-                <span class="text-xs uppercase font-bold text-gray-600">{proj.unlocked}</span>
-                <div class="w-10 h-3 rounded-full bg-gradient-to-r from-[#8eb837] to-[#60801e] shadow-sm"></div>
-              </div>
+              <div class="flex items-center justify-between gap-2 mt-auto text-[10px] font-black uppercase tracking-tighter">
+                <div class="flex-1 bg-gray-300/80 h-10 rounded-lg flex items-center px-4 justify-between border-2 border-white/50">
+                  <span class="text-gray-500">{proj.unlocked}</span>
+                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-[#8eb837] to-[#71952a] flex items-center justify-center text-white shadow-md">✓</div>
+                </div>
 
-              <!-- Links -->
-              <div class="flex gap-2 shrink-0">
-                {proj.github && (
-                  <a href={proj.github} target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-b from-[#1c98db] to-[#125d88] border-[3px] border-[#c0cbdb] shadow-[inset_0_2px_4px_rgba(255,255,255,0.6),_0_3px_5px_rgba(0,0,0,0.5)] flex items-center justify-center text-white font-black text-lg hover:scale-110 active:scale-95 transition-transform" title="GitHub">
-                    X
-                  </a>
-                )}
-                <a href={proj.link === '#' ? 'javascript:alert("Live preview currently offline/unavailable.")' : proj.link} target={proj.link === '#' ? '_self' : '_blank'} class="w-10 h-10 rounded-full bg-gradient-to-b from-[#76b900] to-[#4c7a00] border-[3px] border-[#c0cbdb] shadow-[inset_0_2px_4px_rgba(255,255,255,0.6),_0_3px_5px_rgba(0,0,0,0.5)] flex items-center justify-center text-white font-black text-lg hover:scale-110 active:scale-95 transition-transform" title="Live Preview">
-                  A
-                </a>
+                <div class="flex gap-2 shrink-0">
+                  <div class="flex flex-col items-center gap-1 group/btn">
+                    <a href={proj.github} target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-b from-blue-400 to-blue-700 border-2 border-white shadow-xl flex items-center justify-center text-white text-lg hover:scale-110 active:scale-90 transition-all font-black">X</a>
+                    <span class="text-[8px] opacity-0 group-hover/btn:opacity-100 transition-opacity">SOURCE</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-1 group/btn">
+                    <a href={proj.link === '#' ? 'javascript:void(0)' : proj.link} target={proj.link === '#' ? '_self' : '_blank'} class="w-10 h-10 rounded-full bg-gradient-to-b from-green-400 to-green-700 border-2 border-white shadow-xl flex items-center justify-center text-white text-lg hover:scale-110 active:scale-90 transition-all font-black">A</a>
+                    <span class="text-[8px] opacity-0 group-hover/btn:opacity-100 transition-opacity">LIVE</span>
+                  </div>
+                </div>
               </div>
-
             </div>
           </div>
+        ))}
+      </div>
 
+      <!-- TAB 2: MEDIA (Project Gallery) -->
+      <div id="tab-media" class="tab-content hidden absolute inset-0 transition-all duration-500 translate-x-20 opacity-0">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {projects.map(proj => (
+            <div class="group relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-white shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer">
+              <div class={`absolute inset-0 bg-gradient-to-br ${proj.coverGradient}`}></div>
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors"></div>
+              <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+                <span class="text-white font-bold text-sm uppercase">{proj.title}</span>
+              </div>
+              <div class="absolute top-2 right-2 bg-black/60 px-2 py-1 rounded text-[10px] text-white font-black italic">HD PREVIEW</div>
+            </div>
+          ))}
+          <!-- Decorative placeholders -->
+          <div class="aspect-[3/4] rounded-lg border-2 border-dashed border-gray-400 flex flex-col items-center justify-center text-gray-400 gap-4">
+             <div class="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center font-bold text-2xl">+</div>
+             <span class="text-[10px] font-bold uppercase">Add Media</span>
+          </div>
         </div>
-      ))}
+      </div>
 
+      <!-- TAB 3: SYSTEM (Specs) -->
+      <div id="tab-system" class="tab-content hidden absolute inset-0 transition-all duration-500 translate-x-20 opacity-0">
+        <div class="max-w-3xl mx-auto bg-white/80 backdrop-blur-md rounded-2xl border-4 border-white shadow-2xl p-10">
+          <div class="flex items-center gap-6 mb-10 pb-6 border-b-2 border-gray-200">
+             <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center text-white shadow-lg">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+             </div>
+             <div>
+                <h3 class="text-3xl font-black italic text-gray-800 tracking-tighter">CONSOLE SYSTEM INFO</h3>
+                <p class="text-green-600 font-bold uppercase text-xs tracking-widest">Network Status: Online (david-schuchert.de)</p>
+             </div>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {systemSpecs.map(spec => (
+              <div class="flex flex-col border-l-4 border-green-500 pl-4">
+                 <span class="text-[10px] uppercase font-black text-gray-400 tracking-widest">{spec.label}</span>
+                 <span class="text-lg font-bold text-gray-800">{spec.value}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-12 p-4 bg-gray-900 rounded-lg text-green-400 font-mono text-[10px] leading-tight">
+             <p>> Initializing portfolio_v3_evolution_engine...</p>
+             <p>> Loading retro_assets (8-bit, 16-bit, 32-bit, Next-Gen)...</p>
+             <p>> Memory status: 512MB / 512MB (Batocera compatible)</p>
+             <p>> All systems nominal. Welcome, Player 1.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controller Help (Classic Dashboard Footer) -->
+    <div class="mt-10 flex items-center justify-center gap-8 border-t-2 border-white/50 pt-6">
+       <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-blue-500 border border-white flex items-center justify-center text-white font-black text-xs">X</div>
+          <span class="text-[10px] font-bold uppercase text-gray-600">Source</span>
+       </div>
+       <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-green-500 border border-white flex items-center justify-center text-white font-black text-xs">A</div>
+          <span class="text-[10px] font-bold uppercase text-gray-600">Enter</span>
+       </div>
+       <div class="flex items-center gap-2 opacity-50">
+          <div class="w-6 h-6 rounded-full bg-red-500 border border-white flex items-center justify-center text-white font-black text-xs">B</div>
+          <span class="text-[10px] font-bold uppercase text-gray-600">Back</span>
+       </div>
+       <div class="flex items-center gap-2 opacity-50">
+          <div class="w-6 h-6 rounded-full bg-yellow-400 border border-white flex items-center justify-center text-black font-black text-xs">Y</div>
+          <span class="text-[10px] font-bold uppercase text-gray-600">Search</span>
+       </div>
     </div>
 
   </div>
@@ -141,11 +203,77 @@ const projects = [
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  /* Fix text color issues by enforcing text colors even on hover */
-  .achievement-card h3 {
-    color: #1f2937 !important;
+  .tab-btn.active {
+    background: linear-gradient(to bottom, #8eb837, #71952a) !important;
+    color: white !important;
+    opacity: 1 !important;
+    transform: scale(1.05);
+    z-index: 20;
+    box-shadow: 0 5px 15px rgba(142, 184, 55, 0.4);
   }
-  .achievement-card .focus-text-fix {
-    color: #4b5563 !important;
+
+  .tab-content {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tab-content.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  .tab-content:not(.hidden) {
+    display: grid;
+    animation: slideIn 0.5s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(100px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .pattern-hatched {
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.02) 5px, rgba(0,0,0,0.02) 10px);
   }
 </style>
+
+<script>
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  function switchTab(tabName) {
+    // Update buttons
+    tabBtns.forEach(btn => {
+      const isActive = btn.getAttribute('data-tab') === tabName;
+      btn.classList.toggle('active', isActive);
+      
+      // Update styling for inactive buttons
+      if (!isActive) {
+        btn.classList.add('bg-gradient-to-b', 'from-[#e5e5e5]', 'to-[#cccccc]', 'text-gray-500');
+        btn.classList.remove('bg-gradient-to-b', 'from-[#8eb837]', 'to-[#71952a]', 'text-white');
+      } else {
+        btn.classList.remove('bg-gradient-to-b', 'from-[#e5e5e5]', 'to-[#cccccc]', 'text-gray-500');
+        btn.classList.add('bg-gradient-to-b', 'from-[#8eb837]', 'to-[#71952a]', 'text-white', 'active');
+      }
+    });
+
+    // Update content
+    tabContents.forEach(content => {
+      if (content.id === `tab-${tabName}`) {
+        content.classList.remove('hidden');
+      } else {
+        content.classList.add('hidden');
+      }
+    });
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.getAttribute('data-tab');
+      switchTab(tab);
+    });
+  });
+
+  // Init first tab
+  switchTab('games');
+</script>
