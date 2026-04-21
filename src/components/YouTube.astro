@@ -3,20 +3,13 @@
 
 <section class="ps1-bios w-full min-h-[100vh] py-20 px-4 md:px-8 flex flex-col items-center justify-center overflow-hidden relative border-t-4 border-b-4 border-indigo-900">
   
-  <div class="absolute inset-0 pointer-events-none opacity-20 z-0">
-    <div class="absolute top-1/4 left-1/4 w-32 h-32 border-4 border-[#00FFFF] transform rotate-45"></div>
-    <div class="absolute top-1/2 right-1/4 w-24 h-24 border-4 border-[#FF00FF] transform rotate-12"></div>
-    <div class="absolute bottom-1/4 left-1/3 w-40 h-40 border-4 border-[#FFFF00] transform -rotate-12"></div>
-  </div>
-
-  <!-- PS1 Audio Visualizer (Background) -->
-  <div class="absolute inset-0 flex items-end justify-center gap-1 sm:gap-2 md:gap-4 opacity-30 z-0 pointer-events-none px-4">
-    <div class="w-16 md:w-32 bg-gradient-to-t from-[blue] via-[cyan] to-[yellow] visualizer-bar bar-1"></div>
-    <div class="w-16 md:w-32 bg-gradient-to-t from-[blue] via-[green] to-[yellow] visualizer-bar bar-2"></div>
-    <div class="w-16 md:w-32 bg-gradient-to-t from-[purple] via-[red] to-[yellow] visualizer-bar bar-3"></div>
-    <div class="w-16 md:w-32 bg-gradient-to-t from-[blue] via-[cyan] to-[white] visualizer-bar bar-4"></div>
-    <div class="w-16 md:w-32 bg-gradient-to-t from-[purple] via-[blue] to-[green] visualizer-bar bar-5 hidden sm:block"></div>
-    <div class="w-16 md:w-32 bg-gradient-to-t from-[green] via-[yellow] to-[red] visualizer-bar bar-6 hidden md:block"></div>
+  <!-- PS1 Floating Cubes (Background) -->
+  <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-32 h-32 border-4 border-[#00FFFF] opacity-20 floating-box box-1"></div>
+    <div class="absolute top-1/2 right-1/4 w-24 h-24 border-4 border-[#FF00FF] opacity-15 floating-box box-2"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-40 h-40 border-4 border-[#FFFF00] opacity-10 floating-box box-3"></div>
+    <div class="absolute top-1/3 right-1/3 w-16 h-16 border-4 border-white opacity-25 floating-box box-4"></div>
+    <div class="absolute bottom-1/2 left-10 w-20 h-20 border-4 border-[#00FFFF] opacity-10 floating-box box-5"></div>
   </div>
 
   <div class="max-w-4xl w-full relative z-10 flex flex-col items-center">
@@ -90,23 +83,22 @@
     50%, 100% { opacity: 0; }
   }
 
-  /* Audio Visualizer Logic */
-  .visualizer-bar {
-    height: 10%;
-    transform-origin: bottom;
-    box-shadow: 0 0 20px rgba(0,255,255,0.5);
+  /* Floating Box Animation Logic */
+  .floating-box {
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
   }
 
-  .bar-1 { animation: eq 1.2s ease-in-out infinite alternate; }
-  .bar-2 { animation: eq 0.8s ease-in-out 0.2s infinite alternate; }
-  .bar-3 { animation: eq 1.5s ease-in-out 0.5s infinite alternate; }
-  .bar-4 { animation: eq 0.9s ease-in-out 0.1s infinite alternate; }
-  .bar-5 { animation: eq 1.1s ease-in-out 0.4s infinite alternate; }
-  .bar-6 { animation: eq 1.3s ease-in-out 0.3s infinite alternate; }
+  .box-1 { animation: float-rotate 25s linear infinite; }
+  .box-2 { animation: float-rotate 35s linear infinite reverse; }
+  .box-3 { animation: float-rotate 45s linear infinite; }
+  .box-4 { animation: float-rotate 20s linear infinite reverse; }
+  .box-5 { animation: float-rotate 30s linear infinite; }
 
-  @keyframes eq {
-    0% { height: 10%; }
-    50% { height: 60%; }
-    100% { height: 30%; }
+  @keyframes float-rotate {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    33% { transform: translate(50px, -30px) rotate(120deg) scale(1.1); }
+    66% { transform: translate(-30px, 40px) rotate(240deg) scale(0.9); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
   }
 </style>
