@@ -1,13 +1,22 @@
 ---
 ---
 
-<section class="ps1-bios w-full py-20 px-4 md:px-8 flex flex-col items-center justify-center overflow-hidden relative">
+<section class="ps1-bios w-full min-h-[100vh] py-20 px-4 md:px-8 flex flex-col items-center justify-center overflow-hidden relative border-t-4 border-b-4 border-indigo-900">
   
-  <!-- Floating background squares (PS1 Bios aesthetic) -->
-  <div class="absolute inset-0 pointer-events-none opacity-20">
+  <div class="absolute inset-0 pointer-events-none opacity-20 z-0">
     <div class="absolute top-1/4 left-1/4 w-32 h-32 border-4 border-[#00FFFF] transform rotate-45"></div>
     <div class="absolute top-1/2 right-1/4 w-24 h-24 border-4 border-[#FF00FF] transform rotate-12"></div>
     <div class="absolute bottom-1/4 left-1/3 w-40 h-40 border-4 border-[#FFFF00] transform -rotate-12"></div>
+  </div>
+
+  <!-- PS1 Audio Visualizer (Background) -->
+  <div class="absolute inset-0 flex items-end justify-center gap-1 sm:gap-2 md:gap-4 opacity-30 z-0 pointer-events-none px-4">
+    <div class="w-16 md:w-32 bg-gradient-to-t from-[blue] via-[cyan] to-[yellow] visualizer-bar bar-1"></div>
+    <div class="w-16 md:w-32 bg-gradient-to-t from-[blue] via-[green] to-[yellow] visualizer-bar bar-2"></div>
+    <div class="w-16 md:w-32 bg-gradient-to-t from-[purple] via-[red] to-[yellow] visualizer-bar bar-3"></div>
+    <div class="w-16 md:w-32 bg-gradient-to-t from-[blue] via-[cyan] to-[white] visualizer-bar bar-4"></div>
+    <div class="w-16 md:w-32 bg-gradient-to-t from-[purple] via-[blue] to-[green] visualizer-bar bar-5 hidden sm:block"></div>
+    <div class="w-16 md:w-32 bg-gradient-to-t from-[green] via-[yellow] to-[red] visualizer-bar bar-6 hidden md:block"></div>
   </div>
 
   <div class="max-w-4xl w-full relative z-10 flex flex-col items-center">
@@ -79,5 +88,25 @@
   @keyframes blink {
     0%, 49% { opacity: 1; }
     50%, 100% { opacity: 0; }
+  }
+
+  /* Audio Visualizer Logic */
+  .visualizer-bar {
+    height: 10%;
+    transform-origin: bottom;
+    box-shadow: 0 0 20px rgba(0,255,255,0.5);
+  }
+
+  .bar-1 { animation: eq 1.2s ease-in-out infinite alternate; }
+  .bar-2 { animation: eq 0.8s ease-in-out 0.2s infinite alternate; }
+  .bar-3 { animation: eq 1.5s ease-in-out 0.5s infinite alternate; }
+  .bar-4 { animation: eq 0.9s ease-in-out 0.1s infinite alternate; }
+  .bar-5 { animation: eq 1.1s ease-in-out 0.4s infinite alternate; }
+  .bar-6 { animation: eq 1.3s ease-in-out 0.3s infinite alternate; }
+
+  @keyframes eq {
+    0% { height: 10%; }
+    50% { height: 60%; }
+    100% { height: 30%; }
   }
 </style>
