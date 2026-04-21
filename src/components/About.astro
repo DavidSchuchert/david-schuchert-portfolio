@@ -1,7 +1,7 @@
 ---
 ---
 
-<section class="smw-map w-full min-h-[90vh] py-20 px-4 md:px-8 relative flex flex-col items-center justify-center overflow-hidden">
+<section class="smw-map w-full min-h-[90vh] py-20 px-4 md:px-8 relative flex flex-col items-center justify-center overflow-hidden shadow-[inset_0_40px_40px_-20px_rgba(0,0,0,1)] z-10 bg-[#3CB043]">
   
   <div class="absolute inset-0 bg-[#3CB043] z-0 smw-pattern" style="image-rendering: pixelated;"></div>
 
@@ -9,8 +9,8 @@
     
     <!-- SMW Wooden Level Sign -->
     <div class="text-center w-full mb-16 max-w-sm mx-auto relative z-20">
-      <div class="pixel-wood-board px-6 py-4 relative shadow-[8px_8px_0_rgba(0,0,0,0.5)]">
-         <h2 class="text-xl md:text-2xl text-white font-black snes-font uppercase drop-shadow-[2px_2px_0_#000]">
+      <div class="pixel-wood-board px-6 pt-6 pb-3 relative shadow-[8px_8px_0_rgba(0,0,0,0.5)]">
+         <h2 class="text-xl md:text-2xl text-white font-black snes-font uppercase drop-shadow-[2px_2px_0_#000] leading-none mb-0">
            WORLD 1: ABOUT
          </h2>
       </div>
@@ -120,11 +120,11 @@
   .smw-pattern {
     /* Base green with a little noise/dirt pattern */
     background-image: 
-      radial-gradient(#209020 15%, transparent 16%),
-      radial-gradient(#209020 15%, transparent 16%);
-    background-size: 32px 32px;
-    background-position: 0 0, 16px 16px;
-    opacity: 0.8;
+      linear-gradient(45deg, #209020 25%, transparent 25%, transparent 75%, #209020 75%, #209020),
+      linear-gradient(45deg, #209020 25%, transparent 25%, transparent 75%, #209020 75%, #209020);
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 8px;
+    opacity: 0.3;
   }
 
   /* Pixel Wood Board */
