@@ -84,7 +84,7 @@ test.describe('Navigation', () => {
   });
 
   test.describe('Smooth scroll to sections', () => {
-    const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+    const sections = ['era-16bit', 'era-32bit', 'era-hd', 'era-nextgen'];
 
     for (const section of sections) {
       test(`smooth scroll to ${section} section works`, async ({ page }) => {
@@ -134,7 +134,7 @@ test.describe('Navigation', () => {
       expect(linkCount).toBeGreaterThan(0);
 
       // Scroll to a section
-      const skillsLink = page.locator('a[href="#skills"], a[href*="#skills"]').first();
+      const skillsLink = page.locator('a[href="#era-32bit"], a[href*="#era-32bit"]').first();
       const skillsLinkExists = await skillsLink.count() > 0;
 
       if (skillsLinkExists) {
@@ -155,7 +155,6 @@ test.describe('Navigation', () => {
             const style = getComputedStyle(el);
             return {
               color: style.color,
-              borderBottom: style.borderBottom,
               textDecoration: style.textDecoration,
             };
           });

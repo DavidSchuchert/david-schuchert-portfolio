@@ -12,30 +12,29 @@ test.describe('Homepage', () => {
 
   test('hero section exists with name David', async ({ page }) => {
     // Check hero section exists
-    const hero = page.locator('section#hero, [id="hero"], section:has-text("David"), h1:has-text("David")').first();
+    const hero = page.locator('section.retro-hero, h1:has-text("David")').first();
     await expect(hero).toBeVisible({ timeout: 10000 });
 
     // Check that David appears in the hero
-    const davidText = page.locator('text=/David/i').first();
+    const davidText = page.locator('h1:has-text("David")').first();
     await expect(davidText).toBeVisible();
   });
 
   test('navigation works', async ({ page }) => {
-    // Check nav exists
-    const nav = page.locator('nav');
+    // Target the main header navigation specifically
+    const nav = page.locator('header nav').first();
     await expect(nav).toBeVisible();
 
-    // Check navigation links exist
-    const navLinks = page.locator('nav a, header a').count();
-    expect(navLinks).toBeGreaterThan(0);
+    // Check navigation links exist in the header
+    const navLinksCount = await nav.locator('a').count();
+    expect(navLinksCount).toBeGreaterThan(0);
 
     // Test navigation on desktop - hover and click
-    const firstNavLink = page.locator('nav a, header a').first();
+    const firstNavLink = nav.locator('a').first();
     const href = await firstNavLink.getAttribute('href');
     if (href && href.startsWith('#')) {
       // In-page navigation
       await firstNavLink.click();
-      // Wait for potential smooth scroll
       await page.waitForTimeout(500);
     }
   });
@@ -83,51 +82,43 @@ test.describe('Homepage', () => {
   });
 
   test('skills section renders', async ({ page }) => {
-    // Find skills section by heading or id
-    const skillsSection = page.locator('section#skills, [id*="skill"], section:has-text("Skill"), h2:has-text("Skill")').first();
+    // Find skills section (32-bit era)
+    const skillsSection = page.locator('section#era-32bit, section:has-text("CHOOSE YOUR CHARACTER")').first();
 
-    // Scroll to it if needed
-    await skillsSection.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {
-      // Fallback: just check it exists somewhere
-    });
-
+    await skillsSection.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
     await expect(skillsSection).toBeVisible({ timeout: 5000 });
 
-    // Check that skills content exists (list of skills)
-    const skillsContent = page.locator('[class*="skill"], li:has-text("JavaScript"), [data-skill]');
-    const hasSkills = await skillsContent.count() > 0 || await page.locator('text=/JavaScript|TypeScript|Python|React/').count() > 0;
+    // Check for character stats or skill names
+    const hasSkills = await page.locator('text=/JavaScript|TypeScript|React/').count() > 0;
     expect(hasSkills).toBeTruthy();
   });
 
   test('projects section renders', async ({ page }) => {
-    const projectsSection = page.locator('section#projects, [id*="project"], section:has-text("Project")').first();
+    const projectsSection = page.locator('section#era-hd').first();
 
     await projectsSection.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
-
     await expect(projectsSection).toBeVisible({ timeout: 5000 });
 
-    // Check for project cards or links
-    const projects = page.locator('[class*="project"], article:has(a), .card');
-    const hasProjectContent = await projects.count() > 0 || await page.locator('text=/Project|Demo|GitHub/').count() > 0;
-    expect(hasProjectContent).toBeTruthy();
+    // Check for project cards
+    const projects = page.locator('[class*="project-card"], h3').count();
+    expect(await projects).toBeGreaterThan(0);
   });
 
   test('contact section exists', async ({ page }) => {
-    const contactSection = page.locator('section#contact, [id*="contact"], section:has-text("Contact")').first();
+    const contactSection = page.locator('section#era-nextgen').first();
 
     await contactSection.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
-
     await expect(contactSection).toBeVisible({ timeout: 5000 });
 
-    // Check for contact form or email link
-    const hasContactForm = await page.locator('form').count() > 0;
-    const hasEmailLink = await page.locator('a[href*="mailto:"], a[href*="@"]').count() > 0;
-    expect(hasContactForm || hasEmailLink).toBeTruthy();
+    // Check for email link
+    const hasEmailLink = await page.locator('a[href*="mailto:"]').count() > 0;
+    expect(hasEmailLink).toBeTruthy();
   });
 
   test('SEO meta tags present (title, description, og:*)', async ({ page }) => {
     // Title tag
-    const title = await page.locator('title').textContent();
+    // Title tag - use first() for strict mode compliance
+    const title = await page.locator('title').first().textContent();
     expect(title).toBeTruthy();
     expect(title?.length).toBeGreaterThan(0);
 

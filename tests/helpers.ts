@@ -28,50 +28,50 @@ export async function getSectionIds(page: Page): Promise<string[]> {
 /** Hero section helpers */
 export const heroLocators = {
   heading: (page: Page) => page.locator('h1'),
-  tagline: (page: Page) => page.locator('text=Code. Kurse. Controller.'),
-  ctaButton: (page: Page) => page.locator('a[href="#projects"]'),
-  githubLink: (page: Page) => page.locator('a[href*="github.com/davidschuchert"]'),
-  linkedinLink: (page: Page) => page.locator('a[href*="linkedin.com/in/david-schuchert"]'),
-  xingLink: (page: Page) => page.locator('a[href*="xing.com/profile/David_Schuchert"]'),
-  scrollIndicator: (page: Page) => page.locator('a[href="#about"]'),
+  tagline: (page: Page) => page.locator('p.pixel-font.text-gray-300'),
+  ctaButton: (page: Page) => page.locator('a[href*="#era-16bit"]').first(),
+  githubLink: (page: Page) => page.locator('a[href*="github.com/DavidSchuchert"]').first(),
+  linkedinLink: (page: Page) => page.locator('a[href*="linkedin.com"]').first(),
+  xingLink: (page: Page) => page.locator('a[href*="xing.com"]').first(),
+  scrollIndicator: (page: Page) => page.locator('a[href*="#era-16bit"]').first(),
 };
 
 /** About section helpers */
 export const aboutLocators = {
-  section: (page: Page) => page.locator('section#about'),
-  heading: (page: Page) => page.locator('section#about h2'),
+  section: (page: Page) => page.locator('section.smw-map'),
+  heading: (page: Page) => page.locator('section.smw-map h2'),
 };
 
 /** Skills section helpers */
 export const skillsLocators = {
-  section: (page: Page) => page.locator('section#skills'),
-  heading: (page: Page) => page.locator('section#skills h2'),
-  skillChips: (page: Page) => page.locator('section#skills [class*="chip"], section#skills [class*="tag"], section#skills span'),
+  section: (page: Page) => page.locator('section#era-32bit, section.smash-skills'),
+  heading: (page: Page) => page.locator('h2:has-text("CHOOSE YOUR CHARACTER"), h2:has-text("Skills")'),
+  skillChips: (page: Page) => page.locator('[data-skill], [class*="chip"], [class*="tag"]'),
 };
 
 /** Projects section helpers */
 export const projectsLocators = {
-  section: (page: Page) => page.locator('section#projects'),
-  heading: (page: Page) => page.locator('section#projects h2'),
-  projectCards: (page: Page) => page.locator('section#projects article, section#projects a[href*="github"], section#projects [class*="card"]'),
+  section: (page: Page) => page.locator('section#era-hd'),
+  heading: (page: Page) => page.locator('section#era-hd h2'),
+  projectCards: (page: Page) => page.locator('section#era-hd article, section#era-hd a[href*="github"], section#era-hd [class*="card"]'),
 };
 
 /** YouTube section helpers */
 export const youtubeLocators = {
-  section: (page: Page) => page.locator('section#youtube'),
-  heading: (page: Page) => page.locator('section#youtube h2'),
-  youtubeEmbed: (page: Page) => page.locator('section#youtube iframe, section#youtube [class*="youtube"]'),
+  section: (page: Page) => page.locator('section#era-32bit'), // YouTube is in Skills/Gameboy section now
+  heading: (page: Page) => page.locator('h3:has-text("YouTube"), h2:has-text("YouTube")'),
+  youtubeEmbed: (page: Page) => page.locator('iframe, [class*="youtube"]'),
 };
 
 /** Contact section helpers */
 export const contactLocators = {
-  section: (page: Page) => page.locator('section#contact'),
-  heading: (page: Page) => page.locator('section#contact h2'),
-  form: (page: Page) => page.locator('section#contact form'),
-  nameInput: (page: Page) => page.locator('input[name="name"], input#name, input[placeholder*="name" i]'),
-  emailInput: (page: Page) => page.locator('input[name="email"], input#email, input[placeholder*="email" i]'),
-  messageInput: (page: Page) => page.locator('textarea[name="message"], textarea#message, textarea[placeholder*="nachricht" i], textarea[placeholder*="message" i]'),
-  submitButton: (page: Page) => page.locator('button[type="submit"]'),
+  section: (page: Page) => page.locator('section#era-nextgen'),
+  heading: (page: Page) => page.locator('section#era-nextgen h2'),
+  form: (page: Page) => page.locator('section#era-nextgen form'),
+  nameInput: (page: Page) => page.locator('input[name="name"], input#name'),
+  emailInput: (page: Page) => page.locator('input[name="email"], input#email'),
+  messageInput: (page: Page) => page.locator('textarea[name="message"], textarea#message'),
+  submitButton: (page: Page) => page.locator('button[type="submit"], a[href*="mailto"]'),
 };
 
 /** Footer helpers */
