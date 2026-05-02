@@ -38,7 +38,6 @@ const projects = [
     "link": "#",
     "github": "https://github.com/DavidSchuchert/hermes-webui",
     "coverGradient": "from-blue-600 to-cyan-500",
-    "preview": vmtImg,
     "isAi": true
   },
   {
@@ -114,13 +113,17 @@ const systemSpecs = [
             <div class={`w-full h-48 bg-gray-900 relative overflow-hidden flex items-center justify-center shadow-inner`}>
               <!-- Project Preview Image -->
               <div class="absolute inset-0 z-0">
-                <Image 
-                   src={proj.preview} 
-                   alt={proj.title}
-                   width={800}
-                   height={450}
-                   class={`w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 ${proj.isAi ? 'grayscale opacity-40 blur-[2px] contrast-150' : 'opacity-80'}`}
-                />
+                {proj.preview ? (
+                  <Image
+                     src={proj.preview}
+                     alt={proj.title}
+                     width={800}
+                     height={450}
+                     class={`w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 ${proj.isAi ? 'grayscale opacity-40 blur-[2px] contrast-150' : 'opacity-80'}`}
+                  />
+                ) : (
+                  <div class="w-full h-full bg-[#0a0a1a]" style="background-image: radial-gradient(rgba(100,200,255,0.07) 1px, transparent 1px), radial-gradient(rgba(100,200,255,0.05) 1px, transparent 1px); background-size: 20px 20px, 40px 40px; background-position: 0 0, 10px 10px;"></div>
+                )}
               </div>
 
               <!-- Overlays -->
@@ -157,7 +160,7 @@ const systemSpecs = [
 
                 <div class="flex items-center justify-center gap-6">
                   <div class="flex flex-col items-center gap-1 group/btn">
-                    <a href={proj.github} target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-gradient-to-b from-blue-400 to-blue-700 border-[3px] border-white shadow-xl flex items-center justify-center text-white text-xl hover:scale-110 active:scale-90 transition-all font-black">X</a>
+                    <a href={proj.github} target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-gradient-to-b from-blue-400 to-blue-700 border-[3px] border-white shadow-xl flex items-center justify-center text-white text-xl hover:scale-110 active:scale-90 transition-all font-black text-xs">GH</a>
                     <span class="text-[8px] font-black text-gray-400 opacity-0 group-hover/btn:opacity-100 transition-opacity">SOURCE</span>
                   </div>
                   <div class="flex flex-col items-center gap-1 group/btn">
@@ -213,7 +216,7 @@ const systemSpecs = [
     <!-- Controller Help (Classic Dashboard Footer) -->
     <div class="mt-10 flex items-center justify-center gap-8 border-t-2 border-white/50 pt-6">
        <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded-full bg-blue-500 border border-white flex items-center justify-center text-white font-black text-xs">X</div>
+          <div class="w-6 h-6 rounded-full bg-blue-500 border border-white flex items-center justify-center text-white font-black text-[8px]">GH</div>
           <span class="text-[10px] font-bold uppercase text-gray-600">Source</span>
        </div>
        <div class="flex items-center gap-2">
@@ -238,13 +241,19 @@ const systemSpecs = [
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  .tab-btn.active {
+  .tab-btn.active,
+  .tab-btn[data-active="true"] {
     background: linear-gradient(to bottom, #8eb837, #71952a) !important;
     color: white !important;
     opacity: 1 !important;
     transform: scale(1.05);
     z-index: 20;
     box-shadow: 0 5px 15px rgba(142, 184, 55, 0.4);
+  }
+
+  .tab-btn[data-active="false"] {
+    background: linear-gradient(to bottom, #e5e5e5, #cccccc) !important;
+    color: #6b7280 !important;
   }
 
   .tab-content {
@@ -298,20 +307,11 @@ const systemSpecs = [
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
 
-  function switchTab(tabName) {
-    // Update buttons
+  function switchTab(tabName: string) {
+    // Update buttons using data-active attribute to avoid conflicting classList manipulation
     tabBtns.forEach(btn => {
       const isActive = btn.getAttribute('data-tab') === tabName;
-      btn.classList.toggle('active', isActive);
-      
-      // Update styling for inactive buttons
-      if (!isActive) {
-        btn.classList.add('bg-gradient-to-b', 'from-[#e5e5e5]', 'to-[#cccccc]', 'text-gray-500');
-        btn.classList.remove('bg-gradient-to-b', 'from-[#8eb837]', 'to-[#71952a]', 'text-white');
-      } else {
-        btn.classList.remove('bg-gradient-to-b', 'from-[#e5e5e5]', 'to-[#cccccc]', 'text-gray-500');
-        btn.classList.add('bg-gradient-to-b', 'from-[#8eb837]', 'to-[#71952a]', 'text-white', 'active');
-      }
+      btn.setAttribute('data-active', isActive ? 'true' : 'false');
     });
 
     // Update content
@@ -327,7 +327,7 @@ const systemSpecs = [
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const tab = btn.getAttribute('data-tab');
-      switchTab(tab);
+      if (tab) switchTab(tab);
     });
   });
 

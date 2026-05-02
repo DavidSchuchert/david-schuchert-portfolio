@@ -71,8 +71,9 @@ const allSkills = skillCategories.flatMap(cat => cat.skills.map(s => ({...s, cat
     <!-- The Character Roster Grid -->
     <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-16">
       {allSkills.map((skill) => (
-        <div 
-          class="skill-box group relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-[#333] border-4 border-[#555] hover:border-[#ff0055] hover:scale-110 transition-all duration-200 cursor-pointer overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,0.5)]"
+        <div
+          class="skill-box group relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-[#333] border-4 border-[#555] hover:border-[#ff0055] hover:scale-110 focus:border-[#ff0055] focus:scale-110 focus:outline-none transition-all duration-200 cursor-pointer overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,0.5)]"
+          tabindex="0"
           data-skill-id={skill.id}
           data-skill-name={skill.name}
           data-skill-level={skill.level}
@@ -170,7 +171,6 @@ const allSkills = skillCategories.flatMap(cat => cat.skills.map(s => ({...s, cat
       rgba(0, 0, 0, 0.25) 50%
     );
     background-size: 100% 4px;
-    background-attachment: fixed;
   }
 </style>
 
@@ -195,7 +195,7 @@ const allSkills = skillCategories.flatMap(cat => cat.skills.map(s => ({...s, cat
       }
     };
 
-    ['mouseenter', 'click'].forEach(evt => {
+    ['mouseenter', 'focus', 'click'].forEach(evt => {
       box.addEventListener(evt, updateSkillInfo);
     });
   });
